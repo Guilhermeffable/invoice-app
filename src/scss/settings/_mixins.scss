@@ -1,7 +1,11 @@
-@mixin gradient($degrees) {
-    background: linear-gradient(
-        $degrees,
-        $color-primary-02 50%,
-        $color-primary-03 50%
-    );
+@mixin gradient($isGradient, $degs: 0deg) {
+    @if $isGradient {
+        background: linear-gradient(
+            $degs,
+            $color-primary-02 50%,
+            $color-primary-03 50%
+        );
+    } @else {
+        background: $color-primary-02;
+    }
 }

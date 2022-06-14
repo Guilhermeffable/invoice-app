@@ -1,3 +1,4 @@
+import { debug } from "console";
 import React, { useState, useEffect } from "react";
 import { Chevron } from "../../assets/svg";
 import Button from "../Button/button";
@@ -58,7 +59,8 @@ const DatePicker = () => {
         setIntervalIndexes([]);
     };
 
-    const selectDay = (index: number) => {
+    const selectDay = (index: number): void => {
+        debugger;
         setActiveIndexes([...activeIndexes, index]);
 
         console.log(activeIndexes);
@@ -101,7 +103,14 @@ const DatePicker = () => {
                         onClick={() => selectDay(index)}
                         className={`${
                             intervalIndexes.includes(index)
-                                ? "background--primary-02"
+                                ? "datepicker__day--selected"
+                                : ""
+                        } ${
+                            activeIndexes[0] === index &&
+                            activeIndexes.length > 1
+                                ? "datepicker__day-first"
+                                : activeIndexes[1] === index
+                                ? "datepicker__day-second"
                                 : ""
                         } datepicker__day`}
                     >
