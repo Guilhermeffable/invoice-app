@@ -63,6 +63,11 @@ const DatePicker = () => {
         setActiveIndexes([...activeIndexes, index]);
     };
 
+    const clearIndexes = () => {
+        setActiveIndexes([]);
+        setIntervalIndexes([]);
+    };
+
     const prevMonthDates = getDaysInMonth(
         currentMonth === januaryIndex ? decemberIndex : currentMonth - 1,
         currentMonth === januaryIndex ? currentYear - 1 : currentYear
@@ -114,7 +119,7 @@ const DatePicker = () => {
                         <div
                             className={`${
                                 activeIndexes.includes(index)
-                                    ? "background--active datepicker__day--active"
+                                    ? "background--active datepicker__day--active text--primary-03"
                                     : ""
                             }`}
                         >
@@ -124,8 +129,16 @@ const DatePicker = () => {
                 ))}
             </div>
             <div className="datepicker__footer">
-                <Button text="Clear Dates" primary={false} />
-                <Button text="Select Dates" primary={true} />
+                <Button
+                    text="Clear Dates"
+                    primary={false}
+                    onClick={clearIndexes}
+                />
+                <Button
+                    text="Select Dates"
+                    primary={true}
+                    onClick={clearIndexes}
+                />
             </div>
         </div>
     );
