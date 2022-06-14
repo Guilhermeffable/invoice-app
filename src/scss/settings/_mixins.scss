@@ -1,0 +1,7 @@
+@mixin gradient($degrees) {
+    background: linear-gradient(
+        $degrees,
+        $color-primary-02 50%,
+        $color-primary-03 50%
+    );
+}
