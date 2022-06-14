@@ -60,10 +60,7 @@ const DatePicker = () => {
     };
 
     const selectDay = (index: number): void => {
-        debugger;
         setActiveIndexes([...activeIndexes, index]);
-
-        console.log(activeIndexes);
     };
 
     const prevMonthDates = getDaysInMonth(
@@ -108,9 +105,9 @@ const DatePicker = () => {
                         } ${
                             activeIndexes[0] === index &&
                             activeIndexes.length > 1
-                                ? "datepicker__day-first"
+                                ? "datepicker__day--first"
                                 : activeIndexes[1] === index
-                                ? "datepicker__day-second"
+                                ? "datepicker__day--second"
                                 : ""
                         } datepicker__day`}
                     >

@@ -56,14 +56,14 @@
             }
         }
 
-        &-first {
+        &--first {
             &::before {
                 @extend %before;
                 @include gradient(true, -90deg);
             }
         }
 
-        &-second {
+        &--second {
             &::before {
                 @extend %before;
                 @include gradient(true, 90deg);
