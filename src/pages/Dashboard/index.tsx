@@ -2,6 +2,7 @@ import React from "react";
 import "../../scss/tools/_container.scss";
 import "./_dashboard.scss";
 import { Filters } from "../../assets/svg";
+import Invoice from "../../components/Invoice/invoice";
 
 const Dashboard = () => {
     return (
@@ -15,6 +16,8 @@ const Dashboard = () => {
                     <Filters />
                 </div>
             </div>
+
+            <Invoice />
         </section>
     );
 };
