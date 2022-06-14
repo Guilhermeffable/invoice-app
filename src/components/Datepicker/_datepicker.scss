@@ -47,12 +47,14 @@
             width: 32px;
             justify-content: center;
             position: relative;
+            transition: background-color 0.5s ease-in;
         }
 
         &--selected {
             &::before {
                 @extend %before;
                 @include gradient(false);
+                transition: all 0.5s ease-in;
             }
         }
 
@@ -67,6 +69,7 @@
             &::before {
                 @extend %before;
                 @include gradient(true, 90deg);
+                transition: all 0.5s ease-in;
             }
         }
     }
