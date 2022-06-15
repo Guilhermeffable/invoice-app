@@ -1,4 +1,22 @@
 .button {
     padding: 12px 24px;
     border-radius: 16px;
+
+    &__pill {
+        border-radius: 31px;
+        display: flex;
+        align-items: center;
+        padding: 4px 8px 4px 4px;
+        gap: 5px;
+    }
+
+    &__icon {
+        background: white;
+        height: 32px;
+        width: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
 }

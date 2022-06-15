@@ -3,6 +3,7 @@ import "../../scss/tools/_container.scss";
 import "./_dashboard.scss";
 import { Filters } from "../../assets/svg";
 import Invoice from "../../components/Invoice/invoice";
+import PillButton from "../../components/Button/pillbutton";
 
 const Dashboard = () => {
     return (
@@ -12,8 +13,11 @@ const Dashboard = () => {
                     <h1>Invoices - 5</h1>
                 </div>
                 <div className="dashboard__actions">
-                    Filter
-                    <Filters />
+                    <div>
+                        Filter
+                        <Filters />
+                    </div>
+                    <PillButton />
                 </div>
             </div>
             <div className="dashboard__content">
