@@ -1,14 +1,14 @@
 .background {
-    &--primary-01 {
-        background: $color-primary-01;
+    &--primary {
+        background: $color-primary;
     }
 
-    &--primary-02 {
-        background: $color-primary-02;
+    &--secondary {
+        background: $color-secondary;
     }
 
-    &--primary-03 {
-        background: $color-primary-03;
+    &--white {
+        background: $color-white;
     }
 
     &--neutral-03 {
@@ -16,18 +16,18 @@
     }
 
     &--active {
-        background: $color-primary-01;
+        background: $color-primary;
     }
 
     &--success {
-        background: $color-secondary-02;
+        background: $color-success;
     }
 
     &--warning {
-        background: $color-secondary-04;
+        background: $color-warning;
     }
 
     &--danger {
-        background: $color-secondary-06;
+        background: $color-danger;
     }
 }

@@ -1,0 +1,36 @@
+.filter {
+    z-index: 2;
+    height: 100%;
+    width: 25%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem;
+        width: 100%;
+    }
+
+    &__content {
+        width: 100%;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    &__state {
+        display: flex;
+    }
+
+    &__datepicker {
+        position: absolute;
+        z-index: 3;
+    }
+}

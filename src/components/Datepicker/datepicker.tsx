@@ -82,7 +82,7 @@ const DatePicker = () => {
     const weeks = getWeeks(prevMonthDates, currentMonthDates, nextMonthDates);
 
     return (
-        <div className="datepicker">
+        <div className="datepicker background--white">
             <div className="datepicker__year">
                 <div onClick={getPrevMonth}>
                     <Chevron style={{ transform: "rotate(90deg)" }} />

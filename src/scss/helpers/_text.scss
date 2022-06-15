@@ -1,21 +1,21 @@
 .text {
     &--primary-01 {
-        color: $color-primary-01;
+        color: $color-primary;
     }
 
     &--primary-03 {
-        color: $color-primary-03;
+        color: $color-white;
     }
 
     &--success {
-        color: $color-secondary-02;
+        color: $color-success;
     }
 
     &--warning {
-        color: $color-secondary-04;
+        color: $color-warning;
     }
 
     &--danger {
-        color: $color-secondary-06;
+        color: $color-danger;
     }
 }

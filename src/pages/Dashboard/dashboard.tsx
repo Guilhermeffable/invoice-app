@@ -5,6 +5,7 @@ import { Filter } from "../../assets/svg";
 import Invoice from "../../components/Invoice/invoice";
 import PillButton from "../../components/Button/pillbutton";
 import Filters from "../../components/Filters/filters";
+import { Plus } from "../../assets/svg";
 
 const Dashboard = () => {
     return (
@@ -18,7 +19,7 @@ const Dashboard = () => {
                         Filter
                         <Filter />
                     </div>
-                    <PillButton />
+                    <PillButton icon={Plus} />
                 </div>
             </div>
             <div className="dashboard__content">

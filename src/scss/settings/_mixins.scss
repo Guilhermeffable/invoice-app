@@ -2,10 +2,10 @@
     @if $isGradient {
         background: linear-gradient(
             $degs,
-            $color-primary-02 50%,
-            $color-primary-03 50%
+            $color-secondary 50%,
+            $color-white 50%
         );
     } @else {
-        background: $color-primary-02;
+        background: $color-secondary;
     }
 }
