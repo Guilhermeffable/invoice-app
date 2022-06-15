@@ -14,7 +14,7 @@ const PillButton = ({
         <div className="button__pill background--primary">
             {icon != null ? (
                 <div className="button__icon">
-                    <Icon className="stroke--primary-01" />
+                    <Icon className="icon__stroke--primary" />
                 </div>
             ) : (
                 ""
