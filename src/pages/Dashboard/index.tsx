@@ -16,8 +16,14 @@ const Dashboard = () => {
                     <Filters />
                 </div>
             </div>
-
-            <Invoice />
+            <div className="dashboard__content">
+                <Invoice />
+                <Invoice />
+                <Invoice />
+                <Invoice />
+                <Invoice />
+                <Invoice />
+            </div>
         </section>
     );
 };

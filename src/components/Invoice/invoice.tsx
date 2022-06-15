@@ -14,7 +14,7 @@ const Invoice = () => {
                 <div>Graphic Design</div>
             </div>
             <div className="invoice__info">
-                <div>556.00€</div>
+                <div className="invoice__price">556.00€</div>
             </div>
             <div className="invoice__info">
                 <Status type={0} />
