@@ -1,9 +1,10 @@
 import React from "react";
 import "./_invoice.scss";
+import Status from "../Status/status";
 
 const Invoice = () => {
     return (
-        <div className="invoice">
+        <div className="invoice background--neutral-03">
             <div className="invoice__info">
                 <div>#Inv1</div>
                 <div>Due tomorrow</div>
@@ -16,7 +17,7 @@ const Invoice = () => {
                 <div>556.00€</div>
             </div>
             <div className="invoice__info">
-                <div>Paid</div>
+                <Status type={0} />
             </div>
         </div>
     );

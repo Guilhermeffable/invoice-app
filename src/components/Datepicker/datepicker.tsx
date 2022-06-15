@@ -1,4 +1,3 @@
-import { debug } from "console";
 import React, { useState, useEffect } from "react";
 import { Chevron } from "../../assets/svg";
 import Button from "../Button/button";

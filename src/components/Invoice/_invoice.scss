@@ -1,8 +1,21 @@
 .invoice {
     display: flex;
+    justify-content: space-between;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    height: 10vh;
+    padding: 2rem 2rem;
 
     &__info {
         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    &__status {
+        height: 12px;
+        width: 12px;
+        background: #2cc87f;
+        border-radius: 50%;
     }
 }

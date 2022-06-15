@@ -3,7 +3,23 @@
         background: $color-primary-02;
     }
 
+    &--neutral-03 {
+        background: $color-neutral-03;
+    }
+
     &--active {
         background: $color-primary-01;
+    }
+
+    &--success {
+        background: $color-secondary-02;
+    }
+
+    &--warning {
+        background: $color-secondary-04;
+    }
+
+    &--danger {
+        background: $color-secondary-06;
     }
 }
