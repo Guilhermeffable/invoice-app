@@ -1,9 +1,10 @@
 import React from "react";
 import "../../scss/tools/_container.scss";
 import "./_dashboard.scss";
-import { Filters } from "../../assets/svg";
+import { Filter } from "../../assets/svg";
 import Invoice from "../../components/Invoice/invoice";
 import PillButton from "../../components/Button/pillbutton";
+import Filters from "../../components/Filters/filters";
 
 const Dashboard = () => {
     return (
@@ -13,9 +14,9 @@ const Dashboard = () => {
                     <h1>Invoices - 5</h1>
                 </div>
                 <div className="dashboard__actions">
-                    <div>
+                    <div className="dashboard__filter">
                         Filter
-                        <Filters />
+                        <Filter />
                     </div>
                     <PillButton />
                 </div>
@@ -28,6 +29,10 @@ const Dashboard = () => {
                 <Invoice />
                 <Invoice />
             </div>
+
+            <aside>
+                <Filters />
+            </aside>
         </section>
     );
 };
