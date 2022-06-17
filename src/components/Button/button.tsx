@@ -14,7 +14,7 @@ const Button = ({
     return (
         <div
             className={`button align--center ${
-                primary ? "background--secondary text--primary-03" : ""
+                primary ? "background--secondary text--white" : ""
             } border--primary-02`}
             onClick={() => onClick()}
         >

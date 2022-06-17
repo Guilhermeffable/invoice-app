@@ -1,0 +1,9 @@
+.display {
+    &--none {
+        visibility: hidden;
+    }
+
+    &--block {
+        visibility: visible;
+    }
+}

@@ -3,5 +3,9 @@
         &--primary {
             stroke: $color-primary;
         }
+
+        &--default {
+            stroke: $color-black;
+        }
     }
 }

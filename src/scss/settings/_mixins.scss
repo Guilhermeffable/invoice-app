@@ -9,3 +9,13 @@
         background: $color-secondary;
     }
 }
+
+@mixin box-shadow(
+    $hOffset: 0px,
+    $vOffset: 0px,
+    $blur: 0px,
+    $spread: 0px,
+    $color
+) {
+    box-shadow: $hOffset $vOffset $blur $spread $color;
+}

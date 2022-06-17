@@ -23,14 +23,31 @@
         flex-direction: column;
         justify-content: center;
         gap: 2rem;
+
+        & > div {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
     }
 
     &__state {
         display: flex;
+        gap: 1rem;
+
+        & > div {
+            width: calc(100% / 3);
+            justify-content: center;
+        }
+    }
+
+    &__date {
+        position: relative;
     }
 
     &__datepicker {
         position: absolute;
         z-index: 3;
+        width: 100%;
     }
 }

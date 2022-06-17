@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { Chevron } from "../../assets/svg";
 import Button from "../Button/button";
 import {
@@ -7,10 +8,17 @@ import {
     months,
     weekdays,
     intervalRecursive,
+    getDaysIndexes,
 } from "./utilities";
 import "./_datepicker.scss";
 
-const DatePicker = () => {
+const DatePicker = ({
+    saveDates,
+    clearDates,
+}: {
+    saveDates: Function;
+    clearDates: Function;
+}) => {
     const [currentMonth, setCurrentMonth] = useState<number>(
         new Date().getMonth()
     );
@@ -67,6 +75,11 @@ const DatePicker = () => {
         setIntervalIndexes([]);
     };
 
+    const clear = () => {
+        clearIndexes();
+        clearDates();
+    };
+
     const prevMonthDates = getDaysInMonth(
         currentMonth === januaryIndex ? decemberIndex : currentMonth - 1,
         currentMonth === januaryIndex ? currentYear - 1 : currentYear
@@ -81,8 +94,28 @@ const DatePicker = () => {
 
     const weeks = getWeeks(prevMonthDates, currentMonthDates, nextMonthDates);
 
+    const selectDates = () => {
+        let dateArr: Date[] = [];
+
+        const firstIndex = activeIndexes[0] - currentMonthDates[0].getDay();
+        let firstDate = currentMonthDates[firstIndex];
+
+        if (activeIndexes.length > 1) {
+            let lastDate =
+                currentMonthDates[
+                    activeIndexes[1] - currentMonthDates[0].getDay()
+                ];
+
+            dateArr = [firstDate, lastDate];
+        } else {
+            dateArr = [firstDate];
+        }
+
+        saveDates(dateArr);
+    };
+
     return (
-        <div className="datepicker background--white">
+        <div className="datepicker background--white box-shadow">
             <div className="datepicker__year">
                 <div onClick={getPrevMonth}>
                     <Chevron style={{ transform: "rotate(90deg)" }} />
@@ -118,7 +151,7 @@ const DatePicker = () => {
                         <div
                             className={`${
                                 activeIndexes.includes(index)
-                                    ? "background--active datepicker__day--active text--primary-03"
+                                    ? "background--active datepicker__day--active text--white"
                                     : ""
                             }`}
                         >
@@ -128,19 +161,20 @@ const DatePicker = () => {
                 ))}
             </div>
             <div className="datepicker__footer">
-                <Button
-                    text="Clear Dates"
-                    primary={false}
-                    onClick={clearIndexes}
-                />
+                <Button text="Clear Dates" primary={false} onClick={clear} />
                 <Button
                     text="Select Dates"
                     primary={true}
-                    onClick={clearIndexes}
+                    onClick={selectDates}
                 />
             </div>
         </div>
     );
+};
+
+DatePicker.propTypes = {
+    saveDates: PropTypes.func.isRequired,
+    clearDates: PropTypes.func.isRequired,
 };
 
 export default DatePicker;

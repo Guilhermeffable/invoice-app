@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../scss/tools/_container.scss";
 import "./_dashboard.scss";
 import { Filter } from "../../assets/svg";
@@ -8,6 +8,12 @@ import Filters from "../../components/Filters/filters";
 import { Plus } from "../../assets/svg";
 
 const Dashboard = () => {
+    const [showFilters, setShowFilters] = useState<boolean>(false);
+
+    const setFilters = (isFilter: boolean) => {
+        setShowFilters(!isFilter);
+    };
+
     return (
         <section className="container dashboard">
             <div className="dashboard__header">
@@ -15,11 +21,14 @@ const Dashboard = () => {
                     <h1>Invoices - 5</h1>
                 </div>
                 <div className="dashboard__actions">
-                    <div className="dashboard__filter">
+                    <div
+                        className="dashboard__filter"
+                        onClick={() => setShowFilters(!showFilters)}
+                    >
                         Filter
                         <Filter />
                     </div>
-                    <PillButton icon={Plus} />
+                    <PillButton text="New Invoice" icon={Plus} primary={true} />
                 </div>
             </div>
             <div className="dashboard__content">
@@ -32,7 +41,7 @@ const Dashboard = () => {
             </div>
 
             <aside>
-                <Filters />
+                <Filters showFilters={showFilters} setFilters={setFilters} />
             </aside>
         </section>
     );

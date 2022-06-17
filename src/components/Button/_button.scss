@@ -1,13 +1,19 @@
 .button {
     padding: 12px 24px;
     border-radius: 16px;
+    cursor: pointer;
 
     &__pill {
         border-radius: 31px;
         display: flex;
         align-items: center;
-        padding: 4px 8px 4px 4px;
+
         gap: 5px;
+    }
+
+    &__pill--icon {
+        @extend .button__pill;
+        padding: 4px 8px 4px 4px;
     }
 
     &__icon {

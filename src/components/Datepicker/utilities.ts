@@ -47,6 +47,27 @@ export const getWeeks = (
     return arr;
 };
 
+export const getDaysIndexes = (
+    firstDay: number,
+    lastDay: number,
+    weeks: number[]
+): number[] => {
+    let firstIndex = 0;
+    let lastIndex = 0;
+
+    weeks.map((day, index) => {
+        if (day === firstDay) {
+            firstIndex = index;
+        }
+
+        if (day === lastDay) {
+            lastIndex = index;
+        }
+    });
+
+    return [firstIndex, lastIndex];
+};
+
 export const intervalRecursive = (
     x: number,
     y: number,
