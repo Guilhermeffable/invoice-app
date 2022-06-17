@@ -54,7 +54,7 @@ const Filters = ({
             <div className="filter__header">
                 <div className="filter__title">Filters</div>
                 <div className="filter__close" onClick={setShowFil}>
-                    <Close className="background--white " />
+                    <Close className="icon background--white " />
                 </div>
             </div>
             <div className="filter__content">

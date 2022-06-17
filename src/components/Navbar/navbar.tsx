@@ -5,7 +5,7 @@ import "./_navbar.scss";
 const Navbar = () => {
     return (
         <nav className="navbar">
-            <Theme />
+            <Theme className="icon icon__fill--none" />
         </nav>
     );
 };

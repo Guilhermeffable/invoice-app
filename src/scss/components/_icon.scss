@@ -1,4 +1,6 @@
 .icon {
+    cursor: pointer;
+
     &__stroke {
         &--primary {
             stroke: $color-primary;
@@ -6,6 +8,12 @@
 
         &--default {
             stroke: $color-black;
+        }
+    }
+
+    &__fill {
+        &--none {
+            fill: none;
         }
     }
 }
