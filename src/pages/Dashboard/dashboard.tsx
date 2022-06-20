@@ -3,7 +3,7 @@ import "../../scss/tools/_container.scss";
 import "./_dashboard.scss";
 import { Filter } from "../../assets/svg";
 import Invoice from "../../components/Invoice/invoice";
-import PillButton from "../../components/Button/pillbutton";
+import Button from "../../components/Button/index";
 import Filters from "../../components/Filters/filters";
 import { Plus } from "../../assets/svg";
 
@@ -28,7 +28,13 @@ const Dashboard = () => {
                         Filter
                         <Filter />
                     </div>
-                    <PillButton text="New Invoice" icon={Plus} primary={true} />
+                    <Button
+                        type={"primary"}
+                        text="New Invoice"
+                        icon={Plus}
+                        primary={true}
+                        onClick={() => console.log("olá")}
+                    />
                 </div>
             </div>
             <div className="dashboard__content">

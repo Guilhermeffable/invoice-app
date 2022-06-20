@@ -5,33 +5,29 @@
     cursor: pointer;
 
     &__pill {
-        // display: flex;
-        // align-items: center;
-        // gap: 5px;
-
         input {
-            &:checked,
-            &:not(:checked) {
-                position: absolute;
-                left: -9999%;
-            }
+            display: none;
 
             &:checked + label {
                 background-color: $color-primary;
+                color: $color-white;
             }
         }
 
         label {
             padding: 10px;
-            border: 1px solid black;
+            border: 2px solid $color-primary;
             display: inline-block;
             border-radius: 31px;
             width: 100%;
         }
     }
 
-    &__pill--icon {
-        @extend .button__pill;
+    &--icon {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        border-radius: 31px;
         padding: 4px 8px 4px 4px;
     }
 

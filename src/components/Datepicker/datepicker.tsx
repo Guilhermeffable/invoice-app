@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Chevron } from "../../assets/svg";
-import Button from "../Button/button";
+import Button from "../Button/index";
 import {
     getWeeks,
     getDaysInMonth,
@@ -161,8 +161,14 @@ const DatePicker = ({
                 ))}
             </div>
             <div className="datepicker__footer">
-                <Button text="Clear Dates" primary={false} onClick={clear} />
                 <Button
+                    type={"primary"}
+                    text="Clear Dates"
+                    primary={false}
+                    onClick={clear}
+                />
+                <Button
+                    type={"primary"}
                     text="Select Dates"
                     primary={true}
                     onClick={selectDates}

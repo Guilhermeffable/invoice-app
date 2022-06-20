@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Close } from "../../assets/svg";
-import Button from "../Button/button";
-import PillButton from "../Button/pillbutton";
+import Button from "../Button/index";
 import DatePicker from "../Datepicker/datepicker";
 import Input from "../Input/input";
 import "./_filter.scss";
@@ -67,13 +66,13 @@ const Filters = ({
                     <div className="filter__state">
                         <ul>
                             <li>
-                                <PillButton text="Paid" primary={false} />
+                                <Button type="pill" text="Paid" />
                             </li>
                             <li>
-                                <PillButton text="Canceled" primary={false} />
+                                <Button type="pill" text="Pending" />
                             </li>
                             <li>
-                                <PillButton text="Pending" primary={false} />
+                                <Button type="pill" text="Canceled" />
                             </li>
                         </ul>
                     </div>
@@ -111,6 +110,7 @@ const Filters = ({
                     </div>
                 </div>
                 <Button
+                    type="primary"
                     onClick={() => console.log("olá")}
                     primary={true}
                     text={"Search"}
