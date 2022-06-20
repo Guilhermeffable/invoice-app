@@ -151,7 +151,7 @@ const DatePicker = ({
                         <div
                             className={`${
                                 activeIndexes.includes(index)
-                                    ? "background--active datepicker__day--active text--white"
+                                    ? "background--primary datepicker__day--active text--white"
                                     : ""
                             }`}
                         >
