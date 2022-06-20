@@ -39,6 +39,14 @@
             width: calc(100% / 3);
             justify-content: center;
         }
+
+        ul {
+            display: flex;
+            width: 100%;
+            li {
+                width: calc(100% / 3);
+            }
+        }
     }
 
     &__date {

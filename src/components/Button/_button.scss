@@ -1,14 +1,33 @@
+@import "../../scss/settings/colors";
 .button {
     padding: 12px 24px;
     border-radius: 16px;
     cursor: pointer;
 
     &__pill {
-        border-radius: 31px;
-        display: flex;
-        align-items: center;
+        // display: flex;
+        // align-items: center;
+        // gap: 5px;
 
-        gap: 5px;
+        input {
+            &:checked,
+            &:not(:checked) {
+                position: absolute;
+                left: -9999%;
+            }
+
+            &:checked + label {
+                background-color: $color-primary;
+            }
+        }
+
+        label {
+            padding: 10px;
+            border: 1px solid black;
+            display: inline-block;
+            border-radius: 31px;
+            width: 100%;
+        }
     }
 
     &__pill--icon {

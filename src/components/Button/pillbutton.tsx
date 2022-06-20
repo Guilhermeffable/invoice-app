@@ -16,14 +16,11 @@ const PillButton = ({
 
     if (!Icon) {
         return (
-            <div
-                className={`button__pill background--primary  border--primary-02 background--white button align--center ${
-                    primary
-                        ? "background--secondary text--white"
-                        : "text--black"
-                } border--primary-02`}
-            >
-                <div className="button__text">{text}</div>
+            <div className="button__pill">
+                <input name="teste" id={text} type="checkbox" />
+                <label className="align--center" htmlFor={text}>
+                    {text}
+                </label>
             </div>
         );
     } else {

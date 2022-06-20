@@ -65,9 +65,17 @@ const Filters = ({
                 <div>
                     <div className="filter__label">Invoice state:</div>
                     <div className="filter__state">
-                        <PillButton text="Paid" primary={false} />
-                        <PillButton text="Canceled" primary={false} />
-                        <PillButton text="Pending" primary={false} />
+                        <ul>
+                            <li>
+                                <PillButton text="Paid" primary={false} />
+                            </li>
+                            <li>
+                                <PillButton text="Canceled" primary={false} />
+                            </li>
+                            <li>
+                                <PillButton text="Pending" primary={false} />
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div className="filter__date">
