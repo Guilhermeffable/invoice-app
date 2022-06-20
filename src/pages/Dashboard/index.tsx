@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "../../scss/tools/_container.scss";
 import "./_dashboard.scss";
 import { Filter } from "../../assets/svg";
-import Invoice from "../../components/Invoice/invoice";
+import Invoice from "../../components/Invoice";
 import Button from "../../components/Button/index";
-import Filters from "../../components/Filters/filters";
+import Filters from "../../components/Filters";
 import { Plus } from "../../assets/svg";
 
 const Dashboard = () => {

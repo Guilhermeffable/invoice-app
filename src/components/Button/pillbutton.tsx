@@ -6,7 +6,12 @@ import "./_button.scss";
 const PillButton = ({ text }: { text: string }) => {
     return (
         <div className="button__pill">
-            <input name="teste" id={text} type="checkbox" />
+            <input
+                className="display--none"
+                name="teste"
+                id={text}
+                type="checkbox"
+            />
             <label className="align--center" htmlFor={text}>
                 {text}
             </label>

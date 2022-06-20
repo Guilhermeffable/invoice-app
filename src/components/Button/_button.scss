@@ -6,8 +6,6 @@
 
     &__pill {
         input {
-            display: none;
-
             &:checked + label {
                 background-color: $color-primary;
                 color: $color-white;

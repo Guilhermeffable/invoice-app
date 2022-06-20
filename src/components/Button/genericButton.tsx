@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./_button.scss";
 
-const PrimaryButton = ({
+const GenericButton = ({
     text,
     primary,
     onClick,
@@ -39,11 +39,11 @@ const PrimaryButton = ({
     }
 };
 
-PrimaryButton.propTypes = {
+GenericButton.propTypes = {
     text: PropTypes.string.isRequired,
     primary: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,
     icon: PropTypes.object,
 };
 
-export default PrimaryButton;
+export default GenericButton;

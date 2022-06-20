@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PrimaryButton from "./primaryButton";
+import GenericButton from "./genericButton";
 import PillButton from "./pillbutton";
 
 const Button = ({
@@ -19,11 +19,11 @@ const Button = ({
     switch (type) {
         case "primary":
             return (
-                <PrimaryButton
+                <GenericButton
                     text={text!}
                     primary={primary!}
                     onClick={onClick!}
-                    icon={!icon ? undefined : icon}
+                    icon={icon}
                 />
             );
 
@@ -37,6 +37,10 @@ const Button = ({
 
 Button.propTypes = {
     type: PropTypes.string.isRequired,
+    text: PropTypes.string,
+    primary: PropTypes.bool,
+    onClick: PropTypes.func,
+    icon: PropTypes.object,
 };
 
 export default Button;

@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
-import DatePicker from "./components/Datepicker/datepicker";
-import Dashboard from "./pages/Dashboard/dashboard";
-import Navbar from "./components/Navbar/navbar";
+import Dashboard from "./pages/Dashboard/index";
+import Navbar from "./components/Navbar/index";
 import "./scss/main.scss";
 
 const App = () => {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Close } from "../../assets/svg";
 import Button from "../Button/index";
-import DatePicker from "../Datepicker/datepicker";
+import DatePicker from "../Datepicker";
 import Input from "../Input/input";
 import "./_filter.scss";
 import { useEffect } from "react";
