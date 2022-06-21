@@ -125,14 +125,15 @@ const DatePicker = ({
                     <Chevron style={{ transform: "rotate(-90deg)" }} />
                 </div>
             </div>
-            <div className="datepicker__weekdays flex flex--space-between">
-                {weekdays.map((x, index) => (
-                    <div key={index}>{x}</div>
+            <ul className="datepicker__weekdays flex flex--space-between">
+                {weekdays.map((weekday, index) => (
+                    <li key={index}>{weekday}</li>
                 ))}
-            </div>
-            <div className="datepicker__weeks flex flex--space-between flex--wrap">
-                {weeks.map((x, index) => (
-                    <div
+            </ul>
+
+            <ul className="datepicker__weeks flex flex--space-between flex--wrap">
+                {weeks.map((day, index) => (
+                    <li
                         key={index}
                         onClick={() => selectDay(index)}
                         className={`${
@@ -155,15 +156,22 @@ const DatePicker = ({
                                     : ""
                             }`}
                         >
-                            {x}
+                            {day}
                         </div>
-                    </div>
+                    </li>
                 ))}
-            </div>
+            </ul>
+
             <div className="datepicker__footer flex flex--center">
-                <Button type={"secondary"} text="Clear Dates" onClick={clear} />
                 <Button
-                    type={"primary"}
+                    type="button"
+                    buttonStyle={"secondary"}
+                    text="Clear Dates"
+                    onClick={clear}
+                />
+                <Button
+                    type="button"
+                    buttonStyle={"primary"}
                     text="Select Dates"
                     onClick={selectDates}
                 />

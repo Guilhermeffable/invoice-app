@@ -4,17 +4,19 @@ import GenericButton from "./genericButton";
 import PillButton from "./pillbutton";
 
 const Button = ({
+    buttonStyle,
     type,
     text,
     onClick,
     icon,
 }: {
-    type: string;
+    buttonStyle: string;
+    type?: "submit" | "reset" | "button";
     text?: string;
     onClick?: Function;
     icon?: React.FC<React.SVGProps<SVGSVGElement>>;
 }) => {
-    switch (type) {
+    switch (buttonStyle) {
         case "primary":
             return (
                 <GenericButton
@@ -22,6 +24,7 @@ const Button = ({
                     primary={true}
                     onClick={onClick!}
                     icon={icon}
+                    type={type}
                 />
             );
 
@@ -32,6 +35,7 @@ const Button = ({
                     primary={false}
                     onClick={onClick!}
                     icon={icon}
+                    type={type}
                 />
             );
 
@@ -44,7 +48,7 @@ const Button = ({
 };
 
 Button.propTypes = {
-    type: PropTypes.string.isRequired,
+    buttonStyle: PropTypes.string.isRequired,
     text: PropTypes.string,
     onClick: PropTypes.func,
     icon: PropTypes.object,

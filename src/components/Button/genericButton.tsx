@@ -3,11 +3,13 @@ import PropTypes from "prop-types";
 import "./_button.scss";
 
 const GenericButton = ({
+    type,
     text,
     primary,
     onClick,
     icon,
 }: {
+    type?: "submit" | "button" | "reset";
     text: string;
     primary: boolean;
     onClick: Function;
@@ -24,6 +26,7 @@ const GenericButton = ({
                         : "background--white"
                 } border__color--secondary`}
                 onClick={() => onClick()}
+                type={type}
             >
                 {text}
             </button>
@@ -42,6 +45,7 @@ const GenericButton = ({
 };
 
 GenericButton.propTypes = {
+    type: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     primary: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,

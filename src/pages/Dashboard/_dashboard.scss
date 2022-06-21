@@ -8,7 +8,9 @@
     }
 
     &__content {
-        gap: 1rem;
+        ul {
+            gap: 1rem;
+        }
     }
 
     &__filter {

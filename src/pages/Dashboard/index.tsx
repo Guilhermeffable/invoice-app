@@ -29,7 +29,8 @@ const Dashboard = () => {
                         <Filter />
                     </div>
                     <Button
-                        type={"primary"}
+                        type="button"
+                        buttonStyle={"primary"}
                         text="New Invoice"
                         icon={Plus}
                         onClick={() => console.log("olá")}
@@ -37,12 +38,23 @@ const Dashboard = () => {
                 </div>
             </header>
             <article className="dashboard__content flex flex--column">
-                <Invoice />
-                <Invoice />
-                <Invoice />
-                <Invoice />
-                <Invoice />
-                <Invoice />
+                <ul className="flex flex--column">
+                    <li>
+                        <Invoice />
+                    </li>
+                    <li>
+                        <Invoice />
+                    </li>
+                    <li>
+                        <Invoice />
+                    </li>
+                    <li>
+                        <Invoice />
+                    </li>
+                    <li>
+                        <Invoice />
+                    </li>
+                </ul>
             </article>
 
             <aside

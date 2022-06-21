@@ -30,7 +30,7 @@ export const getWeeks = (
     currentMonth: Date[],
     nextMonth: Date[]
 ): number[] => {
-    const arr = currentMonth.map((x) => x.getDate());
+    const arr = currentMonth.map((day) => day.getDate());
 
     const firstDay = currentMonth[0].getDay();
 
@@ -39,10 +39,10 @@ export const getWeeks = (
     const prevMonthDays = prevMonth
         .slice(prevMonth.length - firstDay, prevMonth.length)
         .sort((a, b) => b.getDate() - a.getDate());
-    prevMonthDays.map((x) => arr.unshift(x.getDate()));
+    prevMonthDays.map((day) => arr.unshift(day.getDate()));
 
     const nextMonthDays = nextMonth.slice(0, 6 - lastDay);
-    nextMonthDays.map((x) => arr.push(x.getDate()));
+    nextMonthDays.map((day) => arr.push(day.getDate()));
 
     return arr;
 };
