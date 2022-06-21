@@ -1,5 +1,17 @@
 .border {
-    &--primary-02 {
-        border: 2px solid $color-secondary;
+    &__color {
+        &--secondary {
+            border: 2px solid $color-secondary;
+        }
+    }
+
+    &__radius {
+        &--circle {
+            border-radius: 50%;
+        }
+
+        &--10 {
+            border-radius: 10px;
+        }
     }
 }

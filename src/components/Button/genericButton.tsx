@@ -22,7 +22,7 @@ const GenericButton = ({
                     primary
                         ? "background--secondary text--white"
                         : "background--white"
-                } border--primary-02`}
+                } border__color--secondary`}
                 onClick={() => onClick()}
             >
                 {text}

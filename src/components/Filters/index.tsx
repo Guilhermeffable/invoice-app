@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Calendar, Chevron, Close } from "../../assets/svg";
+import { Calendar, Chevron, Close, Plus } from "../../assets/svg";
 import Button from "../Button/index";
 import DatePicker from "../Datepicker";
 import Input from "../Input";
@@ -52,8 +52,11 @@ const Filters = ({
         >
             <div className="filter__header flex flex--space-between">
                 <div className="filter__title">Filters</div>
-                <div className="filter__close" onClick={setShowFil}>
-                    <Close className="icon background--white " />
+                <div
+                    className="filter__close box-shadow__icon flex flex--center border__radius--circle"
+                    onClick={setShowFil}
+                >
+                    <Plus className="icon icon__rotate--45 icon__stroke--default background--white " />
                 </div>
             </div>
             <div className="filter__content flex flex--center flex--column">
