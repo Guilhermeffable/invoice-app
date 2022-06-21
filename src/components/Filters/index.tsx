@@ -94,36 +94,32 @@ const Filters = ({
                     </div>
                     <div className="filter__date">
                         <label className="filter__label">Invoice date:</label>
-                        <div>
-                            <div onClick={() => show()}>
-                                <Input
-                                    placeholder={
-                                        selectedDate === ""
-                                            ? "Select date"
-                                            : selectedDate
-                                    }
-                                    icon={Calendar}
-                                />
-                            </div>
-                            <div
-                                className={`filter__datepicker ${
-                                    showDatepicker
-                                        ? "display--block"
-                                        : "display--none"
-                                }`}
-                            >
-                                <DatePicker
-                                    saveDates={selectDate}
-                                    clearDates={clearDates}
-                                />
-                            </div>
+                        <div onClick={() => show()}>
+                            <Input
+                                placeholder={
+                                    selectedDate === ""
+                                        ? "Select date"
+                                        : selectedDate
+                                }
+                                icon={Calendar}
+                            />
+                        </div>
+                        <div
+                            className={`filter__datepicker ${
+                                showDatepicker
+                                    ? "display--block"
+                                    : "display--none"
+                            }`}
+                        >
+                            <DatePicker
+                                saveDates={selectDate}
+                                clearDates={clearDates}
+                            />
                         </div>
                     </div>
                     <div className="flex flex--column">
                         <label className="filter__label">Client:</label>
-                        <div>
-                            <Input placeholder="Type a client name" />
-                        </div>
+                        <Input placeholder="Type a client name" />
                     </div>
                     <Button
                         buttonStyle="primary"
