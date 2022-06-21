@@ -30,8 +30,12 @@ const DatePicker = ({
 
     useEffect(() => {
         if (activeIndexes.length === 2) {
-            let test = activeIndexes.sort((a, b) => a - b);
-            setIntervalIndexes(intervalRecursive(test[0], test[1]));
+            if (activeIndexes[0] !== activeIndexes[1]) {
+                let test = activeIndexes.sort((a, b) => a - b);
+                setIntervalIndexes(intervalRecursive(test[0], test[1]));
+            } else {
+                setActiveIndexes([]);
+            }
         }
 
         if (activeIndexes.length > 2) {
