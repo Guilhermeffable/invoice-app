@@ -15,5 +15,9 @@
         &--none {
             fill: none;
         }
+
+        &--primary {
+            fill: $color-primary;
+        }
     }
 }

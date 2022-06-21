@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Close } from "../../assets/svg";
+import { Calendar, Chevron, Close } from "../../assets/svg";
 import Button from "../Button/index";
 import DatePicker from "../Datepicker";
-import Input from "../Input/input";
+import Input from "../Input";
 import "./_filter.scss";
 import { useEffect } from "react";
 
@@ -39,8 +39,6 @@ const Filters = ({
         setFilters(showF);
     };
 
-    debugger;
-
     let test = "";
     if (showF) {
         test = "display--block";
@@ -59,7 +57,10 @@ const Filters = ({
             <div className="filter__content">
                 <div>
                     <div className="filter__label">Order by:</div>
-                    <Input placeholder="Select a field to order by" />
+                    <Input
+                        placeholder="Select a field to order by"
+                        icon={Chevron}
+                    />
                 </div>
                 <div>
                     <div className="filter__label">Invoice state:</div>
@@ -87,6 +88,7 @@ const Filters = ({
                                         ? "Select date"
                                         : selectedDate
                                 }
+                                icon={Calendar}
                             />
                         </div>
                         <div
@@ -112,7 +114,6 @@ const Filters = ({
                 <Button
                     type="primary"
                     onClick={() => console.log("olá")}
-                    primary={true}
                     text={"Search"}
                 />
             </div>

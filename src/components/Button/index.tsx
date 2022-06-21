@@ -6,13 +6,11 @@ import PillButton from "./pillbutton";
 const Button = ({
     type,
     text,
-    primary,
     onClick,
     icon,
 }: {
     type: string;
     text?: string;
-    primary?: boolean;
     onClick?: Function;
     icon?: React.FC<React.SVGProps<SVGSVGElement>>;
 }) => {
@@ -21,7 +19,17 @@ const Button = ({
             return (
                 <GenericButton
                     text={text!}
-                    primary={primary!}
+                    primary={true}
+                    onClick={onClick!}
+                    icon={icon}
+                />
+            );
+
+        case "secondary":
+            return (
+                <GenericButton
+                    text={text!}
+                    primary={false}
                     onClick={onClick!}
                     icon={icon}
                 />
@@ -38,7 +46,6 @@ const Button = ({
 Button.propTypes = {
     type: PropTypes.string.isRequired,
     text: PropTypes.string,
-    primary: PropTypes.bool,
     onClick: PropTypes.func,
     icon: PropTypes.object,
 };

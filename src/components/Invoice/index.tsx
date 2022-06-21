@@ -1,6 +1,6 @@
 import React from "react";
 import "./_invoice.scss";
-import Status from "../Status/status";
+import Status from "../Status";
 
 const Invoice = () => {
     return (

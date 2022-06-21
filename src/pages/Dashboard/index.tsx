@@ -32,7 +32,6 @@ const Dashboard = () => {
                         type={"primary"}
                         text="New Invoice"
                         icon={Plus}
-                        primary={true}
                         onClick={() => console.log("olá")}
                     />
                 </div>

@@ -1,7 +1,7 @@
 @import "../../scss/settings/index";
 
 .datepicker {
-    width: 100%;
+    width: 380px;
     height: 100%;
     border-radius: 10px;
     @include box-shadow(0px, 2px, 20px, 5px, rgba(0, 0, 0, 0.1));
@@ -10,6 +10,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding: 0.25rem 0.5rem;
     }
 
     &__weekdays {

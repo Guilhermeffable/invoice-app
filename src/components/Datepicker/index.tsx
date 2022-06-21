@@ -161,16 +161,10 @@ const DatePicker = ({
                 ))}
             </div>
             <div className="datepicker__footer">
-                <Button
-                    type={"primary"}
-                    text="Clear Dates"
-                    primary={false}
-                    onClick={clear}
-                />
+                <Button type={"secondary"} text="Clear Dates" onClick={clear} />
                 <Button
                     type={"primary"}
                     text="Select Dates"
-                    primary={true}
                     onClick={selectDates}
                 />
             </div>
