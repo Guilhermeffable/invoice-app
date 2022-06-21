@@ -12,6 +12,10 @@
         transform: translateX(0%);
     }
 
+    &--hide {
+        transform: translateX(100%);
+    }
+
     &__header {
         padding: 2rem;
         width: 100%;

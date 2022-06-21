@@ -11,12 +11,12 @@ const Dashboard = () => {
     const [showFilters, setShowFilters] = useState<boolean>(false);
 
     const setFilters = (isFilter: boolean) => {
-        setShowFilters(!isFilter);
+        setTimeout(() => setShowFilters(!isFilter), 800);
     };
 
     return (
         <section className="container dashboard">
-            <div className="dashboard__header flex flex--center flex--space-between">
+            <header className="dashboard__header flex flex--center flex--space-between">
                 <div className="dashboard__title">
                     <h1>Invoices - 5</h1>
                 </div>
@@ -35,17 +35,21 @@ const Dashboard = () => {
                         onClick={() => console.log("olá")}
                     />
                 </div>
-            </div>
-            <div className="dashboard__content flex flex--column">
+            </header>
+            <article className="dashboard__content flex flex--column">
                 <Invoice />
                 <Invoice />
                 <Invoice />
                 <Invoice />
                 <Invoice />
                 <Invoice />
-            </div>
+            </article>
 
-            <aside>
+            <aside
+                className={`${
+                    !showFilters ? "display--none" : "display--block"
+                }`}
+            >
                 <Filters showFilters={showFilters} setFilters={setFilters} />
             </aside>
         </section>

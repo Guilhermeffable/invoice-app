@@ -43,11 +43,11 @@ const Filters = ({
     if (showF) {
         transformClass = "filter--show";
     } else if (!showF) {
-        transformClass = "";
+        transformClass = "filter--hide";
     }
 
     return (
-        <div
+        <form
             className={`${transformClass}  filter flex flex--start-Y flex--column background--white`}
         >
             <div className="filter__header flex flex--space-between">
@@ -119,7 +119,7 @@ const Filters = ({
                     text={"Search"}
                 />
             </div>
-        </div>
+        </form>
     );
 };
 
