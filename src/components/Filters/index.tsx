@@ -39,33 +39,35 @@ const Filters = ({
         setFilters(showF);
     };
 
-    let test = "";
+    let transformClass = "";
     if (showF) {
-        test = "display--block";
+        transformClass = "filter--show";
     } else if (!showF) {
-        test = "display--none";
+        transformClass = "";
     }
 
     return (
-        <div className={`${test}  filter background--white`}>
-            <div className="filter__header">
+        <div
+            className={`${transformClass}  filter flex flex--start-Y flex--column background--white`}
+        >
+            <div className="filter__header flex flex--space-between">
                 <div className="filter__title">Filters</div>
                 <div className="filter__close" onClick={setShowFil}>
                     <Close className="icon background--white " />
                 </div>
             </div>
-            <div className="filter__content">
-                <div>
+            <div className="filter__content flex flex--center flex--column">
+                <div className="flex flex--column">
                     <div className="filter__label">Order by:</div>
                     <Input
                         placeholder="Select a field to order by"
                         icon={Chevron}
                     />
                 </div>
-                <div>
+                <div className="flex flex--column">
                     <div className="filter__label">Invoice state:</div>
-                    <div className="filter__state">
-                        <ul>
+                    <div className="filter__state flex">
+                        <ul className="flex">
                             <li>
                                 <Button type="pill" text="Paid" />
                             </li>
@@ -105,7 +107,7 @@ const Filters = ({
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="flex flex--column">
                     <div className="filter__label">Client:</div>
                     <div>
                         <Input placeholder="Type a client name" />

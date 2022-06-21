@@ -1,19 +1,12 @@
 @import "../../scss/settings/index";
 
 .invoice {
-    display: flex;
-    justify-content: space-between;
     @include box-shadow(0px, 4px, 8px, 0px, rgba(0, 0, 0, 0.1));
     height: 10vh;
     padding: 2rem 2rem;
     border-radius: 10px;
 
     &__info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-
         & > div:first-child {
             font-weight: 700;
         }

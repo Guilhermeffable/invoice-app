@@ -29,7 +29,7 @@ const Status = ({ type }: { type: number }) => {
     }
 
     return (
-        <div className={`status ${textClass}`}>
+        <div className={`status flex flex--center ${textClass}`}>
             <div className={`status__icon ${backgroundClass}`}></div>
             <div className="status__text">{statusText}</div>
         </div>

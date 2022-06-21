@@ -7,15 +7,10 @@
     @include box-shadow(0px, 2px, 20px, 5px, rgba(0, 0, 0, 0.1));
 
     &__year {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
         padding: 0.25rem 0.5rem;
     }
 
     &__weekdays {
-        display: flex;
-        justify-content: space-between;
         margin: 1rem;
 
         div {
@@ -24,19 +19,10 @@
         }
     }
 
-    &__weeks {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-
     &__day {
         flex-basis: calc(100% / 7);
         text-align: center;
         margin: 0.5rem 0;
-        align-items: center;
-        justify-content: center;
-        display: flex;
         position: relative;
         height: 32px;
         width: 32px;
@@ -44,11 +30,8 @@
 
         &--active {
             border-radius: 50%;
-            display: flex;
-            align-items: center;
             height: 32px;
             width: 32px;
-            justify-content: center;
             position: relative;
             transition: background-color 0.5s ease-in;
         }
@@ -78,10 +61,8 @@
     }
 
     &__footer {
-        display: flex;
         gap: 1rem;
         margin: 1rem 0;
         padding: 1rem 0;
-        justify-content: center;
     }
 }

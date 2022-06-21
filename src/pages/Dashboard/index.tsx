@@ -16,13 +16,13 @@ const Dashboard = () => {
 
     return (
         <section className="container dashboard">
-            <div className="dashboard__header">
+            <div className="dashboard__header flex flex--center flex--space-between">
                 <div className="dashboard__title">
                     <h1>Invoices - 5</h1>
                 </div>
-                <div className="dashboard__actions">
+                <div className="dashboard__actions flex flex--center">
                     <div
-                        className="dashboard__filter"
+                        className="dashboard__filter flex flex--center"
                         onClick={() => setShowFilters(!showFilters)}
                     >
                         Filter
@@ -36,7 +36,7 @@ const Dashboard = () => {
                     />
                 </div>
             </div>
-            <div className="dashboard__content">
+            <div className="dashboard__content flex flex--column">
                 <Invoice />
                 <Invoice />
                 <Invoice />

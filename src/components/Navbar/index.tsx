@@ -4,7 +4,7 @@ import "./_navbar.scss";
 
 const Navbar = () => {
     return (
-        <nav className="navbar">
+        <nav className="navbar flex flex--end-X">
             <Theme className="icon icon__fill--none" />
         </nav>
     );

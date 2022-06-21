@@ -116,7 +116,7 @@ const DatePicker = ({
 
     return (
         <div className="datepicker background--white box-shadow">
-            <div className="datepicker__year">
+            <div className="datepicker__year flex flex--space-between">
                 <div onClick={getPrevMonth}>
                     <Chevron style={{ transform: "rotate(90deg)" }} />
                 </div>
@@ -125,12 +125,12 @@ const DatePicker = ({
                     <Chevron style={{ transform: "rotate(-90deg)" }} />
                 </div>
             </div>
-            <div className="datepicker__weekdays">
+            <div className="datepicker__weekdays flex flex--space-between">
                 {weekdays.map((x, index) => (
                     <div key={index}>{x}</div>
                 ))}
             </div>
-            <div className="datepicker__weeks">
+            <div className="datepicker__weeks flex flex--space-between flex--wrap">
                 {weeks.map((x, index) => (
                     <div
                         key={index}
@@ -146,12 +146,12 @@ const DatePicker = ({
                                 : activeIndexes[1] === index
                                 ? "datepicker__day--second"
                                 : ""
-                        } datepicker__day`}
+                        } datepicker__day flex flex--center`}
                     >
                         <div
                             className={`${
                                 activeIndexes.includes(index)
-                                    ? "background--primary datepicker__day--active text--white"
+                                    ? "background--primary datepicker__day--active flex flex--center text--white"
                                     : ""
                             }`}
                         >
@@ -160,7 +160,7 @@ const DatePicker = ({
                     </div>
                 ))}
             </div>
-            <div className="datepicker__footer">
+            <div className="datepicker__footer flex flex--center">
                 <Button type={"secondary"} text="Clear Dates" onClick={clear} />
                 <Button
                     type={"primary"}

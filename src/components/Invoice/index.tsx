@@ -4,8 +4,8 @@ import Status from "../Status";
 
 const Invoice = () => {
     return (
-        <div className="invoice background--neutral-03">
-            <div className="invoice__info">
+        <div className="invoice flex flex--space-between background--neutral-03">
+            <div className="invoice__info flex flex--center flex--column flex--start-Y">
                 <div>#Inv1</div>
                 <div>Due tomorrow</div>
             </div>

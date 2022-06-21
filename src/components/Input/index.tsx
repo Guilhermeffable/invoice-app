@@ -14,14 +14,18 @@ const Input = ({
 
     if (!Icon) {
         return (
-            <div className="input border--primary-02">
-                <div className="input__placeholder">{placeholder}</div>
-            </div>
+            <input
+                className="input flex flex--center text--grey-80 border--primary-02"
+                placeholder={placeholder}
+            ></input>
         );
     } else {
         return (
-            <div className="input border--primary-02">
-                <div className="input__placeholder">{placeholder}</div>
+            <div className="flex flex--center border--primary-02">
+                <input
+                    className="input text--grey-80"
+                    placeholder={placeholder}
+                ></input>
                 <div className="input__icon">
                     <Icon className="icon__stroke--primary icon__fill--primary" />
                 </div>

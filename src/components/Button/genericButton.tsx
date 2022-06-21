@@ -17,24 +17,26 @@ const GenericButton = ({
 
     if (!Icon) {
         return (
-            <div
+            <button
                 className={`button align--center ${
-                    primary ? "background--secondary text--white" : ""
+                    primary
+                        ? "background--secondary text--white"
+                        : "background--white"
                 } border--primary-02`}
                 onClick={() => onClick()}
             >
-                <p>{text}</p>
-            </div>
+                {text}
+            </button>
         );
     } else {
         return (
-            <div className="button--icon background--primary ">
-                <div className="button__icon">
+            <button className="button--icon background--primary text--white flex flex--center">
+                <div className="button__icon flex flex--center">
                     <Icon className="icon__stroke--primary" />
                 </div>
 
-                <div className="button__text text--white">{text}</div>
-            </div>
+                {text}
+            </button>
         );
     }
 };
