@@ -28,7 +28,7 @@ const Filters = ({
     };
 
     const selectDate = (dates: Date[]) => {
-        setSelectedDate(dates.map((date) => date.toDateString()).join(" - "));
+        setSelectedDate(dates.map((date) => date.toDateString()).join(" to "));
     };
 
     const clearDates = () => {

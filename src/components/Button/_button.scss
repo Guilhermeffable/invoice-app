@@ -9,6 +9,7 @@
             &:checked + label {
                 background-color: $color-primary;
                 color: $color-white;
+                font-weight: 600;
             }
         }
 

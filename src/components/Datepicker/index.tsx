@@ -54,9 +54,6 @@ const DatePicker = ({
         } else {
             setCurrentMonth(currentMonth + 1);
         }
-
-        setActiveIndexes([]);
-        setIntervalIndexes([]);
     };
 
     const getPrevMonth = () => {
@@ -66,8 +63,6 @@ const DatePicker = ({
         } else {
             setCurrentMonth(currentMonth - 1);
         }
-        setActiveIndexes([]);
-        setIntervalIndexes([]);
     };
 
     const selectDay = (index: number): void => {
@@ -156,7 +151,7 @@ const DatePicker = ({
                         <div
                             className={`${
                                 activeIndexes.includes(index)
-                                    ? "background--primary datepicker__day--active flex flex--center text--white"
+                                    ? "background_main--primary datepicker__day--active flex flex--center text--white"
                                     : ""
                             }`}
                         >

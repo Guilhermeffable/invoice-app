@@ -1,18 +1,24 @@
 .background {
+    &__main {
+        &--primary {
+            background: $color-primary;
+        }
+
+        &--secondary {
+            background: $color-secondary;
+        }
+    }
+
     &--primary {
-        background: $color-primary;
+        background: $color-background-primary;
     }
 
     &--secondary {
-        background: $color-secondary;
+        background: $color-background-secondary;
     }
 
     &--white {
         background: $color-white;
-    }
-
-    &--neutral-03 {
-        background: $color-neutral-03;
     }
 
     &--success {
