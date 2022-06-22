@@ -24,7 +24,7 @@ const GenericButton = ({
                     primary
                         ? "background__main--secondary text--white"
                         : "background--white"
-                } border__color--secondary`}
+                } border__color--input`}
                 onClick={() => onClick()}
                 type={type}
             >

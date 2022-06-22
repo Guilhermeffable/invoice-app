@@ -92,7 +92,7 @@ const Filters = ({
                             </ul>
                         </div>
                     </div>
-                    <div className="filter__date">
+                    <div className="filter__date flex flex--column">
                         <label className="filter__label">Invoice date:</label>
                         <div onClick={() => show()}>
                             <Input
@@ -117,6 +117,7 @@ const Filters = ({
                             />
                         </div>
                     </div>
+
                     <div className="flex flex--column">
                         <label className="filter__label">Client:</label>
                         <Input placeholder="Type a client name" />

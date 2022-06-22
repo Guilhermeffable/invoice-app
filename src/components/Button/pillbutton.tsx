@@ -12,7 +12,10 @@ const PillButton = ({ text }: { text: string }) => {
                 id={text}
                 type="checkbox"
             />
-            <label className="align--center" htmlFor={text}>
+            <label
+                className="align--center border__color--input"
+                htmlFor={text}
+            >
                 {text}
             </label>
         </div>

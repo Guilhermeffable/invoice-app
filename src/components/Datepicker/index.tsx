@@ -114,7 +114,7 @@ const DatePicker = ({
     };
 
     return (
-        <div className="datepicker background--white box-shadow">
+        <div className="datepicker background--tertiary box-shadow">
             <div className="datepicker__year flex flex--space-between">
                 <div onClick={getPrevMonth}>
                     <Chevron style={{ transform: "rotate(90deg)" }} />

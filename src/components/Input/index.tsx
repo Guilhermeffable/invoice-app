@@ -15,15 +15,15 @@ const Input = ({
     if (!Icon) {
         return (
             <input
-                className="input flex flex--center text--grey-80 border__color--secondary"
+                className="input flex flex--center text--grey-80 border__color--input background--tertiary"
                 placeholder={placeholder}
             ></input>
         );
     } else {
         return (
-            <div className="flex flex--center border__color--secondary border__radius--10">
+            <div className="flex flex--center border__color--input border__radius--10 background--tertiary">
                 <input
-                    className="input text--grey-80"
+                    className="input text--grey-80 background--tertiary"
                     placeholder={placeholder}
                 ></input>
                 <div className="input__icon flex flex--center">
