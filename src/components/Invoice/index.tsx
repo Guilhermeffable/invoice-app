@@ -6,15 +6,15 @@ const Invoice = () => {
     return (
         <div className="invoice flex flex--space-between background--neutral-03">
             <div className="invoice__info flex flex--center flex--column flex--start-Y">
-                <div>#Inv1</div>
-                <div>Due tomorrow</div>
+                <p>#Inv1</p>
+                <p>Due tomorrow</p>
             </div>
             <div className="invoice__info">
-                <div>Alex Grim</div>
-                <div>Graphic Design</div>
+                <p>Alex Grim</p>
+                <p>Graphic Design</p>
             </div>
             <div className="invoice__info">
-                <div className="invoice__price">556.00€</div>
+                <p className="invoice__price">556.00€</p>
             </div>
             <div className="invoice__info">
                 <Status type={0} />

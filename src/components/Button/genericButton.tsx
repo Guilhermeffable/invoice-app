@@ -34,9 +34,9 @@ const GenericButton = ({
     } else {
         return (
             <button className="button--icon background--primary text--white flex flex--center">
-                <div className="button__icon flex flex--center">
+                <span className="button__icon flex flex--center">
                     <Icon className="icon__stroke--primary" />
-                </div>
+                </span>
 
                 {text}
             </button>

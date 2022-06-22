@@ -11,7 +11,7 @@ const Dashboard = () => {
     const [showFilters, setShowFilters] = useState<boolean>(false);
 
     const setFilters = (isFilter: boolean) => {
-        setTimeout(() => setShowFilters(!isFilter), 200);
+        setTimeout(() => setShowFilters(!isFilter), 300);
     };
 
     return (

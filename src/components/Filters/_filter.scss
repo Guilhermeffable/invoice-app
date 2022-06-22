@@ -7,10 +7,11 @@
     position: absolute;
     right: 0;
     top: 0;
-    transition: width 0.2s ease-in;
+    transition: width 0.3s ease-in;
     overflow-x: hidden;
+    max-width: 500px;
     &--show {
-        width: 500px;
+        width: 100%;
     }
 
     &--hide {
