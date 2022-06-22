@@ -26,7 +26,7 @@ const Dashboard = () => {
                         onClick={() => setShowFilters(!showFilters)}
                     >
                         Filter
-                        <Filter />
+                        <Filter className="icon__fill--background-primary" />
                     </div>
                     <Button
                         type="button"
@@ -60,7 +60,7 @@ const Dashboard = () => {
             <aside
                 className={`${
                     !showFilters ? "display--none" : "display--block"
-                }`}
+                } `}
             >
                 <Filters showFilters={showFilters} setFilters={setFilters} />
             </aside>

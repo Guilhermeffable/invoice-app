@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import { Calendar, Chevron, Close, Plus } from "../../assets/svg";
 import Button from "../Button/index";
@@ -50,16 +50,16 @@ const Filters = ({
     }
 
     return (
-        <>
+        <Fragment>
             <div className={`${opacityClass} filter__cover`}>{""}</div>
 
             <form
-                className={`${transformClass}  filter flex flex--start-Y flex--column background--white`}
+                className={`${transformClass} background--filters  filter flex flex--start-Y flex--column background--white`}
             >
                 <div className="filter__header flex flex--space-between">
                     <div className="filter__title">Filters</div>
                     <div
-                        className="filter__close box-shadow__icon flex flex--center border__radius--circle"
+                        className="filter__close background--white box-shadow__icon flex flex--center border__radius--circle"
                         onClick={setShowFil}
                     >
                         <Plus className="icon icon__rotate--45 icon__stroke--default background--white " />
@@ -129,7 +129,7 @@ const Filters = ({
                     />
                 </div>
             </form>
-        </>
+        </Fragment>
     );
 };
 
