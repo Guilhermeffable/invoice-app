@@ -2,7 +2,7 @@
 
 .datepicker {
     width: 380px;
-    height: 100%;
+    height: 380px;
     border-radius: 10px;
     @include box-shadow(0px, 2px, 20px, 5px, rgba(0, 0, 0, 0.1));
 
@@ -26,11 +26,10 @@
     &__day {
         flex-basis: calc(100% / 7);
         text-align: center;
-        margin: 0.5rem 0;
         position: relative;
         height: 32px;
         cursor: pointer;
-
+        margin-bottom: 0.75rem;
         p {
             width: 32px;
         }

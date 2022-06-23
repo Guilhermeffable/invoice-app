@@ -25,6 +25,8 @@ html[data-theme="dark"] {
     --input-border-color: #{$dark-color-background-tertiary};
 
     --background-filter: #{$dark-color-background-secondary};
+
+    --button-secondary-color: #{$color-white};
 }
 
 html[data-theme="light"] {
@@ -52,6 +54,8 @@ html[data-theme="light"] {
     --input-border-color: #{$light-color-primary};
 
     --background-filter: #{$color-white};
+
+    --button-secondary-color: #{$light-color-primary};
 }
 
 $color-primary: var(--color-primary);
@@ -79,5 +83,6 @@ $color-grey-80: var(--color-grey-80);
 $color-text: var(--color-text);
 
 $input-border-color: var(--input-border-color);
+$button-secondary-color: var(--button-secondary-color);
 
 $background-filter: var(--background-filter);

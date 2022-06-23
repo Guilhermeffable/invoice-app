@@ -23,8 +23,8 @@ const GenericButton = ({
                 className={`button align--center ${
                     primary
                         ? "background__main--secondary text--white"
-                        : "background--white"
-                } border__color--input`}
+                        : "background--tertiary border__color--secondary-button text--color border__color--input"
+                } `}
                 onClick={() => onClick()}
                 type={type}
             >
