@@ -122,12 +122,14 @@ const Filters = ({
                         <label className="filter__label">Client:</label>
                         <Input placeholder="Type a client name" />
                     </div>
-                    <Button
-                        buttonStyle="primary"
-                        type="button"
-                        onClick={() => console.log("olá")}
-                        text={"Search"}
-                    />
+                    <div className="filter__submit flex flex--column flex--center">
+                        <Button
+                            buttonStyle="primary"
+                            type="button"
+                            onClick={() => console.log("olá")}
+                            text={"Search"}
+                        />
+                    </div>
                 </div>
             </form>
         </Fragment>
