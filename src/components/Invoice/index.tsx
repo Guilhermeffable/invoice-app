@@ -6,11 +6,11 @@ const Invoice = () => {
     return (
         <div className="invoice flex flex--space-between background--neutral-03">
             <div className="invoice__info flex flex--center flex--column flex--start-Y">
-                <h2>#Inv1</h2>
+                <h3>#Inv1</h3>
                 <p>Due tomorrow</p>
             </div>
             <div className="invoice__info flex flex--center flex--column flex--start-Y">
-                <h2>Alex Grim</h2>
+                <h3>Alex Grim</h3>
                 <p>Graphic Design</p>
             </div>
             <div className="invoice__info">

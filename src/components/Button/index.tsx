@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import GenericButton from "./genericButton";
 import PillButton from "./pillbutton";
@@ -43,7 +43,7 @@ const Button = ({
             return <PillButton text={text!} />;
 
         default:
-            return <div></div>;
+            return <Fragment></Fragment>;
     }
 };
 

@@ -14,10 +14,6 @@
         width: 100%;
     }
 
-    &--hide {
-        width: 0;
-    }
-
     &__close {
         width: 36px;
         height: 36px;
@@ -36,10 +32,6 @@
 
         &--show {
             opacity: 0.1;
-        }
-
-        &--hide {
-            opacity: 0;
         }
     }
 

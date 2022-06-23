@@ -31,8 +31,10 @@ const DatePicker = ({
     useEffect(() => {
         if (activeIndexes.length === 2) {
             if (activeIndexes[0] !== activeIndexes[1]) {
-                let test = activeIndexes.sort((a, b) => a - b);
-                setIntervalIndexes(intervalRecursive(test[0], test[1]));
+                const sortedIndexes = activeIndexes.sort((a, b) => a - b);
+                setIntervalIndexes(
+                    intervalRecursive(sortedIndexes[0], sortedIndexes[1])
+                );
             } else {
                 setActiveIndexes([]);
             }
@@ -116,19 +118,21 @@ const DatePicker = ({
     return (
         <div className="datepicker background--tertiary box-shadow">
             <div className="datepicker__year flex flex--space-between">
-                <div onClick={getPrevMonth}>
-                    <Chevron
-                        className="icon__fill--background-primary"
-                        style={{ transform: "rotate(90deg)" }}
-                    />
-                </div>
+                <button
+                    className="background--white"
+                    type="button"
+                    onClick={getPrevMonth}
+                >
+                    <Chevron className="icon__fill--background-primary transform__rotate--clockwise-90" />
+                </button>
                 {`${months[currentMonth]} ${currentYear}`}
-                <div onClick={getNextMonth}>
-                    <Chevron
-                        className="icon__fill--background-primary"
-                        style={{ transform: "rotate(-90deg)" }}
-                    />
-                </div>
+                <button
+                    className="background--white"
+                    type="button"
+                    onClick={getNextMonth}
+                >
+                    <Chevron className="icon__fill--background-primary  transform__rotate--anticlockwise-90" />
+                </button>
             </div>
             <ul className="datepicker__weekdays flex flex--space-between">
                 {weekdays.map((weekday, index) => (

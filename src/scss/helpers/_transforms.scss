@@ -1,0 +1,11 @@
+.transform {
+    &__rotate {
+        &--clockwise-90 {
+            transform: rotate(90deg);
+        }
+
+        &--anticlockwise-90 {
+            transform: rotate(-90deg);
+        }
+    }
+}
