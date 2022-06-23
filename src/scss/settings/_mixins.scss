@@ -3,7 +3,7 @@
         background: linear-gradient(
             $degs,
             $color-secondary 50%,
-            $color-white 50%
+            $color-background-tertiary 50%
         );
     } @else {
         background: $color-secondary;

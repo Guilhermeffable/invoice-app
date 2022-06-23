@@ -7,15 +7,19 @@
     @include box-shadow(0px, 2px, 20px, 5px, rgba(0, 0, 0, 0.1));
 
     &__year {
-        padding: 0.25rem 0.5rem;
+        padding: 0.75rem 0.75rem;
+    }
+
+    &__weeks {
+        padding: 0 0.75rem;
     }
 
     &__weekdays {
-        margin: 1rem;
+        padding: 0.75rem;
 
-        div {
-            width: 32px;
-            height: 32px;
+        li {
+            flex-basis: calc(100% / 7);
+            text-align: center;
         }
     }
 
@@ -25,8 +29,11 @@
         margin: 0.5rem 0;
         position: relative;
         height: 32px;
-        width: 32px;
         cursor: pointer;
+
+        p {
+            width: 32px;
+        }
 
         &--active {
             border-radius: 50%;
@@ -62,7 +69,6 @@
 
     &__footer {
         gap: 1rem;
-        margin: 1rem 0;
-        padding: 1rem 0;
+        padding: 1rem 0 0.5rem 0;
     }
 }

@@ -117,16 +117,24 @@ const DatePicker = ({
         <div className="datepicker background--tertiary box-shadow">
             <div className="datepicker__year flex flex--space-between">
                 <div onClick={getPrevMonth}>
-                    <Chevron style={{ transform: "rotate(90deg)" }} />
+                    <Chevron
+                        className="icon__fill--background-primary"
+                        style={{ transform: "rotate(90deg)" }}
+                    />
                 </div>
                 {`${months[currentMonth]} ${currentYear}`}
                 <div onClick={getNextMonth}>
-                    <Chevron style={{ transform: "rotate(-90deg)" }} />
+                    <Chevron
+                        className="icon__fill--background-primary"
+                        style={{ transform: "rotate(-90deg)" }}
+                    />
                 </div>
             </div>
             <ul className="datepicker__weekdays flex flex--space-between">
                 {weekdays.map((weekday, index) => (
-                    <li key={index}>{weekday}</li>
+                    <li key={index}>
+                        <p>{weekday}</p>
+                    </li>
                 ))}
             </ul>
 
@@ -148,15 +156,15 @@ const DatePicker = ({
                                 : ""
                         } datepicker__day flex flex--center`}
                     >
-                        <div
+                        <p
                             className={`${
                                 activeIndexes.includes(index)
-                                    ? "background_main--primary datepicker__day--active flex flex--center text--white"
+                                    ? "background__main--primary datepicker__day--active flex flex--center text--white"
                                     : ""
                             }`}
                         >
                             {day}
-                        </div>
+                        </p>
                     </li>
                 ))}
             </ul>
