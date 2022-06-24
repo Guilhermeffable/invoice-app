@@ -9,10 +9,10 @@ import { Plus } from "../../assets/svg";
 
 const Dashboard = () => {
     const [showFilters, setShowFilters] = useState<boolean>(false);
-    const [isDesktop, setDesktop] = useState(window.innerWidth >= 1024);
+    const [isDesktop, setDesktop] = useState(window.innerWidth >= 600);
 
     const updateMedia = () => {
-        setDesktop(window.innerWidth >= 1024);
+        setDesktop(window.innerWidth >= 600);
     };
 
     useEffect(() => {

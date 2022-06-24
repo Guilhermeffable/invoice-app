@@ -119,7 +119,7 @@ const DatePicker = ({
         <div className="datepicker background--tertiary box-shadow">
             <div className="datepicker__year flex flex--space-between">
                 <button
-                    className="background--white"
+                    className="background--tertiary"
                     type="button"
                     onClick={getPrevMonth}
                 >
@@ -127,7 +127,7 @@ const DatePicker = ({
                 </button>
                 {`${months[currentMonth]} ${currentYear}`}
                 <button
-                    className="background--white"
+                    className="background--tertiary"
                     type="button"
                     onClick={getNextMonth}
                 >

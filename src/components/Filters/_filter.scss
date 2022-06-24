@@ -55,7 +55,7 @@
         gap: 1rem;
 
         & > div {
-            width: calc(100% / 3);
+            flex: 1;
             justify-content: center;
         }
 
@@ -63,7 +63,7 @@
             width: 100%;
             gap: 1rem;
             li {
-                width: calc(100% / 3);
+                flex: 1;
             }
         }
     }

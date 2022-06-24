@@ -18,15 +18,16 @@ const Navbar = () => {
     };
 
     let icon = (
-        <DarkTheme onClick={changeTheme} className="icon icon__fill--none" />
+        <button className="background--none" onClick={changeTheme}>
+            <DarkTheme className="icon icon__fill--none" />
+        </button>
     );
 
     if (!isLightTheme) {
         icon = (
-            <LightTheme
-                onClick={changeTheme}
-                className="icon icon__fill--none icon__fill--background-primary"
-            />
+            <button className="background--none" onClick={changeTheme}>
+                <LightTheme className="icon icon__fill--none icon__fill--background-primary" />
+            </button>
         );
     }
     return <nav className="navbar flex flex--end-X">{icon}</nav>;

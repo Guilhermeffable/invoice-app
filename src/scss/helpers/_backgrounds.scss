@@ -9,6 +9,10 @@
         }
     }
 
+    &--none {
+        background: none;
+    }
+
     &--primary {
         background: $color-background-primary;
     }

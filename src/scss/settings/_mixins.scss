@@ -19,12 +19,3 @@
 ) {
     box-shadow: $hOffset $vOffset $blur $spread $color;
 }
-
-@mixin updateDarkTheme() {
-    $color-primary: blue;
-    @debug $color-primary "----------------";
-}
-
-@mixin updateLightTheme() {
-    $color-primary: white;
-}

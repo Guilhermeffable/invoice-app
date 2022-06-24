@@ -2,12 +2,14 @@
 
 .invoice {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    height: 148px;
-    padding: 1.5rem 1.5rem;
+    padding: 1.5rem;
     border-radius: 10px;
     background: $color-background-secondary;
-    gap: 1rem;
-
+    gap: 0.5rem 3rem;
+    flex-wrap: wrap;
+    @media (min-width: $breakpoint-mobile) {
+        flex-wrap: nowrap;
+    }
     h3 {
         font-size: 1rem;
     }
@@ -18,12 +20,23 @@
 
     &__info {
         gap: 0.75rem;
+        &:first-child {
+            flex-basis: 50%;
+        }
 
-        @media (min-width: $breakpoint-tablet) {
+        @media (min-width: $breakpoint-mobile) {
+            &:first-child {
+                flex-basis: unset;
+            }
+
             & > div:first-child {
                 font-weight: 700;
             }
         }
+    }
+
+    &__customer {
+        align-self: flex-start;
     }
 
     &__price {
