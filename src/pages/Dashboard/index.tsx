@@ -6,23 +6,50 @@ import Invoice from "../../components/Invoice";
 import Button from "../../components/Button/index";
 import Filters from "../../components/Filters";
 import { Plus } from "../../assets/svg";
+import { getInvoices } from "../../server/invoices";
 
 const Dashboard = () => {
     const [showFilters, setShowFilters] = useState<boolean>(false);
     const [isDesktop, setDesktop] = useState(window.innerWidth >= 600);
+    const [invoices, setInvoices] = useState([]);
 
     const updateMedia = () => {
         setDesktop(window.innerWidth >= 600);
     };
 
     useEffect(() => {
+        getInvoices(0, 5).then((result) => setInvoices(result));
         window.addEventListener("resize", updateMedia);
         return () => window.removeEventListener("resize", updateMedia);
-    });
+    }, []);
 
     const setFilters = (isFilter: boolean) => {
         setTimeout(() => setShowFilters(!isFilter), 300);
     };
+
+    let test = [];
+
+    if (invoices.length > 0) {
+        {
+            debugger;
+            invoices.map((invoice, index) => {
+                test.push(
+                    <Invoice
+                        key={index}
+                        ID={invoice.invoiceId}
+                        date={invoice.invoiceDate}
+                        client={invoice.client}
+                        description={invoice.invoiceDescription}
+                        price={invoice.items.reduce((accum, item) => {
+                            return accum + parseInt(item.price);
+                        }, 0)}
+                        state={invoice.invoiceState}
+                        isDesktop={isDesktop}
+                    />
+                );
+            });
+        }
+    }
 
     return (
         <section className="container dashboard">
@@ -47,25 +74,17 @@ const Dashboard = () => {
                     />
                 </div>
             </header>
-            <article className="dashboard__content flex flex--column">
-                <ul className="flex flex--column">
-                    <li>
-                        <Invoice isDesktop={isDesktop} />
-                    </li>
-                    <li>
-                        <Invoice isDesktop={isDesktop} />
-                    </li>
-                    <li>
-                        <Invoice isDesktop={isDesktop} />
-                    </li>
-                    <li>
-                        <Invoice isDesktop={isDesktop} />
-                    </li>
-                    <li>
-                        <Invoice isDesktop={isDesktop} />
-                    </li>
-                </ul>
-            </article>
+            {test.length > 0 ? (
+                <article className="dashboard__content flex flex--column">
+                    <ul className="flex flex--column">
+                        {test.map((x, index) => (
+                            <li key={index}>{x}</li>
+                        ))}
+                    </ul>
+                </article>
+            ) : (
+                ""
+            )}
 
             <aside
                 className={`${

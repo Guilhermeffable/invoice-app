@@ -25,8 +25,10 @@
         }
 
         @media (min-width: $breakpoint-mobile) {
+            flex: 1;
+
             &:first-child {
-                flex-basis: unset;
+                flex-basis: 0;
             }
 
             & > div:first-child {
