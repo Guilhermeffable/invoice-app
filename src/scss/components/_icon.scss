@@ -6,6 +6,12 @@
             stroke: $color-primary;
         }
 
+        &--background {
+            &-primary {
+                stroke: $color-text;
+            }
+        }
+
         &--default {
             stroke: $color-black;
         }
@@ -14,6 +20,16 @@
     &__fill {
         &--none {
             fill: none;
+        }
+
+        &--background {
+            &-primary {
+                fill: $color-text;
+            }
+        }
+
+        &--primary {
+            fill: $color-primary;
         }
     }
 }

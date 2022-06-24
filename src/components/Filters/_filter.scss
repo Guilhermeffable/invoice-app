@@ -1,17 +1,41 @@
+@import "../../scss/settings/index";
+
 .filter {
     z-index: 2;
     height: 100%;
-    width: 25%;
+    width: 0;
     position: absolute;
     right: 0;
     top: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    transition: width 0.3s ease-in;
+    overflow-x: hidden;
+    max-width: 500px;
+    &--show {
+        width: 100%;
+    }
+
+    &__close {
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+    }
+
+    &__cover {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: black;
+        transition: opacity 500ms ease-in-out;
+        opacity: 0;
+
+        &--show {
+            opacity: 0.1;
+        }
+    }
 
     &__header {
-        display: flex;
-        justify-content: space-between;
         padding: 2rem;
         width: 100%;
     }
@@ -19,35 +43,46 @@
     &__content {
         width: 100%;
         padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         gap: 2rem;
+        align-items: unset;
 
         & > div {
-            display: flex;
-            flex-direction: column;
             gap: 1rem;
         }
     }
 
     &__state {
-        display: flex;
         gap: 1rem;
 
         & > div {
-            width: calc(100% / 3);
+            flex: 1;
             justify-content: center;
+        }
+
+        ul {
+            width: 100%;
+            gap: 1rem;
+            li {
+                flex: 1;
+            }
         }
     }
 
     &__date {
         position: relative;
+        width: 380px;
     }
 
     &__datepicker {
         position: absolute;
         z-index: 3;
         width: 100%;
+        top: 102px;
+    }
+
+    &__submit {
+        button {
+            width: 280px;
+        }
     }
 }

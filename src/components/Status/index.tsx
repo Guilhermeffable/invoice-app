@@ -29,9 +29,9 @@ const Status = ({ type }: { type: number }) => {
     }
 
     return (
-        <div className={`status ${textClass}`}>
-            <div className={`status__icon ${backgroundClass}`}></div>
-            <div className="status__text">{statusText}</div>
+        <div className={`status flex flex--center ${textClass}`}>
+            <span className={`status__icon ${backgroundClass}`}></span>
+            <p>{statusText}</p>
         </div>
     );
 };

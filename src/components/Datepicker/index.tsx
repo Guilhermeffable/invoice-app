@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Chevron } from "../../assets/svg";
-import Button from "../Button/button";
+import Button from "../Button/index";
 import {
     getWeeks,
     getDaysInMonth,
@@ -30,8 +30,14 @@ const DatePicker = ({
 
     useEffect(() => {
         if (activeIndexes.length === 2) {
-            let test = activeIndexes.sort((a, b) => a - b);
-            setIntervalIndexes(intervalRecursive(test[0], test[1]));
+            if (activeIndexes[0] !== activeIndexes[1]) {
+                const sortedIndexes = activeIndexes.sort((a, b) => a - b);
+                setIntervalIndexes(
+                    intervalRecursive(sortedIndexes[0], sortedIndexes[1])
+                );
+            } else {
+                setActiveIndexes([]);
+            }
         }
 
         if (activeIndexes.length > 2) {
@@ -50,9 +56,6 @@ const DatePicker = ({
         } else {
             setCurrentMonth(currentMonth + 1);
         }
-
-        setActiveIndexes([]);
-        setIntervalIndexes([]);
     };
 
     const getPrevMonth = () => {
@@ -62,8 +65,6 @@ const DatePicker = ({
         } else {
             setCurrentMonth(currentMonth - 1);
         }
-        setActiveIndexes([]);
-        setIntervalIndexes([]);
     };
 
     const selectDay = (index: number): void => {
@@ -115,24 +116,35 @@ const DatePicker = ({
     };
 
     return (
-        <div className="datepicker background--white box-shadow">
-            <div className="datepicker__year">
-                <div onClick={getPrevMonth}>
-                    <Chevron style={{ transform: "rotate(90deg)" }} />
-                </div>
+        <div className="datepicker background--tertiary box-shadow">
+            <div className="datepicker__year flex flex--space-between">
+                <button
+                    className="background--tertiary"
+                    type="button"
+                    onClick={getPrevMonth}
+                >
+                    <Chevron className="icon__fill--background-primary transform__rotate--clockwise-90" />
+                </button>
                 {`${months[currentMonth]} ${currentYear}`}
-                <div onClick={getNextMonth}>
-                    <Chevron style={{ transform: "rotate(-90deg)" }} />
-                </div>
+                <button
+                    className="background--tertiary"
+                    type="button"
+                    onClick={getNextMonth}
+                >
+                    <Chevron className="icon__fill--background-primary  transform__rotate--anticlockwise-90" />
+                </button>
             </div>
-            <div className="datepicker__weekdays">
-                {weekdays.map((x, index) => (
-                    <div key={index}>{x}</div>
+            <ul className="datepicker__weekdays flex flex--space-between">
+                {weekdays.map((weekday, index) => (
+                    <li key={index}>
+                        <p>{weekday}</p>
+                    </li>
                 ))}
-            </div>
-            <div className="datepicker__weeks">
-                {weeks.map((x, index) => (
-                    <div
+            </ul>
+
+            <ul className="datepicker__weeks flex flex--space-between flex--wrap">
+                {weeks.map((day, index) => (
+                    <li
                         key={index}
                         onClick={() => selectDay(index)}
                         className={`${
@@ -146,25 +158,32 @@ const DatePicker = ({
                                 : activeIndexes[1] === index
                                 ? "datepicker__day--second"
                                 : ""
-                        } datepicker__day`}
+                        } datepicker__day flex flex--center`}
                     >
-                        <div
+                        <p
                             className={`${
                                 activeIndexes.includes(index)
-                                    ? "background--active datepicker__day--active text--white"
+                                    ? "background__main--primary datepicker__day--active flex flex--center text--white"
                                     : ""
                             }`}
                         >
-                            {x}
-                        </div>
-                    </div>
+                            {day}
+                        </p>
+                    </li>
                 ))}
-            </div>
-            <div className="datepicker__footer">
-                <Button text="Clear Dates" primary={false} onClick={clear} />
+            </ul>
+
+            <div className="datepicker__footer flex flex--center">
                 <Button
+                    type="button"
+                    buttonStyle={"secondary"}
+                    text="Clear Dates"
+                    onClick={clear}
+                />
+                <Button
+                    type="button"
+                    buttonStyle={"primary"}
                     text="Select Dates"
-                    primary={true}
                     onClick={selectDates}
                 />
             </div>

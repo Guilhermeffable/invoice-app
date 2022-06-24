@@ -1,22 +1,32 @@
 .background {
+    &__main {
+        &--primary {
+            background: $color-primary;
+        }
+
+        &--secondary {
+            background: $color-secondary;
+        }
+    }
+
+    &--none {
+        background: none;
+    }
+
     &--primary {
-        background: $color-primary;
+        background: $color-background-primary;
     }
 
     &--secondary {
-        background: $color-secondary;
+        background: $color-background-secondary;
+    }
+
+    &--tertiary {
+        background: $color-background-tertiary;
     }
 
     &--white {
         background: $color-white;
-    }
-
-    &--neutral-03 {
-        background: $color-neutral-03;
-    }
-
-    &--active {
-        background: $color-primary;
     }
 
     &--success {
@@ -29,5 +39,9 @@
 
     &--danger {
         background: $color-danger;
+    }
+
+    &--filters {
+        background: $background-filter;
     }
 }
