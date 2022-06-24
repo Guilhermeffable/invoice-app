@@ -1,4 +1,15 @@
+@import "../settings/index";
+
 .container {
     margin: auto;
-    width: 1280px;
+    max-width: 430px;
+    width: 100%;
+
+    @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+        max-width: 900px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+        max-width: 1280px;
+    }
 }

@@ -2,10 +2,11 @@
 
 .invoice {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    height: 10vh;
-    padding: 2rem 2rem;
+    height: 148px;
+    padding: 1.5rem 1.5rem;
     border-radius: 10px;
     background: $color-background-secondary;
+    gap: 1rem;
 
     h3 {
         font-size: 1rem;
@@ -18,8 +19,10 @@
     &__info {
         gap: 0.75rem;
 
-        & > div:first-child {
-            font-weight: 700;
+        @media (min-width: $breakpoint-tablet) {
+            & > div:first-child {
+                font-weight: 700;
+            }
         }
     }
 
