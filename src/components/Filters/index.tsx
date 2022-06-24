@@ -37,6 +37,7 @@ const Filters = ({
 
     const setShowFil = () => {
         setShowF((prevState) => !prevState);
+        setShowDatepicker(!showDatepicker);
         setFilters(showF);
     };
 
@@ -62,7 +63,7 @@ const Filters = ({
                         className="filter__close background--white box-shadow__icon flex flex--center border__radius--circle"
                         onClick={setShowFil}
                     >
-                        <Plus className="icon icon__rotate--45 icon__stroke--default background--white " />
+                        <Plus className="icon transform__rotate--clockwise-45 icon__stroke--default background--white " />
                     </div>
                 </div>
                 <div className="filter__content flex flex--center flex--column">

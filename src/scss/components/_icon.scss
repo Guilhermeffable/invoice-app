@@ -32,10 +32,4 @@
             fill: $color-primary;
         }
     }
-
-    &__rotate {
-        &--45 {
-            transform: rotate(45deg);
-        }
-    }
 }
