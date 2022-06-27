@@ -1,55 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "../../scss/tools/_container.scss";
 import "./_dashboard.scss";
-import { Filter } from "../../assets/svg";
+import { Chevron, Filter } from "../../assets/svg";
 import Invoice from "../../components/Invoice";
 import Button from "../../components/Button/index";
 import Filters from "../../components/Filters";
 import { Plus } from "../../assets/svg";
-import { getInvoices } from "../../server/invoices";
+import { getInvoices } from "../../services/invoices";
+import { InvoiceInterface } from "../../utils/interfaces";
+import Input from "../../components/Input";
 
 const Dashboard = () => {
     const [showFilters, setShowFilters] = useState<boolean>(false);
     const [isDesktop, setDesktop] = useState(window.innerWidth >= 600);
-    const [invoices, setInvoices] = useState([]);
+    const [invoices, setInvoices] = useState<[]>([]);
+    const [lastIndex, setLastIndex] = useState(0);
+    const [lastNum, setLastNum] = useState(5);
 
     const updateMedia = () => {
         setDesktop(window.innerWidth >= 600);
     };
 
     useEffect(() => {
-        getInvoices(0, 5).then((result) => setInvoices(result));
+        getInvoices(lastIndex, lastNum).then((result: []) =>
+            setInvoices((prevState) => [...prevState, ...result])
+        );
         window.addEventListener("resize", updateMedia);
         return () => window.removeEventListener("resize", updateMedia);
-    }, []);
+    }, [lastIndex]);
 
     const setFilters = (isFilter: boolean) => {
         setTimeout(() => setShowFilters(!isFilter), 300);
     };
-
-    let test = [];
-
-    if (invoices.length > 0) {
-        {
-            debugger;
-            invoices.map((invoice, index) => {
-                test.push(
-                    <Invoice
-                        key={index}
-                        ID={invoice.invoiceId}
-                        date={invoice.invoiceDate}
-                        client={invoice.client}
-                        description={invoice.invoiceDescription}
-                        price={invoice.items.reduce((accum, item) => {
-                            return accum + parseInt(item.price);
-                        }, 0)}
-                        state={invoice.invoiceState}
-                        isDesktop={isDesktop}
-                    />
-                );
-            });
-        }
-    }
 
     return (
         <section className="container dashboard">
@@ -57,7 +39,11 @@ const Dashboard = () => {
                 <div className="dashboard__title">
                     <h1>Invoices - 5</h1>
                 </div>
-                <div className="dashboard__actions flex flex--space-between">
+                <div
+                    className={`dashboard__actions flex ${
+                        !isDesktop ? "flex--space-between" : ""
+                    }`}
+                >
                     <div
                         className="dashboard__filter flex flex--center"
                         onClick={() => setShowFilters(!showFilters)}
@@ -74,12 +60,32 @@ const Dashboard = () => {
                     />
                 </div>
             </header>
-            {test.length > 0 ? (
+            {invoices.length > 0 ? (
                 <article className="dashboard__content flex flex--column">
                     <ul className="flex flex--column">
-                        {test.map((x, index) => (
-                            <li key={index}>{x}</li>
-                        ))}
+                        {invoices.map((invoice: InvoiceInterface, index) => {
+                            return (
+                                <li>
+                                    <Invoice
+                                        key={index}
+                                        ID={invoice.invoiceId}
+                                        date={invoice.invoiceDate}
+                                        client={invoice.client}
+                                        description={invoice.invoiceDescription}
+                                        price={invoice.items.reduce(
+                                            (accum, item) => {
+                                                return (
+                                                    accum + parseInt(item.price)
+                                                );
+                                            },
+                                            0
+                                        )}
+                                        state={invoice.invoiceState}
+                                        isDesktop={isDesktop}
+                                    />
+                                </li>
+                            );
+                        })}
                     </ul>
                 </article>
             ) : (
@@ -93,6 +99,18 @@ const Dashboard = () => {
             >
                 <Filters showFilters={showFilters} setFilters={setFilters} />
             </aside>
+            <footer className="dashboard__footer flex flex--center">
+                <Button
+                    onClick={() => {
+                        setLastIndex(lastIndex + 5);
+                        setLastNum(lastNum);
+                    }}
+                    type="button"
+                    text={"See more invoices"}
+                    buttonStyle={"inline"}
+                    icon={Chevron}
+                />
+            </footer>
         </section>
     );
 };

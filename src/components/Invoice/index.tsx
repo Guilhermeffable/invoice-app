@@ -2,6 +2,7 @@ import React from "react";
 import "./_invoice.scss";
 import Status from "../Status";
 import PropTypes from "prop-types";
+import { Client } from "../../utils/interfaces";
 
 interface InvoiceProps {
     ID: string;
@@ -11,12 +12,6 @@ interface InvoiceProps {
     price: number;
     state: string;
     isDesktop: boolean;
-}
-
-interface Client {
-    clientAddress: string;
-    name: string;
-    email: string;
 }
 
 const Invoice = ({
