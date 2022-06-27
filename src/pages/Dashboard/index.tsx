@@ -42,13 +42,9 @@ const Dashboard = () => {
         <section className="container dashboard">
             <header className="dashboard__header flex flex--column flex--start">
                 <div className="dashboard__title">
-                    <h1>Invoices - 5</h1>
+                    <h1>{`Invoices - ${invoices.length}`}</h1>
                 </div>
-                <div
-                    className={`dashboard__actions flex ${
-                        !isDesktop ? "flex--space-between" : ""
-                    }`}
-                >
+                <div className={`dashboard__actions flex`}>
                     <div
                         className="dashboard__filter flex flex--center"
                         onClick={() => setShowFilters(!showFilters)}

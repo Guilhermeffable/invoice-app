@@ -34,7 +34,9 @@ const Invoice = ({
                 {isDesktop ? <p>{description}</p> : ""}
             </div>
             <div className="invoice__info">
-                <p className="invoice__price">{price}.00€</p>
+                <p className="invoice__price">
+                    {(Math.round(price * 100) / 100).toFixed(2)} €
+                </p>
             </div>
             <div className="invoice__info">
                 <Status type={state} />
