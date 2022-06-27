@@ -33,6 +33,11 @@ const Dashboard = () => {
         setTimeout(() => setShowFilters(!isFilter), 300);
     };
 
+    const seeMore = () => {
+        setLastIndex(lastIndex + 5);
+        setLastNum(lastNum);
+    };
+
     return (
         <section className="container dashboard">
             <header className="dashboard__header flex flex--column flex--start">
@@ -65,7 +70,7 @@ const Dashboard = () => {
                     <ul className="flex flex--column">
                         {invoices.map((invoice: InvoiceInterface, index) => {
                             return (
-                                <li>
+                                <li key={index}>
                                     <Invoice
                                         key={index}
                                         ID={invoice.invoiceId}
@@ -101,13 +106,10 @@ const Dashboard = () => {
             </aside>
             <footer className="dashboard__footer flex flex--center">
                 <Button
-                    onClick={() => {
-                        setLastIndex(lastIndex + 5);
-                        setLastNum(lastNum);
-                    }}
+                    onClick={seeMore}
                     type="button"
                     text={"See more invoices"}
-                    buttonStyle={"inline"}
+                    buttonStyle={"primary"}
                     icon={Chevron}
                 />
             </footer>
