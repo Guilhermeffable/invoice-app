@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { ChangeEventHandler, Fragment, MouseEventHandler } from "react";
 import PropTypes from "prop-types";
 import GenericButton from "./genericButton";
 import PillButton from "./pillbutton";
@@ -7,14 +7,20 @@ const Button = ({
     buttonStyle,
     type,
     text,
+    name,
     onClick,
+    onChange,
     icon,
+    value,
 }: {
     buttonStyle: string;
-    type?: "submit" | "reset" | "button";
+    type: "submit" | "reset" | "button";
     text?: string;
-    onClick?: Function;
+    name: string;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
+    onChange?: ChangeEventHandler;
     icon?: React.FC<React.SVGProps<SVGSVGElement>>;
+    value?: string;
 }) => {
     switch (buttonStyle) {
         case "primary":
@@ -25,6 +31,8 @@ const Button = ({
                     onClick={onClick!}
                     icon={icon}
                     type={type}
+                    value={value}
+                    name={name}
                 />
             );
 
@@ -36,6 +44,8 @@ const Button = ({
                     onClick={onClick!}
                     icon={icon}
                     type={type}
+                    value={value}
+                    name={name}
                 />
             );
         case "inline":
@@ -46,11 +56,20 @@ const Button = ({
                     onClick={onClick!}
                     icon={icon}
                     type={type}
+                    value={value}
+                    name={name}
                 />
             );
 
         case "pill":
-            return <PillButton text={text!} />;
+            return (
+                <PillButton
+                    text={text!}
+                    value={value!}
+                    name={name}
+                    onChange={onChange!}
+                />
+            );
 
         default:
             return <Fragment></Fragment>;

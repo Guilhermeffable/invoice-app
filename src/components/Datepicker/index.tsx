@@ -179,12 +179,14 @@ const DatePicker = ({
                     buttonStyle={"secondary"}
                     text="Clear Dates"
                     onClick={clear}
+                    name="clearDates"
                 />
                 <Button
                     type="button"
                     buttonStyle={"primary"}
                     text="Select Dates"
                     onClick={selectDates}
+                    name="selectDates"
                 />
             </div>
         </div>

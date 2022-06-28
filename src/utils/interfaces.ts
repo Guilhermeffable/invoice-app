@@ -20,3 +20,11 @@ export interface Client {
     name: string;
     email: string;
 }
+
+export interface FilterValues {
+    paidPill: string;
+    canceledPill: string;
+    pendingPill: string;
+    dateFrom: string;
+    dateTo: string;
+}

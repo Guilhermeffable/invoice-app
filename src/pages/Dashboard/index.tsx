@@ -6,17 +6,16 @@ import Invoice from "../../components/Invoice";
 import Button from "../../components/Button/index";
 import Filters from "../../components/Filters";
 import { Plus } from "../../assets/svg";
-import { getInvoices } from "../../services/invoices";
-import { InvoiceInterface } from "../../utils/interfaces";
+import { getFilteredInvoices, getInvoices } from "../../services/invoices";
+import { FilterValues, InvoiceInterface } from "../../utils/interfaces";
 import Input from "../../components/Input";
 
 const Dashboard = () => {
     const [showFilters, setShowFilters] = useState<boolean>(false);
     const [isDesktop, setDesktop] = useState(window.innerWidth >= 600);
     const [invoices, setInvoices] = useState<[]>([]);
-    const [lastIndex, setLastIndex] = useState(0);
-    const [lastNum, setLastNum] = useState(5);
-
+    const [lastIndex, setLastIndex] = useState<number>(0);
+    const [lastNum, setLastNum] = useState<number>(5);
     const updateMedia = () => {
         setDesktop(window.innerWidth >= 600);
     };
@@ -38,13 +37,37 @@ const Dashboard = () => {
         setLastNum(lastNum);
     };
 
+    const filterInvoices = (filterValues: FilterValues) => {
+        let states = "";
+        if (
+            filterValues.paidPill ||
+            filterValues.canceledPill ||
+            filterValues.pendingPill
+        ) {
+            states =
+                filterValues.paidPill +
+                ", " +
+                filterValues.canceledPill +
+                ", " +
+                filterValues.pendingPill;
+        }
+
+        console.log(filterValues);
+
+        getFilteredInvoices(
+            states,
+            filterValues.dateFrom,
+            filterValues.dateTo
+        ).then((result: []) => setInvoices(result));
+    };
+
     return (
         <section className="container dashboard">
             <header className="dashboard__header flex flex--column flex--start">
                 <div className="dashboard__title">
                     <h1>{`Invoices - ${invoices.length}`}</h1>
                 </div>
-                <div className={`dashboard__actions flex`}>
+                <div className="dashboard__actions flex">
                     <div
                         className="dashboard__filter flex flex--center"
                         onClick={() => setShowFilters(!showFilters)}
@@ -53,6 +76,7 @@ const Dashboard = () => {
                         <Filter className="icon__fill--background-primary" />
                     </div>
                     <Button
+                        name="newInvoice"
                         type="button"
                         buttonStyle={"primary"}
                         text="New Invoice"
@@ -98,12 +122,17 @@ const Dashboard = () => {
                     !showFilters ? "display--none" : "display--block"
                 } `}
             >
-                <Filters showFilters={showFilters} setFilters={setFilters} />
+                <Filters
+                    showFilters={showFilters}
+                    setFilters={setFilters}
+                    filterInvoices={filterInvoices}
+                />
             </aside>
             <footer className="dashboard__footer flex flex--center">
                 <Button
                     onClick={seeMore}
                     type="button"
+                    name="seeMore"
                     text={"See more invoices"}
                     buttonStyle={"primary"}
                     icon={Chevron}
