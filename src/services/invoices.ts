@@ -10,10 +10,15 @@ export const getInvoices = async (lastIndex, numItems) => {
     return invoices;
 };
 
-export const getFilteredInvoices = async (states, dateFrom, dateTo) => {
+export const getFilteredInvoices = async (
+    states,
+    dateFrom,
+    dateTo,
+    clientName
+) => {
     const invoices = await axios
         .get(
-            `https://invoice-api-exercise.herokuapp.com/invoices?invoiceState=${states}&dateFrom=${dateFrom}&dateTo=${dateTo}`
+            `https://invoice-api-exercise.herokuapp.com/invoices?invoiceState=${states}&dateFrom=${dateFrom}&dateTo=${dateTo}&client=${clientName}`
         )
         .then((result) => result.data);
 

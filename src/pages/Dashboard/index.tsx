@@ -8,7 +8,6 @@ import Filters from "../../components/Filters";
 import { Plus } from "../../assets/svg";
 import { getFilteredInvoices, getInvoices } from "../../services/invoices";
 import { FilterValues, InvoiceInterface } from "../../utils/interfaces";
-import Input from "../../components/Input";
 
 const Dashboard = () => {
     const [showFilters, setShowFilters] = useState<boolean>(false);
@@ -52,12 +51,11 @@ const Dashboard = () => {
                 filterValues.pendingPill;
         }
 
-        console.log(filterValues);
-
         getFilteredInvoices(
             states,
             filterValues.dateFrom,
-            filterValues.dateTo
+            filterValues.dateTo,
+            filterValues.clientName
         ).then((result: []) => setInvoices(result));
     };
 

@@ -27,4 +27,5 @@ export interface FilterValues {
     pendingPill: string;
     dateFrom: string;
     dateTo: string;
+    clientName: string;
 }

@@ -19,6 +19,7 @@ const initialFilterValues: FilterValues = {
     pendingPill: "",
     dateFrom: "",
     dateTo: "",
+    clientName: "",
 };
 
 const Filters = ({
@@ -63,7 +64,7 @@ const Filters = ({
         } else {
             dateFrom = dates[0].toISOString().slice(0, 10);
         }
-        debugger;
+
         setFilterValues({
             ...filterValues,
             dateFrom: dateFrom,
@@ -81,6 +82,13 @@ const Filters = ({
         setShowF((prevState) => !prevState);
         setShowDatepicker(false);
         setFilters(showF);
+    };
+
+    const inputName = (name: string) => {
+        setFilterValues({
+            ...filterValues,
+            clientName: name,
+        });
     };
 
     let transformClass = "";
@@ -108,6 +116,17 @@ const Filters = ({
         }
     };
 
+    const setClientName = (name: string) => {
+        if (name !== "") {
+            setFilterValues({
+                ...filterValues,
+                clientName: name,
+            });
+        }
+
+        console.log(filterValues);
+    };
+
     return (
         <Fragment>
             <div className={`${opacityClass} filter__cover`}>{""}</div>
@@ -131,6 +150,7 @@ const Filters = ({
                         <Input
                             placeholder="Select a field to order by"
                             icon={Chevron}
+                            onBlur={() => console.log()}
                         />
                     </div>
                     <div className="flex flex--column">
@@ -180,6 +200,7 @@ const Filters = ({
                                         : selectedDate
                                 }
                                 icon={Calendar}
+                                onBlur={() => console.log()}
                             />
                         </div>
                         <div
@@ -198,7 +219,10 @@ const Filters = ({
 
                     <div className="flex flex--column">
                         <label className="filter__label">Client:</label>
-                        <Input placeholder="Type a client name" />
+                        <Input
+                            placeholder="Type a client name"
+                            onBlur={setClientName}
+                        />
                     </div>
                     <div className="filter__submit flex flex--column flex--center">
                         <Button
