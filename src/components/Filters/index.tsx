@@ -76,6 +76,11 @@ const Filters = ({
 
     const clearDates = () => {
         setSelectedDate("");
+        setFilterValues({
+            ...filterValues,
+            dateFrom: "",
+            dateTo: "",
+        });
     };
 
     const setShowFil = () => {
@@ -123,8 +128,6 @@ const Filters = ({
                 clientName: name,
             });
         }
-
-        console.log(filterValues);
     };
 
     return (
