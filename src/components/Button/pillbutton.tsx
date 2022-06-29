@@ -6,18 +6,9 @@ import React, {
 import PropTypes from "prop-types";
 import { Plus } from "../../assets/svg";
 import "./_button.scss";
+import { PillButtonProps } from "./interfaces";
 
-const PillButton = ({
-    text,
-    value,
-    name,
-    onChange,
-}: {
-    text: string;
-    value: string;
-    name: string;
-    onChange: ChangeEventHandler;
-}) => {
+const PillButton = ({ text, value, name, onChange }: PillButtonProps) => {
     return (
         <div className="button__pill">
             <input

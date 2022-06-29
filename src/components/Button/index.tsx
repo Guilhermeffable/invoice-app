@@ -2,6 +2,7 @@ import React, { ChangeEventHandler, Fragment, MouseEventHandler } from "react";
 import PropTypes from "prop-types";
 import GenericButton from "./genericButton";
 import PillButton from "./pillbutton";
+import { ButtonProps } from "./interfaces";
 
 const Button = ({
     buttonStyle,
@@ -12,16 +13,7 @@ const Button = ({
     onChange,
     icon,
     value,
-}: {
-    buttonStyle: string;
-    type: "submit" | "reset" | "button";
-    text?: string;
-    name: string;
-    onClick?: MouseEventHandler<HTMLButtonElement>;
-    onChange?: ChangeEventHandler;
-    icon?: React.FC<React.SVGProps<SVGSVGElement>>;
-    value?: string;
-}) => {
+}: ButtonProps) => {
     switch (buttonStyle) {
         case "primary":
             return (

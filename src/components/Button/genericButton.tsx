@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./_button.scss";
+import { GenericButtonProps } from "./interfaces";
 
 const GenericButton = ({
     type,
@@ -10,15 +11,7 @@ const GenericButton = ({
     onClick,
     icon,
     value,
-}: {
-    type: "submit" | "button" | "reset";
-    text: string;
-    name: string;
-    primary: boolean;
-    onClick: Function;
-    icon?: React.FC<React.SVGProps<SVGSVGElement>>;
-    value?: string;
-}) => {
+}: GenericButtonProps) => {
     const Icon = icon;
 
     if (!Icon) {

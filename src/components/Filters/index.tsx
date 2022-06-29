@@ -12,6 +12,7 @@ import Input from "../Input";
 import "./_filter.scss";
 import { useEffect } from "react";
 import { FilterValues } from "../../utils/interfaces";
+import { FilterProps } from "./interfaces";
 
 const initialFilterValues: FilterValues = {
     paidPill: "",
@@ -22,15 +23,7 @@ const initialFilterValues: FilterValues = {
     clientName: "",
 };
 
-const Filters = ({
-    showFilters,
-    setFilters,
-    filterInvoices,
-}: {
-    showFilters: boolean;
-    setFilters: Function;
-    filterInvoices: Function;
-}) => {
+const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
     const [showDatepicker, setShowDatepicker] = useState<boolean>(false);
     const [selectedDate, setSelectedDate] = useState<string>("");
     const [showF, setShowF] = useState<boolean>(showFilters);

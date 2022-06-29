@@ -3,16 +3,7 @@ import "./_invoice.scss";
 import Status from "../Status";
 import PropTypes from "prop-types";
 import { Client } from "../../utils/interfaces";
-
-interface InvoiceProps {
-    ID: string;
-    date: string;
-    client: Client;
-    description: string;
-    price: number;
-    state: string;
-    isDesktop: boolean;
-}
+import { InvoiceProps } from "./interfaces";
 
 const Invoice = ({
     ID,

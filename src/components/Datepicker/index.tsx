@@ -11,14 +11,9 @@ import {
     getDaysIndexes,
 } from "./utilities";
 import "./_datepicker.scss";
+import { DatepickerProps } from "./interfaces";
 
-const DatePicker = ({
-    saveDates,
-    clearDates,
-}: {
-    saveDates: Function;
-    clearDates: Function;
-}) => {
+const DatePicker = ({ saveDates, clearDates }: DatepickerProps) => {
     const [currentMonth, setCurrentMonth] = useState<number>(
         new Date().getMonth()
     );
