@@ -3,7 +3,7 @@ import "./_invoice.scss";
 import Status from "../Status";
 import PropTypes from "prop-types";
 import { Client } from "../../utils/interfaces";
-import { InvoiceProps } from "./interfaces";
+import { InvoiceProps } from "./utils";
 
 const Invoice = ({
     ID,
@@ -15,7 +15,7 @@ const Invoice = ({
     isDesktop,
 }: InvoiceProps) => {
     return (
-        <div className="invoice flex flex--space-between background--neutral-03">
+        <div className="invoice card flex flex--space-between background--neutral-03">
             <div className="invoice__info flex flex--center flex--column flex--start-Y">
                 <h3>#{ID}</h3>
                 <p>Due {new Date(date).toDateString()}</p>

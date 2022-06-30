@@ -22,25 +22,4 @@
         gap: 10px;
         cursor: pointer;
     }
-
-    &__footer {
-        button {
-            flex-direction: row-reverse;
-            color: $color-primary;
-            background: none;
-            border: none;
-            font-weight: 600;
-
-            span {
-                background: none;
-            }
-        }
-
-        svg {
-            fill: $color-primary;
-        }
-    }
-
-    aside {
-    }
 }

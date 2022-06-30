@@ -1,3 +1,11 @@
+export const januaryIndex = 0;
+export const decemberIndex = 11;
+
+export interface DatepickerProps {
+    saveDates: Function;
+    clearDates: Function;
+}
+
 export const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export const months = [

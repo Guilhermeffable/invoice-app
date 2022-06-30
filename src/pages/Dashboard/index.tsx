@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import "../../scss/tools/_container.scss";
 import "./_dashboard.scss";
 import { Chevron, Filter } from "../../assets/svg";
@@ -8,6 +8,7 @@ import Filters from "../../components/Filters";
 import { Plus } from "../../assets/svg";
 import { getFilteredInvoices, getInvoices } from "../../services/invoices";
 import { FilterValues, InvoiceInterface } from "../../utils/interfaces";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
     const [showFilters, setShowFilters] = useState<boolean>(false);
@@ -26,6 +27,13 @@ const Dashboard = () => {
         window.addEventListener("resize", updateMedia);
         return () => window.removeEventListener("resize", updateMedia);
     }, [lastIndex]);
+
+    const navigate = useNavigate();
+
+    const handleOnClick = useCallback(
+        () => navigate("/invoice", { replace: true }),
+        [navigate]
+    );
 
     const setFilters = (isFilter: boolean) => {
         setTimeout(() => setShowFilters(!isFilter), 300);
@@ -88,7 +96,7 @@ const Dashboard = () => {
                     <ul className="flex flex--column">
                         {invoices.map((invoice: InvoiceInterface, index) => {
                             return (
-                                <li key={index}>
+                                <li onClick={handleOnClick} key={index}>
                                     <Invoice
                                         key={index}
                                         ID={invoice.invoiceId}
@@ -126,13 +134,13 @@ const Dashboard = () => {
                     filterInvoices={filterInvoices}
                 />
             </aside>
-            <footer className="dashboard__footer flex flex--center">
+            <footer className=" flex flex--center">
                 <Button
                     onClick={seeMore}
                     type="button"
                     name="seeMore"
                     text={"See more invoices"}
-                    buttonStyle={"primary"}
+                    buttonStyle={"inline"}
                     icon={Chevron}
                 />
             </footer>

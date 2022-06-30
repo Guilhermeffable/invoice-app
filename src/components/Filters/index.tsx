@@ -1,9 +1,4 @@
-import React, {
-    FormEventHandler,
-    Fragment,
-    SyntheticEvent,
-    useState,
-} from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import { Calendar, Chevron, Close, Plus } from "../../assets/svg";
 import Button from "../Button/index";
@@ -12,7 +7,7 @@ import Input from "../Input";
 import "./_filter.scss";
 import { useEffect } from "react";
 import { FilterValues } from "../../utils/interfaces";
-import { FilterProps } from "./interfaces";
+import { FilterProps } from "./utils";
 
 const initialFilterValues: FilterValues = {
     paidPill: "",
@@ -80,13 +75,6 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
         setShowF((prevState) => !prevState);
         setShowDatepicker(false);
         setFilters(showF);
-    };
-
-    const inputName = (name: string) => {
-        setFilterValues({
-            ...filterValues,
-            clientName: name,
-        });
     };
 
     let transformClass = "";

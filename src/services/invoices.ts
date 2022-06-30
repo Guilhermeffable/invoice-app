@@ -3,7 +3,7 @@ import axios from "axios";
 export const getInvoices = async (lastIndex, numItems) => {
     const invoices = await axios
         .get(
-            `https://invoice-api-exercise.herokuapp.com/invoices?lastIndex=${lastIndex}&numItems=${numItems}`
+            `https://invoice-api-exercise.herokuapp.com/invoices?lastIndex=${lastIndex}&numItems=${numItems}&orderBy=invoiceDate - ASC`
         )
         .then((result) => result.data);
 

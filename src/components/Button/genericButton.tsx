@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./_button.scss";
-import { GenericButtonProps } from "./interfaces";
+import { GenericButtonProps } from "./utils";
 
 const GenericButton = ({
     type,
@@ -53,8 +53,10 @@ GenericButton.propTypes = {
     type: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     primary: PropTypes.bool.isRequired,
+    name: PropTypes.string.isRequired,
     onClick: PropTypes.func,
     icon: PropTypes.object,
+    value: PropTypes.string.isRequired,
 };
 
 export default GenericButton;

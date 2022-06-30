@@ -2,7 +2,8 @@ import React, { ChangeEventHandler, Fragment, MouseEventHandler } from "react";
 import PropTypes from "prop-types";
 import GenericButton from "./genericButton";
 import PillButton from "./pillbutton";
-import { ButtonProps } from "./interfaces";
+import { ButtonProps } from "./utils";
+import InlineButton from "./inlineButton";
 
 const Button = ({
     buttonStyle,
@@ -42,7 +43,7 @@ const Button = ({
             );
         case "inline":
             return (
-                <GenericButton
+                <InlineButton
                     text={text!}
                     primary={false}
                     onClick={onClick!}

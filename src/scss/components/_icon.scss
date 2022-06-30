@@ -31,5 +31,9 @@
         &--primary {
             fill: $color-primary;
         }
+
+        &--default {
+            fill: $color-black;
+        }
     }
 }

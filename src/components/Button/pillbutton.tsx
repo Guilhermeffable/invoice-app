@@ -6,7 +6,7 @@ import React, {
 import PropTypes from "prop-types";
 import { Plus } from "../../assets/svg";
 import "./_button.scss";
-import { PillButtonProps } from "./interfaces";
+import { PillButtonProps } from "./utils";
 
 const PillButton = ({ text, value, name, onChange }: PillButtonProps) => {
     return (
