@@ -6,18 +6,18 @@ import { Chevron } from "../../assets/svg";
 const Input = ({
     placeholder,
     icon,
-    onBlur,
+    onChange,
 }: {
     placeholder: string;
     icon?: React.FC<React.SVGProps<SVGSVGElement>>;
-    onBlur: Function;
+    onChange?: Function;
 }) => {
     const Icon = icon;
 
     const getName = (event: React.FocusEvent<HTMLInputElement>) => {
         const value = event.target.value;
 
-        onBlur(value);
+        onChange?.(value);
     };
 
     if (!Icon) {
@@ -25,7 +25,7 @@ const Input = ({
             <input
                 className="input flex flex--center text--grey-80 border__color--input background--tertiary"
                 placeholder={placeholder}
-                onBlur={getName}
+                onChange={getName}
             ></input>
         );
     } else {

@@ -7,7 +7,11 @@ import Button from "../../components/Button/index";
 import Filters from "../../components/Filters";
 import { Plus } from "../../assets/svg";
 import { getFilteredInvoices, getInvoices } from "../../services/invoices";
-import { FilterValues, InvoiceInterface } from "../../utils/interfaces";
+import {
+    FilterValues,
+    initialFilterValues,
+    InvoiceInterface,
+} from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
@@ -16,12 +20,29 @@ const Dashboard = () => {
     const [invoices, setInvoices] = useState<[]>([]);
     const [lastIndex, setLastIndex] = useState<number>(0);
     const [lastNum, setLastNum] = useState<number>(5);
+    const [filterValues, setFilterValues] =
+        useState<FilterValues>(initialFilterValues);
     const updateMedia = () => {
         setDesktop(window.innerWidth >= 600);
     };
 
+    let states = [
+        filterValues.paidPill,
+        filterValues.canceledPill,
+        filterValues.pendingPill,
+    ]
+        .filter((x) => x != "")
+        .join(",");
+
     useEffect(() => {
-        getInvoices(lastIndex, lastNum).then((result: []) =>
+        getInvoices(
+            lastIndex,
+            lastNum,
+            states,
+            filterValues.dateBeginning,
+            filterValues.dateEnd,
+            filterValues.clientName
+        ).then((result: []) =>
             setInvoices((prevState) => [...prevState, ...result])
         );
         window.addEventListener("resize", updateMedia);
@@ -45,24 +66,22 @@ const Dashboard = () => {
     };
 
     const filterInvoices = (filterValues: FilterValues) => {
-        let states = "";
-        if (
-            filterValues.paidPill ||
-            filterValues.canceledPill ||
-            filterValues.pendingPill
-        ) {
-            states =
-                filterValues.paidPill +
-                ", " +
-                filterValues.canceledPill +
-                ", " +
-                filterValues.pendingPill;
-        }
+        setFilterValues(filterValues);
 
-        getFilteredInvoices(
+        let states = [
+            filterValues.paidPill,
+            filterValues.canceledPill,
+            filterValues.pendingPill,
+        ]
+            .filter((x) => x != "")
+            .join(",");
+
+        getInvoices(
+            0,
+            5,
             states,
-            filterValues.dateFrom,
-            filterValues.dateTo,
+            filterValues.dateBeginning,
+            filterValues.dateEnd,
             filterValues.clientName
         ).then((result: []) => setInvoices(result));
     };
@@ -87,7 +106,6 @@ const Dashboard = () => {
                         buttonStyle={"primary"}
                         text="New Invoice"
                         icon={Plus}
-                        onClick={() => console.log("olá")}
                     />
                 </div>
             </header>
@@ -134,13 +152,13 @@ const Dashboard = () => {
                     filterInvoices={filterInvoices}
                 />
             </aside>
-            <footer className=" flex flex--center">
+            <footer className="dashboard__footer flex flex--center">
                 <Button
                     onClick={seeMore}
                     type="button"
                     name="seeMore"
                     text={"See more invoices"}
-                    buttonStyle={"inline"}
+                    buttonStyle={"primary"}
                     icon={Chevron}
                 />
             </footer>

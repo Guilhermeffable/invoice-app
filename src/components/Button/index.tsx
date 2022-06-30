@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import GenericButton from "./genericButton";
 import PillButton from "./pillbutton";
 import { ButtonProps } from "./utils";
-import InlineButton from "./inlineButton";
 
 const Button = ({
     buttonStyle,
@@ -32,18 +31,6 @@ const Button = ({
         case "secondary":
             return (
                 <GenericButton
-                    text={text!}
-                    primary={false}
-                    onClick={onClick!}
-                    icon={icon}
-                    type={type}
-                    value={value}
-                    name={name}
-                />
-            );
-        case "inline":
-            return (
-                <InlineButton
                     text={text!}
                     primary={false}
                     onClick={onClick!}

@@ -25,7 +25,7 @@ const GenericButton = ({
                 name={name}
                 type={type}
                 value={value}
-                onClick={() => onClick()}
+                onClick={() => onClick?.()}
             >
                 {text}
             </button>
@@ -34,7 +34,7 @@ const GenericButton = ({
         return (
             <button
                 className="button--icon background__main--primary text--white flex flex--center"
-                onClick={() => onClick()}
+                onClick={() => onClick?.()}
                 type={type}
                 name={name}
                 value={value}

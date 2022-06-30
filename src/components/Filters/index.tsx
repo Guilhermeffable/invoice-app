@@ -6,17 +6,8 @@ import DatePicker from "../Datepicker";
 import Input from "../Input";
 import "./_filter.scss";
 import { useEffect } from "react";
-import { FilterValues } from "../../utils/interfaces";
+import { FilterValues, initialFilterValues } from "../../utils/utils";
 import { FilterProps } from "./utils";
-
-const initialFilterValues: FilterValues = {
-    paidPill: "",
-    canceledPill: "",
-    pendingPill: "",
-    dateFrom: "",
-    dateTo: "",
-    clientName: "",
-};
 
 const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
     const [showDatepicker, setShowDatepicker] = useState<boolean>(false);
@@ -134,7 +125,6 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
                         <Input
                             placeholder="Select a field to order by"
                             icon={Chevron}
-                            onBlur={() => console.log()}
                         />
                     </div>
                     <div className="flex flex--column">
@@ -184,7 +174,6 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
                                         : selectedDate
                                 }
                                 icon={Calendar}
-                                onBlur={() => console.log()}
                             />
                         </div>
                         <div
@@ -205,7 +194,7 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
                         <label className="filter__label">Client:</label>
                         <Input
                             placeholder="Type a client name"
-                            onBlur={setClientName}
+                            onChange={setClientName}
                         />
                     </div>
                     <div className="filter__submit flex flex--column flex--center">

@@ -25,7 +25,16 @@ export interface FilterValues {
     paidPill: string;
     canceledPill: string;
     pendingPill: string;
-    dateFrom: string;
-    dateTo: string;
+    dateBeginning: string;
+    dateEnd: string;
     clientName: string;
 }
+
+export const initialFilterValues: FilterValues = {
+    paidPill: "",
+    canceledPill: "",
+    pendingPill: "",
+    dateBeginning: "",
+    dateEnd: "",
+    clientName: "",
+};

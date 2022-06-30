@@ -7,7 +7,7 @@ import Button from "../../components/Button";
 
 const InvoiceDetail = () => {
     return (
-        <article className="container detail flex flex--column flex__gap--1">
+        <section className="container detail flex flex--column flex__gap--1">
             <header className="flex flex--column flex__gap--2">
                 <Breadcrumb />
                 <h2>View Invoice Details</h2>
@@ -23,7 +23,6 @@ const InvoiceDetail = () => {
                     buttonStyle={"primary"}
                     text="Mark as paid"
                     icon={Plus}
-                    onClick={() => console.log("olá")}
                 />
             </section>
             <section className="card flex flex--column flex__gap--2">
@@ -31,11 +30,10 @@ const InvoiceDetail = () => {
                     <div className=" flex flex--space-between">
                         <p className="font__weight--600">#INV_04</p>
                         <Button
-                            onClick={() => console.log("olá")}
                             type="button"
                             name="seeMore"
                             text={"Edit"}
-                            buttonStyle={"inline"}
+                            buttonStyle={"primary"}
                             icon={Edit}
                         />
                     </div>
@@ -63,11 +61,10 @@ const InvoiceDetail = () => {
                     <div className=" flex flex--space-between">
                         <p className="font__weight--600">Client's info</p>
                         <Button
-                            onClick={() => console.log("olá")}
                             type="button"
                             name="seeMore"
                             text={"Edit"}
-                            buttonStyle={"inline"}
+                            buttonStyle={"primary"}
                             icon={Edit}
                         />
                     </div>
@@ -87,11 +84,10 @@ const InvoiceDetail = () => {
             <section className="card">
                 <header className="flex flex--end-X">
                     <Button
-                        onClick={() => console.log("olá")}
                         type="button"
                         name="seeMore"
                         text={"Edit"}
-                        buttonStyle={"inline"}
+                        buttonStyle={"primary"}
                         icon={Edit}
                     />
                 </header>
@@ -106,11 +102,11 @@ const InvoiceDetail = () => {
                     </div>
                 </article>
                 <footer className="flex flex--space-between background__main--primary text--white">
-                    <p>Grand Total</p>
-                    <p>4,680.00€</p>
+                    <p className="font__weight--600">Grand Total</p>
+                    <p className="font__weight--600">4,680.00€</p>
                 </footer>
             </section>
-        </article>
+        </section>
     );
 };
 

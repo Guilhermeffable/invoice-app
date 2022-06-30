@@ -2,7 +2,7 @@ import React from "react";
 import "./_invoice.scss";
 import Status from "../Status";
 import PropTypes from "prop-types";
-import { Client } from "../../utils/interfaces";
+import { Client } from "../../utils/utils";
 import { InvoiceProps } from "./utils";
 
 const Invoice = ({
