@@ -32,7 +32,7 @@ const InvoiceDetail = () => {
                 />
             </section>
             <section className="card flex flex--column flex__gap--2">
-                <div className="detail__section flex flex--column">
+                <header className="detail__section flex flex--column">
                     <div className=" flex flex--space-between">
                         <p className="font__weight--600">{invoice.invoiceId}</p>
                         <Button
@@ -44,54 +44,58 @@ const InvoiceDetail = () => {
                         />
                     </div>
                     <p>{invoice.invoiceDescription}</p>
-                </div>
-                <div className="detail__section flex">
-                    <div className="detail__info">
-                        <p className="font__weight--600">Invoice Date</p>
-                        <p>{new Date(invoice.invoiceDate).toDateString()}</p>
-                    </div>
-                    <div className="detail__info">
-                        <p className="font__weight--600">Payment due</p>
-                        <p>
-                            {new Date(
-                                invoice.invoicePaymentDate
-                            ).toDateString()}
-                        </p>
-                    </div>
-                </div>
-                <div className="detail__section flex flex--column">
-                    <p className="font__weight--600">Billing Address</p>
-                    <div className="detail__info">
-                        <p>{invoice.billingAddress.street}</p>
-                        <p>{invoice.billingAddress.zipCode}</p>
-                        <p>{invoice.billingAddress.country}</p>
-                    </div>
-                </div>
-                <div className="detail__section flex flex--column">
-                    <div className=" flex flex--space-between">
-                        <p className="font__weight--600">Client's info</p>
-                        <Button
-                            type="button"
-                            name="seeMore"
-                            text={"Edit"}
-                            buttonStyle={"inline"}
-                            icon={Edit}
-                        />
-                    </div>
-                    <div className="flex flex--column flex__gap--1">
+                </header>
+                <article>
+                    <div className="detail__section flex">
                         <div className="detail__info">
-                            <p className="font__weight--400">
-                                {invoice.client.name}
+                            <p className="font__weight--600">Invoice Date</p>
+                            <p>
+                                {new Date(invoice.invoiceDate).toDateString()}
                             </p>
-                            <p>{invoice.client.email}</p>
                         </div>
                         <div className="detail__info">
-                            <p>{invoice.client.clientAddress.street}</p>
-                            <p>{invoice.client.clientAddress.zipCode}</p>
-                            <p>{invoice.client.clientAddress.country}</p>
+                            <p className="font__weight--600">Payment due</p>
+                            <p>
+                                {new Date(
+                                    invoice.invoicePaymentDate
+                                ).toDateString()}
+                            </p>
                         </div>
                     </div>
-                </div>
+                    <div className="detail__section flex flex--column">
+                        <p className="font__weight--600">Billing Address</p>
+                        <div className="detail__info">
+                            <p>{invoice.billingAddress.street}</p>
+                            <p>{invoice.billingAddress.zipCode}</p>
+                            <p>{invoice.billingAddress.country}</p>
+                        </div>
+                    </div>
+                    <div className="detail__section flex flex--column">
+                        <div className=" flex flex--space-between">
+                            <p className="font__weight--600">Client's info</p>
+                            <Button
+                                type="button"
+                                name="seeMore"
+                                text={"Edit"}
+                                buttonStyle={"inline"}
+                                icon={Edit}
+                            />
+                        </div>
+                        <div className="flex flex--column flex__gap--1">
+                            <div className="detail__info">
+                                <p className="font__weight--400">
+                                    {invoice.client.name}
+                                </p>
+                                <p>{invoice.client.email}</p>
+                            </div>
+                            <div className="detail__info">
+                                <p>{invoice.client.clientAddress.street}</p>
+                                <p>{invoice.client.clientAddress.zipCode}</p>
+                                <p>{invoice.client.clientAddress.country}</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </section>
             <section className="card">
                 <header className="flex flex--end-X">
