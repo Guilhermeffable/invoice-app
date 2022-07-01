@@ -41,6 +41,20 @@ const Button = ({
                 />
             );
 
+        case "inline":
+            return (
+                <GenericButton
+                    text={text!}
+                    primary={false}
+                    onClick={onClick!}
+                    icon={icon}
+                    type={type}
+                    value={value}
+                    name={name}
+                    inline={true}
+                />
+            );
+
         case "pill":
             return (
                 <PillButton

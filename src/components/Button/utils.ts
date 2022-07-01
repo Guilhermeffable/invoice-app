@@ -16,6 +16,7 @@ export interface GenericButtonProps {
     text: string;
     name: string;
     primary: boolean;
+    inline?: boolean;
     onClick: Function;
     icon?: React.FC<React.SVGProps<SVGSVGElement>>;
     value?: string;

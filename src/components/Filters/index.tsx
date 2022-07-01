@@ -110,103 +110,109 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
                 className={`${transformClass} background--filters  filter flex flex--start-Y flex--column background--white`}
                 onSubmit={(event) => event.preventDefault()}
             >
-                <div className="filter__header flex flex--space-between">
-                    <div className="filter__title">Filters</div>
-                    <div
-                        className="filter__close background--white box-shadow__icon flex flex--center border__radius--circle"
-                        onClick={setShowFil}
-                    >
-                        <Plus className="icon transform__rotate--clockwise-45 icon__stroke--default background--white " />
-                    </div>
-                </div>
-                <div className="filter__content flex flex--center flex--column">
-                    <div className="flex flex--column">
-                        <label className="filter__label">Order by:</label>
-                        <Input
-                            placeholder="Select a field to order by"
-                            icon={Chevron}
-                        />
-                    </div>
-                    <div className="flex flex--column">
-                        <label className="filter__label">Invoice state:</label>
-                        <div className="filter__state flex">
-                            <ul className="flex">
-                                <li>
-                                    <Button
-                                        buttonStyle="pill"
-                                        text="Paid"
-                                        value="paid"
-                                        onChange={handleChange}
-                                        name="paidPill"
-                                        type="button"
-                                    />
-                                </li>
-                                <li>
-                                    <Button
-                                        buttonStyle="pill"
-                                        text="Pending"
-                                        value="pending"
-                                        onChange={handleChange}
-                                        name="pendingPill"
-                                        type="button"
-                                    />
-                                </li>
-                                <li>
-                                    <Button
-                                        buttonStyle="pill"
-                                        text="Canceled"
-                                        value="canceled"
-                                        onChange={handleChange}
-                                        name="canceledPill"
-                                        type="button"
-                                    />
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="filter__date flex flex--column">
-                        <label className="filter__label">Invoice date:</label>
-                        <div onClick={() => show()}>
-                            <Input
-                                placeholder={
-                                    selectedDate === ""
-                                        ? "Select date"
-                                        : selectedDate
-                                }
-                                icon={Calendar}
-                            />
-                        </div>
+                <fieldset>
+                    <div className="filter__header flex flex--space-between">
+                        <div className="filter__title">Filters</div>
                         <div
-                            className={`filter__datepicker ${
-                                showDatepicker
-                                    ? "display--block"
-                                    : "display--none"
-                            }`}
+                            className="filter__close background--white box-shadow__icon flex flex--center border__radius--circle"
+                            onClick={setShowFil}
                         >
-                            <DatePicker
-                                saveDates={selectDate}
-                                clearDates={clearDates}
+                            <Plus className="icon transform__rotate--clockwise-45 icon__stroke--default background--white " />
+                        </div>
+                    </div>
+                    <div className="filter__content flex flex--center flex--column">
+                        <div className="flex flex--column">
+                            <label className="filter__label">Order by:</label>
+                            <Input
+                                placeholder="Select a field to order by"
+                                icon={Chevron}
+                            />
+                        </div>
+                        <div className="flex flex--column">
+                            <label className="filter__label">
+                                Invoice state:
+                            </label>
+                            <div className="filter__state flex">
+                                <ul className="flex">
+                                    <li>
+                                        <Button
+                                            buttonStyle="pill"
+                                            text="Paid"
+                                            value="paid"
+                                            onChange={handleChange}
+                                            name="paidPill"
+                                            type="button"
+                                        />
+                                    </li>
+                                    <li>
+                                        <Button
+                                            buttonStyle="pill"
+                                            text="Pending"
+                                            value="pending"
+                                            onChange={handleChange}
+                                            name="pendingPill"
+                                            type="button"
+                                        />
+                                    </li>
+                                    <li>
+                                        <Button
+                                            buttonStyle="pill"
+                                            text="Canceled"
+                                            value="canceled"
+                                            onChange={handleChange}
+                                            name="canceledPill"
+                                            type="button"
+                                        />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="filter__date flex flex--column">
+                            <label className="filter__label">
+                                Invoice date:
+                            </label>
+                            <div onClick={() => show()}>
+                                <Input
+                                    placeholder={
+                                        selectedDate === ""
+                                            ? "Select date"
+                                            : selectedDate
+                                    }
+                                    icon={Calendar}
+                                />
+                            </div>
+                            <div
+                                className={`filter__datepicker ${
+                                    showDatepicker
+                                        ? "display--block"
+                                        : "display--none"
+                                }`}
+                            >
+                                <DatePicker
+                                    saveDates={selectDate}
+                                    clearDates={clearDates}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="flex flex--column">
+                            <label className="filter__label">Client:</label>
+                            <Input
+                                placeholder="Type a client name"
+                                onChange={setClientName}
+                            />
+                        </div>
+                        <div className="filter__submit flex flex--column flex--center">
+                            <Button
+                                buttonStyle="primary"
+                                type="button"
+                                onClick={() => filterInvoices(filterValues)}
+                                text={"Search"}
+                                name="search"
                             />
                         </div>
                     </div>
-
-                    <div className="flex flex--column">
-                        <label className="filter__label">Client:</label>
-                        <Input
-                            placeholder="Type a client name"
-                            onChange={setClientName}
-                        />
-                    </div>
-                    <div className="filter__submit flex flex--column flex--center">
-                        <Button
-                            buttonStyle="primary"
-                            type="button"
-                            onClick={() => filterInvoices(filterValues)}
-                            text={"Search"}
-                            name="search"
-                        />
-                    </div>
-                </div>
+                </fieldset>
             </form>
         </Fragment>
     );

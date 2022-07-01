@@ -6,7 +6,7 @@ import Invoice from "../../components/Invoice";
 import Button from "../../components/Button/index";
 import Filters from "../../components/Filters";
 import { Plus } from "../../assets/svg";
-import { getFilteredInvoices, getInvoices } from "../../services/invoices";
+import { getInvoices } from "../../services/invoices";
 import {
     FilterValues,
     initialFilterValues,
@@ -16,15 +16,11 @@ import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
     const [showFilters, setShowFilters] = useState<boolean>(false);
-    const [isDesktop, setDesktop] = useState(window.innerWidth >= 600);
     const [invoices, setInvoices] = useState<[]>([]);
     const [lastIndex, setLastIndex] = useState<number>(0);
     const [lastNum, setLastNum] = useState<number>(5);
     const [filterValues, setFilterValues] =
         useState<FilterValues>(initialFilterValues);
-    const updateMedia = () => {
-        setDesktop(window.innerWidth >= 600);
-    };
 
     let states = [
         filterValues.paidPill,
@@ -45,16 +41,13 @@ const Dashboard = () => {
         ).then((result: []) =>
             setInvoices((prevState) => [...prevState, ...result])
         );
-        window.addEventListener("resize", updateMedia);
-        return () => window.removeEventListener("resize", updateMedia);
     }, [lastIndex]);
 
     const navigate = useNavigate();
 
-    const handleOnClick = useCallback(
-        () => navigate("/invoice", { replace: true }),
-        [navigate]
-    );
+    const handleOnClick = (invoice) => {
+        navigate("/invoice", { state: invoice, replace: true });
+    };
 
     const setFilters = (isFilter: boolean) => {
         setTimeout(() => setShowFilters(!isFilter), 300);
@@ -114,11 +107,14 @@ const Dashboard = () => {
                     <ul className="flex flex--column">
                         {invoices.map((invoice: InvoiceInterface, index) => {
                             return (
-                                <li onClick={handleOnClick} key={index}>
+                                <li
+                                    onClick={() => handleOnClick(invoice)}
+                                    key={index}
+                                >
                                     <Invoice
                                         key={index}
                                         ID={invoice.invoiceId}
-                                        date={invoice.invoiceDate}
+                                        date={invoice.invoicePaymentDate}
                                         client={invoice.client}
                                         description={invoice.invoiceDescription}
                                         price={invoice.items.reduce(
@@ -130,7 +126,6 @@ const Dashboard = () => {
                                             0
                                         )}
                                         state={invoice.invoiceState}
-                                        isDesktop={isDesktop}
                                     />
                                 </li>
                             );
@@ -158,7 +153,7 @@ const Dashboard = () => {
                     type="button"
                     name="seeMore"
                     text={"See more invoices"}
-                    buttonStyle={"primary"}
+                    buttonStyle={"inline"}
                     icon={Chevron}
                 />
             </footer>

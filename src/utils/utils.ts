@@ -1,5 +1,5 @@
 export interface InvoiceInterface {
-    billingAddress: object;
+    billingAddress: BillingAddress;
     client: Client;
     invoiceId: string;
     invoiceDate: string;
@@ -9,6 +9,13 @@ export interface InvoiceInterface {
     invoicePaymentDate: string;
 }
 
+export interface BillingAddress {
+    city: string;
+    country: string;
+    street: string;
+    zipCode: string;
+}
+
 export interface InvoiceItem {
     name: string;
     quantity: string;
@@ -16,7 +23,7 @@ export interface InvoiceItem {
 }
 
 export interface Client {
-    clientAddress: string;
+    clientAddress: BillingAddress;
     name: string;
     email: string;
 }

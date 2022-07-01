@@ -49,8 +49,14 @@ input:focus {
 
 button {
     cursor: pointer;
+    background: none;
+    border: none;
 }
 
 p {
     line-height: 1.5rem;
+}
+
+fieldset {
+    border: none;
 }

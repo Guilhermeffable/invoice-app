@@ -12,7 +12,6 @@ const Invoice = ({
     description,
     price,
     state,
-    isDesktop,
 }: InvoiceProps) => {
     return (
         <div className="invoice card flex flex--space-between background--neutral-03">
@@ -22,7 +21,7 @@ const Invoice = ({
             </div>
             <div className="invoice__info invoice__customer  flex flex--center flex--column flex--start-Y">
                 <h3>{client.name}</h3>
-                {isDesktop ? <p>{description}</p> : ""}
+                <p className="display--hide-sm">{description}</p>
             </div>
             <div className="invoice__info">
                 <p className="invoice__price">
@@ -42,7 +41,6 @@ Invoice.propTypes = {
     client: PropTypes.object.isRequired,
     description: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
-    isDesktop: PropTypes.bool.isRequired,
 };
 
 export default Invoice;

@@ -7,5 +7,4 @@ export interface InvoiceProps {
     description: string;
     price: number;
     state: string;
-    isDesktop: boolean;
 }

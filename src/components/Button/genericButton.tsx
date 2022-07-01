@@ -11,8 +11,11 @@ const GenericButton = ({
     onClick,
     icon,
     value,
+    inline,
 }: GenericButtonProps) => {
     const Icon = icon;
+
+    console.log(inline);
 
     if (!Icon) {
         return (
@@ -20,6 +23,8 @@ const GenericButton = ({
                 className={`button align--center ${
                     primary
                         ? "background__main--secondary text--white"
+                        : inline
+                        ? ""
                         : "background--tertiary border__color--secondary-button text--color border__color--input"
                 } `}
                 name={name}
@@ -33,7 +38,11 @@ const GenericButton = ({
     } else {
         return (
             <button
-                className="button--icon background__main--primary text--white flex flex--center"
+                className={
+                    inline
+                        ? "button--icon button__inline flex flex--center"
+                        : `button--icon background__main--primary text--white flex flex--center`
+                }
                 onClick={() => onClick?.()}
                 type={type}
                 name={name}

@@ -36,4 +36,26 @@
         width: 32px;
         border-radius: 50%;
     }
+
+    &__inline {
+        flex-direction: row-reverse;
+        color: $color-primary;
+        font-weight: 600;
+        outline: none;
+        gap: 0.5rem;
+
+        span {
+            background: none;
+        }
+
+        .button__icon {
+            justify-content: flex-start;
+        }
+
+        svg {
+            fill: none;
+            height: 1rem;
+            width: 1rem;
+        }
+    }
 }

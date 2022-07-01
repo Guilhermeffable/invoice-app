@@ -6,4 +6,10 @@
     &--block {
         display: block;
     }
+
+    &--hide-sm {
+        @media (max-width: $breakpoint-mobile) {
+            display: none;
+        }
+    }
 }

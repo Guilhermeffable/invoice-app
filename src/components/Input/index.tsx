@@ -1,7 +1,6 @@
 import React, { Fragment, useRef } from "react";
 import PropTypes from "prop-types";
 import "./_input.scss";
-import { Chevron } from "../../assets/svg";
 
 const Input = ({
     placeholder,
@@ -14,18 +13,12 @@ const Input = ({
 }) => {
     const Icon = icon;
 
-    const getName = (event: React.FocusEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-
-        onChange?.(value);
-    };
-
     if (!Icon) {
         return (
             <input
                 className="input flex flex--center text--grey-80 border__color--input background--tertiary"
                 placeholder={placeholder}
-                onChange={getName}
+                onChange={(event) => onChange?.(event.target.value)}
             ></input>
         );
     } else {
