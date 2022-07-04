@@ -1,6 +1,5 @@
 import React from "react";
 import { Chevron } from "../../assets/svg";
-import "./_breadcrumb.scss";
 
 const Breadcrumb = () => {
     return (
