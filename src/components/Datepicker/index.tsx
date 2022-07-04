@@ -2,23 +2,20 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Chevron } from "../../assets/svg";
 import Button from "../Button/index";
+import "./_datepicker.scss";
 import {
+    DatepickerProps,
+    decemberIndex,
+    januaryIndex,
     getWeeks,
     getDaysInMonth,
     months,
     weekdays,
     intervalRecursive,
     getDaysIndexes,
-} from "./utilities";
-import "./_datepicker.scss";
+} from "./utils";
 
-const DatePicker = ({
-    saveDates,
-    clearDates,
-}: {
-    saveDates: Function;
-    clearDates: Function;
-}) => {
+const DatePicker = ({ saveDates, clearDates }: DatepickerProps) => {
     const [currentMonth, setCurrentMonth] = useState<number>(
         new Date().getMonth()
     );
@@ -46,11 +43,8 @@ const DatePicker = ({
         }
     }, [activeIndexes]);
 
-    const januaryIndex = 0;
-    const decemberIndex = 11;
-
     const getNextMonth = () => {
-        if (currentMonth === 11) {
+        if (currentMonth === decemberIndex) {
             setCurrentYear(currentYear + 1);
             setCurrentMonth(0);
         } else {
@@ -59,7 +53,7 @@ const DatePicker = ({
     };
 
     const getPrevMonth = () => {
-        if (currentMonth === 0) {
+        if (currentMonth === januaryIndex) {
             setCurrentYear(currentYear - 1);
             setCurrentMonth(11);
         } else {
@@ -179,12 +173,14 @@ const DatePicker = ({
                     buttonStyle={"secondary"}
                     text="Clear Dates"
                     onClick={clear}
+                    name="clearDates"
                 />
                 <Button
                     type="button"
                     buttonStyle={"primary"}
                     text="Select Dates"
                     onClick={selectDates}
+                    name="selectDates"
                 />
             </div>
         </div>

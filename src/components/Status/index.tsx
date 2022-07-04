@@ -3,28 +3,28 @@ import PropTypes from "prop-types";
 import "./_status.scss";
 import "../../scss/main.scss";
 
-const Status = ({ type }: { type: number }) => {
+const Status = ({ type }: { type: string }) => {
     let backgroundClass = "";
     let textClass = "";
     let statusText = "";
 
     switch (type) {
-        case 0:
+        case "paid":
             backgroundClass = "background--success";
             textClass = "text--success";
             statusText = "Paid";
             break;
 
-        case 1:
+        case "pending":
             backgroundClass = "background--warning";
             textClass = "text--warning";
-            statusText = "Warning";
+            statusText = "Pending";
             break;
 
-        case 2:
+        case "canceled":
             backgroundClass = "background--danger";
             textClass = "text--danger";
-            statusText = "Danger";
+            statusText = "Canceled";
             break;
     }
 
@@ -37,7 +37,7 @@ const Status = ({ type }: { type: number }) => {
 };
 
 Status.propTypes = {
-    type: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
 };
 
 export default Status;

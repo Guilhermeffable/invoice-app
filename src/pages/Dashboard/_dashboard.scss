@@ -1,3 +1,4 @@
+@import "../../scss/settings/index";
 .dashboard {
     &__header {
         margin: 0 0 2rem 0;
@@ -5,6 +6,10 @@
 
     &__actions {
         gap: 2.5rem;
+        justify-content: space-between;
+        @media (min-width: $breakpoint-tablet) {
+            justify-content: flex-end;
+        }
     }
 
     &__content {

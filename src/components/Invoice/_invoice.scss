@@ -1,10 +1,6 @@
 @import "../../scss/settings/index";
 
 .invoice {
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    border-radius: 10px;
-    background: $color-background-secondary;
     gap: 0.5rem 3rem;
     flex-wrap: wrap;
     @media (min-width: $breakpoint-mobile) {
@@ -25,8 +21,10 @@
         }
 
         @media (min-width: $breakpoint-mobile) {
+            flex: 1;
+
             &:first-child {
-                flex-basis: unset;
+                flex-basis: 0;
             }
 
             & > div:first-child {
