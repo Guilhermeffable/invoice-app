@@ -122,8 +122,11 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
                     </div>
                     <div className="filter__content flex flex--center flex--column">
                         <div className="flex flex--column">
-                            <label className="filter__label">Order by:</label>
+                            <label className="filter__label" htmlFor="order">
+                                Order by:
+                            </label>
                             <Input
+                                id="order"
                                 placeholder="Select a field to order by"
                                 icon={Chevron}
                             />
@@ -168,11 +171,15 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
                             </div>
                         </div>
                         <div className="filter__date flex flex--column">
-                            <label className="filter__label">
+                            <label
+                                className="filter__label"
+                                htmlFor="invoiceDate"
+                            >
                                 Invoice date:
                             </label>
                             <div onClick={() => show()}>
                                 <Input
+                                    id="invoiceDate"
                                     placeholder={
                                         selectedDate === ""
                                             ? "Select date"
@@ -196,8 +203,14 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
                         </div>
 
                         <div className="flex flex--column">
-                            <label className="filter__label">Client:</label>
+                            <label
+                                className="filter__label"
+                                htmlFor="clientName"
+                            >
+                                Client:
+                            </label>
                             <Input
+                                id="clientName"
                                 placeholder="Type a client name"
                                 onChange={setClientName}
                             />

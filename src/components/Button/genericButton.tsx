@@ -15,8 +15,6 @@ const GenericButton = ({
 }: GenericButtonProps) => {
     const Icon = icon;
 
-    console.log(inline);
-
     if (!Icon) {
         return (
             <button

@@ -6,18 +6,21 @@ const Input = ({
     placeholder,
     icon,
     onChange,
+    id,
 }: {
     placeholder: string;
     icon?: React.FC<React.SVGProps<SVGSVGElement>>;
     onChange?: Function;
+    id: string;
 }) => {
     const Icon = icon;
 
     if (!Icon) {
         return (
             <input
+                id={id}
                 className="input flex flex--center text--grey-80 border__color--input background--tertiary"
-                placeholder={placeholder}
+                defaultValue={placeholder}
                 onChange={(event) => onChange?.(event.target.value)}
             ></input>
         );

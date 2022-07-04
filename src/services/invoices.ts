@@ -1,4 +1,5 @@
 import axios from "axios";
+import { InvoiceInterface } from "../utils/utils";
 
 export const getInvoices = async (
     lastIndex,
@@ -15,4 +16,12 @@ export const getInvoices = async (
         .then((result) => result.data);
 
     return invoices;
+};
+
+export const putInvoice = async (invoice: InvoiceInterface) => {
+    const status = await axios
+        .put("https://invoice-api-exercise.herokuapp.com/invoices", invoice)
+        .then((result) => result.status);
+
+    return status;
 };

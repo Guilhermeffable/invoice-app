@@ -24,4 +24,11 @@
         border-radius: 0px 0px 10px 10px;
         padding: 1.5rem;
     }
+
+    &__button {
+        button {
+            background-color: $color-danger;
+            width: 280px;
+        }
+    }
 }
