@@ -1,62 +1,67 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 100%;
-    min-height: 100%;
+  font-size: 100%;
+  min-height: 100%;
 
-    &[data-theme="light"] {
-        background: linear-gradient(
-            177.16deg,
-            $color-white -5.63%,
-            $color-grey-40 118.8%,
-            #f0f2f5 118.8%
-        );
-    }
+  &[data-theme="light"] {
+    background: linear-gradient(
+      177.16deg,
+      $color-white -5.63%,
+      $color-grey-40 118.8%,
+      #f0f2f5 118.8%
+    );
+  }
 
-    &[data-theme="dark"] {
-        background: linear-gradient(
-            174.16deg,
-            $color-background-primary 0%,
-            $color-background-secondary 113.39%
-        );
-    }
+  &[data-theme="dark"] {
+    background: linear-gradient(
+      174.16deg,
+      $color-background-primary 0%,
+      $color-background-secondary 113.39%
+    );
+  }
 }
 
 body {
-    font-family: "Open Sans", sans-serif;
-    letter-spacing: 1px;
-    color: $color-text;
-    height: 100%;
-    font-weight: 100;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 1px;
+  color: $color-text;
+  height: 100%;
+  font-weight: 100;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 input,
 button {
-    border: none;
+  border: none;
+  font-family: "Open Sans", sans-serif;
 }
 
 input:focus {
-    outline: none;
+  outline: none;
 }
 
 button {
-    cursor: pointer;
-    background: none;
-    border: none;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
 p {
-    line-height: 1.5rem;
+  line-height: 1.5rem;
 }
 
 fieldset {
-    border: none;
+  border: none;
+}
+
+a {
+  text-decoration: none;
 }

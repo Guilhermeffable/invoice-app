@@ -79,7 +79,7 @@ const InvoiceDetail = () => {
   return (
     <div className="container detail flex flex--column flex__gap--1">
       <header className="flex flex--column flex__gap--2">
-        <Breadcrumb />
+        <Breadcrumb title="Invoice details" />
         <h2>View Invoice Details</h2>
       </header>
       <section className="card background--neutral-03 flex flex--space-between">

@@ -1,0 +1,19 @@
+@import "../../scss/settings/index";
+
+.info {
+  h2 {
+    text-transform: uppercase;
+    font-size: 12px;
+
+    border-bottom: 1px solid $color-grey-60;
+
+    padding: 12px 0;
+  }
+
+  button {
+    width: 280px;
+    margin: auto;
+    background: $color-primary;
+    font-weight: 600;
+  }
+}
