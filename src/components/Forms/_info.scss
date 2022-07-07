@@ -16,4 +16,22 @@
     background: $color-primary;
     font-weight: 600;
   }
+
+  &__footer {
+    button {
+      margin: unset;
+      width: auto;
+      color: $color-danger;
+      background: none;
+      flex-direction: row;
+
+      .button__icon {
+        justify-content: flex-end;
+      }
+
+      svg {
+        stroke: $color-danger;
+      }
+    }
+  }
 }

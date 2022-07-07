@@ -6,3 +6,4 @@ export { ReactComponent as Calendar } from "./calendar.svg";
 export { ReactComponent as LightTheme } from "./sun.svg";
 export { ReactComponent as DarkTheme } from "./theme.svg";
 export { ReactComponent as Edit } from "./edit.svg";
+export { ReactComponent as Delete } from "./delete.svg";

@@ -1,10 +1,8 @@
 import React from "react";
-import { Calendar, Chevron } from "../../assets/svg";
 import Button from "../Button";
 import Input from "../Input";
-import "./_info.scss";
 
-const GeneralInfo = () => {
+const ClientForm = ({ onFormChange }: { onFormChange: Function }) => {
   return (
     <div className="card info flex flex--column flex__gap--1">
       <h2 className="font__weight--300">Generic Information</h2>
@@ -12,27 +10,15 @@ const GeneralInfo = () => {
         <fieldset className="flex flex--column flex__gap--2">
           <div className="info__container flex flex--column flex__gap--1">
             <label className="font__weight--400" htmlFor="invoiceDescription">
-              Invoice description
+              Name
             </label>
             <Input id="invoiceDescription" placeholder="" />
           </div>
           <div className="info__container flex  flex--column flex__gap--1">
             <label className="font__weight--400" htmlFor="invoiceState">
-              Invoice state
+              Email
             </label>
-            <Input id="invoiceState" placeholder="" icon={Chevron} />
-          </div>
-          <div className="info__container flex  flex--column flex__gap--1">
-            <label className="font__weight--400" htmlFor="invoiceDate">
-              Invoice date
-            </label>
-            <Input id="invoiceDate" placeholder="" icon={Calendar} />
-          </div>
-          <div className="info__container flex  flex--column flex__gap--1">
-            <label className="font__weight--400" htmlFor="invoicePaymentDate">
-              Payment Due Date
-            </label>
-            <Input id="invoicePaymentDate" placeholder="" icon={Calendar} />
+            <Input id="invoiceState" placeholder="" />
           </div>
         </fieldset>
       </form>
@@ -68,13 +54,14 @@ const GeneralInfo = () => {
         </fieldset>
       </form>
       <Button
-        buttonStyle="primary"
         type="button"
+        name="createButton"
         text="Continue"
-        name="continue"
+        buttonStyle="primary"
+        onClick={() => onFormChange()}
       />
     </div>
   );
 };
 
-export default GeneralInfo;
+export default ClientForm;
