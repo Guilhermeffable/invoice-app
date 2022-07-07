@@ -10,11 +10,20 @@
     padding: 12px 0;
   }
 
-  button {
-    width: 280px;
-    margin: auto;
-    background: $color-primary;
-    font-weight: 600;
+  &__button {
+    button {
+      flex-direction: row;
+      .button__icon {
+        justify-content: flex-end;
+      }
+
+      svg {
+        stroke: $color-black;
+        transform: rotate(45deg);
+        width: 5px;
+        height: 5px;
+      }
+    }
   }
 
   &__footer {

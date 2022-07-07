@@ -95,8 +95,7 @@ const ItemForm = ({ onFormChange }: { onFormChange: Function }) => {
                 <p>Total</p>
                 <p>
                   {(
-                    (parseInt(itemsArr[numberOfItems - 1].price) *
-                      parseInt(itemsArr[numberOfItems - 1].quantity)) /
+                    ((parseInt(item.price) * parseInt(item.quantity)) / 100) *
                     100
                   ).toFixed(2)}{" "}
                   €
@@ -116,14 +115,22 @@ const ItemForm = ({ onFormChange }: { onFormChange: Function }) => {
           </Fragment>
         );
       })}
-
+      <div className="info__button flex flex--center">
+        <Button
+          name="addItem"
+          text="Add new item"
+          type="button"
+          buttonStyle="inline"
+          onClick={addItem}
+          icon={Plus}
+        />
+      </div>
       <Button
-        name="addItem"
-        text="Add new item"
+        name="createInvoice"
+        text="Create"
         type="button"
-        buttonStyle="inline"
+        buttonStyle="primary"
         onClick={addItem}
-        icon={Plus}
       />
     </div>
   );
