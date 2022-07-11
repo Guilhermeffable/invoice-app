@@ -1,28 +1,70 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Calendar, Chevron } from "../../assets/svg";
-import { FORM_TYPE } from "../../utils/utils";
+import { FORM_TYPE, InvoiceInterface } from "../../utils/utils";
 import Button from "../Button";
+import DatePicker from "../Datepicker";
 import Input from "../Input";
 import "./_info.scss";
 
 const InfoForm = ({
-  type,
   onFormChange,
+  saveInfo,
 }: {
-  type: FORM_TYPE;
   onFormChange: Function;
+  saveInfo: Function;
 }) => {
-  let className1 = "";
+  const [invoice, setInvoice] = useState<InvoiceInterface>({
+    invoiceDescription: "",
+    invoicePaymentDate: "",
+    invoiceState: "",
+    invoiceDate: "",
+    billingAddress: { city: "", country: "", street: "", zipCode: "" },
+  });
 
-  switch (type) {
-    case FORM_TYPE.INVOICE_DETAILS:
-      className1 = "";
-      break;
+  const [showDatepickerDate, setShowDatepickerDate] = useState<boolean>(false);
+  const [showDatepickerDueDate, setShowDatepickerDueDate] =
+    useState<boolean>(false);
 
-    case FORM_TYPE.CLIENT_DETAILS:
-      className1 = "display--none";
-      break;
-  }
+  const [invoiceDate, setInvoiceDate] = useState<string>("");
+  const [invoiceDueDate, setInvoiceDueDate] = useState<string>("");
+
+  const setDescription = (value: string) => {
+    invoice.invoiceDescription = value;
+  };
+
+  const setState = (value: string) => {
+    invoice.invoiceState = value;
+  };
+
+  const setStreet = (value: string) => {
+    invoice.billingAddress!.street = value;
+  };
+  const setCity = (value: string) => {
+    invoice.billingAddress!.city = value;
+  };
+  const setZipCode = (value: string) => {
+    invoice.billingAddress!.zipCode = value;
+  };
+  const setCountry = (value: string) => {
+    invoice.billingAddress!.country = value;
+  };
+
+  const saveInvoiceDate = (value: string) => {
+    setInvoiceDate(value);
+    setShowDatepickerDate(false);
+    invoice.invoiceDate = value;
+  };
+
+  const saveInvoiceDueDate = (value: string) => {
+    setInvoiceDueDate(value);
+    setShowDatepickerDueDate(false);
+    invoice.invoicePaymentDate = value;
+  };
+
+  const changePage = () => {
+    saveInfo(invoice);
+    onFormChange();
+  };
 
   return (
     <div className="card info flex flex--column flex__gap--1">
@@ -33,27 +75,78 @@ const InfoForm = ({
             <label className="font__weight--400" htmlFor="invoiceDescription">
               Invoice description
             </label>
-            <Input id="invoiceDescription" placeholder="" />
+            <Input
+              id="invoiceDescription"
+              placeholder=""
+              onChange={(value: string) => setDescription(value)}
+            />
           </div>
           <div className="info__container flex  flex--column flex__gap--1">
             <label className="font__weight--400" htmlFor="invoiceState">
               Invoice state
             </label>
-            <Input id="invoiceState" placeholder="" icon={Chevron} />
+            <Input
+              id="invoiceState"
+              placeholder=""
+              icon={Chevron}
+              onChange={(value: string) => setState(value)}
+            />
           </div>
-          <div
-            className={`${className1} info__container flex  flex--column flex__gap--1 `}
-          >
+          <div className="info__container flex  flex--column flex__gap--1 ">
             <label className="font__weight--400" htmlFor="invoiceDate">
               Invoice date
             </label>
-            <Input id="invoiceDate" placeholder="" icon={Calendar} />
+            <div className="position--relative">
+              <div onClick={() => setShowDatepickerDate(!showDatepickerDate)}>
+                <Input
+                  id="invoiceDate"
+                  icon={Calendar}
+                  placeholder={invoiceDate}
+                />
+              </div>
+              <div
+                className={`position--absolute z-index__datepicker ${
+                  showDatepickerDate ? "display--block" : "display--none"
+                }`}
+              >
+                <DatePicker
+                  saveDates={(dateArr: Date[]) =>
+                    saveInvoiceDate(dateArr[0].toDateString())
+                  }
+                  clearDates={setInvoiceDate}
+                  multipleSelection={false}
+                />
+              </div>
+            </div>
           </div>
           <div className="info__container flex  flex--column flex__gap--1">
             <label className="font__weight--400" htmlFor="invoicePaymentDate">
               Payment Due Date
             </label>
-            <Input id="invoicePaymentDate" placeholder="" icon={Calendar} />
+            <div className="position--relative">
+              <div
+                onClick={() => setShowDatepickerDueDate(!showDatepickerDueDate)}
+              >
+                <Input
+                  id="invoicePaymentDate"
+                  placeholder={invoiceDueDate}
+                  icon={Calendar}
+                />
+              </div>
+              <div
+                className={`position--absolute  ${
+                  showDatepickerDueDate ? "display--block" : "display--none"
+                }`}
+              >
+                <DatePicker
+                  saveDates={(dateArr: Date[]) =>
+                    saveInvoiceDueDate(dateArr[0].toDateString())
+                  }
+                  clearDates={() => console.log()}
+                  multipleSelection={false}
+                />
+              </div>
+            </div>
           </div>
         </fieldset>
       </form>
@@ -64,27 +157,43 @@ const InfoForm = ({
             <label className="font__weight--400" htmlFor="invoiceStreet">
               Street
             </label>
-            <Input id="invoiceStreet" placeholder="" />
+            <Input
+              id="invoiceStreet"
+              placeholder=""
+              onChange={(value: string) => setStreet(value)}
+            />
           </div>
           <div className="info__container flex flex__gap--1">
             <div className="flex flex--column flex__gap--1">
               <label className="font__weight--400" htmlFor="invoiceCity">
                 City
               </label>
-              <Input id="invoiceCity" placeholder="" />
+              <Input
+                id="invoiceCity"
+                placeholder=""
+                onChange={(value: string) => setCity(value)}
+              />
             </div>
             <div className="flex flex--column flex__gap--1">
               <label className="font__weight--400" htmlFor="invoiceZipCode">
                 Zip code
               </label>
-              <Input id="invoiceZipCode" placeholder="" />
+              <Input
+                id="invoiceZipCode"
+                placeholder=""
+                onChange={(value: string) => setZipCode(value)}
+              />
             </div>
           </div>
           <div className="info__container flex flex--column flex__gap--1">
             <label className="font__weight--400" htmlFor="invoiceCountry">
               Country
             </label>
-            <Input id="invoiceCountry" placeholder="" />
+            <Input
+              id="invoiceCountry"
+              placeholder=""
+              onChange={(value: string) => setCountry(value)}
+            />
           </div>
         </fieldset>
       </form>
@@ -93,7 +202,7 @@ const InfoForm = ({
         name="createButton"
         text="Continue"
         buttonStyle="primary"
-        onClick={() => onFormChange()}
+        onClick={() => changePage()}
       />
     </div>
   );

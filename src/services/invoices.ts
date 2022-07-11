@@ -27,6 +27,7 @@ export const putInvoice = async (invoice: InvoiceInterface) => {
 };
 
 export const deleteInvoice = async (invoiceId: string) => {
+  debugger;
   const status = await axios
     .delete(
       `https://invoice-api-exercise.herokuapp.com/invoices?invoiceId=${invoiceId}`
@@ -34,4 +35,12 @@ export const deleteInvoice = async (invoiceId: string) => {
     .then((result) => result.status);
 
   return status;
+};
+
+export const addInvoice = async (invoice: InvoiceInterface) => {
+  const status = await axios
+    .post("https://invoice-api-exercise.herokuapp.com/invoices", invoice)
+    .then((result) => result.status);
+
+  console.log(status);
 };

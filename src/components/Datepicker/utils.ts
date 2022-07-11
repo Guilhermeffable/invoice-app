@@ -2,85 +2,86 @@ export const januaryIndex = 0;
 export const decemberIndex = 11;
 
 export interface DatepickerProps {
-    saveDates: Function;
-    clearDates: Function;
+  saveDates: Function;
+  clearDates: Function;
+  multipleSelection: boolean;
 }
 
 export const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 export const getDaysInMonth = (month: number, year: number) => {
-    var date = new Date(year, month, 1);
-    var days = [];
-    while (date.getMonth() === month) {
-        days.push(new Date(date));
-        date.setDate(date.getDate() + 1);
-    }
-    return days;
+  var date = new Date(year, month, 1);
+  var days = [];
+  while (date.getMonth() === month) {
+    days.push(new Date(date));
+    date.setDate(date.getDate() + 1);
+  }
+  return days;
 };
 
 export const getWeeks = (
-    prevMonth: Date[],
-    currentMonth: Date[],
-    nextMonth: Date[]
+  prevMonth: Date[],
+  currentMonth: Date[],
+  nextMonth: Date[]
 ): number[] => {
-    const arr = currentMonth.map((day) => day.getDate());
+  const arr = currentMonth.map((day) => day.getDate());
 
-    const firstDay = currentMonth[0].getDay();
+  const firstDay = currentMonth[0].getDay();
 
-    const lastDay = currentMonth[currentMonth.length - 1].getDay();
+  const lastDay = currentMonth[currentMonth.length - 1].getDay();
 
-    const prevMonthDays = prevMonth
-        .slice(prevMonth.length - firstDay, prevMonth.length)
-        .sort((a, b) => b.getDate() - a.getDate());
-    prevMonthDays.map((day) => arr.unshift(day.getDate()));
+  const prevMonthDays = prevMonth
+    .slice(prevMonth.length - firstDay, prevMonth.length)
+    .sort((a, b) => b.getDate() - a.getDate());
+  prevMonthDays.map((day) => arr.unshift(day.getDate()));
 
-    const nextMonthDays = nextMonth.slice(0, 6 - lastDay);
-    nextMonthDays.map((day) => arr.push(day.getDate()));
+  const nextMonthDays = nextMonth.slice(0, 6 - lastDay);
+  nextMonthDays.map((day) => arr.push(day.getDate()));
 
-    return arr;
+  return arr;
 };
 
 export const getDaysIndexes = (
-    firstDay: number,
-    lastDay: number,
-    weeks: number[]
+  firstDay: number,
+  lastDay: number,
+  weeks: number[]
 ): number[] => {
-    let firstIndex = 0;
-    let lastIndex = 0;
+  let firstIndex = 0;
+  let lastIndex = 0;
 
-    weeks.map((day, index) => {
-        if (day === firstDay) {
-            firstIndex = index;
-        }
+  weeks.map((day, index) => {
+    if (day === firstDay) {
+      firstIndex = index;
+    }
 
-        if (day === lastDay) {
-            lastIndex = index;
-        }
-    });
+    if (day === lastDay) {
+      lastIndex = index;
+    }
+  });
 
-    return [firstIndex, lastIndex];
+  return [firstIndex, lastIndex];
 };
 
 export const intervalRecursive = (
-    x: number,
-    y: number,
-    accum: number[] = []
+  x: number,
+  y: number,
+  accum: number[] = []
 ): number[] => {
-    if (x + 1 === y) return accum;
-    return intervalRecursive(x + 1, y, accum.concat(x + 1));
+  if (x + 1 === y) return accum;
+  return intervalRecursive(x + 1, y, accum.concat(x + 1));
 };

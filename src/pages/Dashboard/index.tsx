@@ -27,7 +27,7 @@ const Dashboard = () => {
     filterValues.canceledPill,
     filterValues.pendingPill,
   ]
-    .filter((x) => x != "")
+    .filter((x) => x !== "")
     .join(",");
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const Dashboard = () => {
       filterValues.canceledPill,
       filterValues.pendingPill,
     ]
-      .filter((x) => x != "")
+      .filter((x) => x !== "")
       .join(",");
 
     getInvoices(
@@ -111,14 +111,14 @@ const Dashboard = () => {
                 <li onClick={() => handleOnClick(invoice)} key={index}>
                   <Invoice
                     key={index}
-                    ID={invoice.invoiceId}
-                    date={invoice.invoicePaymentDate}
-                    client={invoice.client}
-                    description={invoice.invoiceDescription}
-                    price={invoice.items.reduce((accum, item) => {
+                    ID={invoice.invoiceId!}
+                    date={invoice.invoicePaymentDate!}
+                    client={invoice.client!}
+                    description={invoice.invoiceDescription!}
+                    price={invoice.items!.reduce((accum, item) => {
                       return accum + parseInt(item.price);
                     }, 0)}
-                    state={invoice.invoiceState}
+                    state={invoice.invoiceState!}
                   />
                 </li>
               );

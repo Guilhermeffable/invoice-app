@@ -11,7 +11,13 @@ import { InvoiceItem } from "../../utils/utils";
 import Button from "../Button";
 import Input from "../Input";
 
-const ItemForm = ({ onFormChange }: { onFormChange: Function }) => {
+const ItemForm = ({
+  onFormChange,
+  saveInfo,
+}: {
+  onFormChange: Function;
+  saveInfo: Function;
+}) => {
   const [numberOfItems, setNumberOfItems] = useState<number>(1);
   const [itemsArr, setItemsArr] = useState<InvoiceItem[]>([
     { name: "", quantity: "0", price: "0" },
@@ -41,7 +47,7 @@ const ItemForm = ({ onFormChange }: { onFormChange: Function }) => {
   const deleteItem = (index1: number) => {
     setItemsArr((prevState) =>
       prevState.filter((item, index) => {
-        return index != index1;
+        return index !== index1;
       })
     );
   };
@@ -130,7 +136,7 @@ const ItemForm = ({ onFormChange }: { onFormChange: Function }) => {
         text="Create"
         type="button"
         buttonStyle="primary"
-        onClick={addItem}
+        onClick={saveInfo(itemsArr)}
       />
     </div>
   );

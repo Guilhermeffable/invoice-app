@@ -185,7 +185,11 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
                   showDatepicker ? "display--block" : "display--none"
                 }`}
               >
-                <DatePicker saveDates={selectDate} clearDates={clearDates} />
+                <DatePicker
+                  saveDates={selectDate}
+                  clearDates={clearDates}
+                  multipleSelection={true}
+                />
               </div>
             </div>
 

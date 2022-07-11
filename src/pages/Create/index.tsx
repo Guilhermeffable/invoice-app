@@ -5,12 +5,26 @@ import InfoForm from "../../components/Forms/info-form";
 import ClientForm from "../../components/Forms/client-form";
 import ItemForm from "../../components/Forms/item-form";
 import Button from "../../components/Button";
-import { FORM_TYPE } from "../../utils/utils";
+import { Client, FORM_TYPE, InvoiceInterface } from "../../utils/utils";
+import { addInvoice } from "../../services/invoices";
 
 const CreateInvoice = () => {
   const [formType, setFormType] = useState<FORM_TYPE>(
     FORM_TYPE.INVOICE_DETAILS
   );
+  const [newInvoice, setNewInvoice] = useState<InvoiceInterface>({
+    invoiceDescription: "",
+    invoicePaymentDate: "",
+    invoiceState: "",
+    invoiceDate: "",
+    billingAddress: { city: "", country: "", street: "", zipCode: "" },
+    client: {
+      clientAddress: { city: "", country: "", street: "", zipCode: "" },
+      email: "",
+      name: "",
+    },
+    items: [],
+  });
 
   let invoiceDetailsClass = "active";
   let clientDetailsClass = "active";
@@ -47,13 +61,34 @@ const CreateInvoice = () => {
     }
   };
 
+  const saveGeneralInfo = (invoice: InvoiceInterface) => {
+    setNewInvoice(invoice);
+    newInvoice.invoiceDescription = invoice.invoiceDescription;
+    newInvoice.invoiceDate = invoice.invoiceDate;
+    newInvoice.invoicePaymentDate = invoice.invoicePaymentDate;
+    newInvoice.invoiceState = invoice.invoiceState;
+
+    newInvoice.billingAddress = invoice.billingAddress;
+  };
+
+  const saveClientInfo = (newClient: Client) => {
+    newClient;
+    newInvoice.client = newClient;
+  };
+
+  const saveInvoiceItems = (invoiceItems) => {
+    newInvoice.items = invoiceItems;
+
+    addInvoice(newInvoice);
+  };
+
   const formElement =
     formType === FORM_TYPE.INVOICE_DETAILS ? (
-      <InfoForm type={formType} onFormChange={changeForm} />
+      <InfoForm onFormChange={changeForm} saveInfo={saveGeneralInfo} />
     ) : formType === FORM_TYPE.CLIENT_DETAILS ? (
-      <ClientForm onFormChange={changeForm} />
+      <ClientForm onFormChange={changeForm} saveInfo={saveClientInfo} />
     ) : (
-      <ItemForm onFormChange={changeForm} />
+      <ItemForm onFormChange={changeForm} saveInfo={saveInvoiceItems} />
     );
 
   return (

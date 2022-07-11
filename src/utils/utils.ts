@@ -1,12 +1,12 @@
 export interface InvoiceInterface {
-  billingAddress: BillingAddress;
-  client: Client;
-  invoiceId: string;
-  invoiceDate: string;
-  invoiceDescription: string;
-  items: [InvoiceItem];
-  invoiceState: string;
-  invoicePaymentDate: string;
+  billingAddress?: BillingAddress;
+  client?: Client;
+  invoiceId?: string;
+  invoiceDate?: string;
+  invoiceDescription?: string;
+  items?: InvoiceItem[];
+  invoiceState?: string;
+  invoicePaymentDate?: string;
 }
 
 export interface BillingAddress {
