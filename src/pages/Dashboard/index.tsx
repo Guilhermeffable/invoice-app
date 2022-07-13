@@ -37,7 +37,8 @@ const Dashboard = () => {
       states,
       filterValues.dateBeginning,
       filterValues.dateEnd,
-      filterValues.clientName
+      filterValues.clientName,
+      filterValues.order
     ).then((result: []) =>
       setInvoices((prevState) => [...prevState, ...result])
     );
@@ -75,7 +76,8 @@ const Dashboard = () => {
       states,
       filterValues.dateBeginning,
       filterValues.dateEnd,
-      filterValues.clientName
+      filterValues.clientName,
+      filterValues.order
     ).then((result: []) => setInvoices(result));
   };
 

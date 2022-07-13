@@ -1,34 +1,76 @@
 @import "../../scss/settings/index";
 
 .detail {
-    section {
-        header {
-            @extend .detail__section;
+  section {
+    header {
+      gap: 1rem;
+
+      button {
+        flex-direction: row;
+
+        .flex--center {
+          justify-content: flex-end;
         }
+      }
+    }
+  }
+
+  &__article {
+    gap: 1rem;
+
+    div:first-child {
+      gap: 2rem;
+      @media (min-width: $breakpoint-mobile) {
+        flex-direction: column;
+      }
     }
 
-    &__section {
-        gap: 1rem;
+    button {
+      flex-direction: row;
 
-        button {
-            flex-direction: row;
-
-            .flex--center {
-                justify-content: flex-end;
-            }
-        }
+      .flex--center {
+        justify-content: flex-end;
+      }
     }
 
-    footer {
-        margin: 2rem -1.5rem -1.5rem;
-        border-radius: 0px 0px 10px 10px;
-        padding: 1.5rem;
+    @media (min-width: $breakpoint-mobile) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__item-titles {
+    @extend .detail__service;
+
+    @media (max-width: $breakpoint-mobile) {
+      display: none;
+    }
+  }
+
+  &__service {
+    p {
+      @media (min-width: $breakpoint-mobile) {
+        flex-basis: 25%;
+      }
     }
 
-    &__button {
-        button {
-            background-color: $color-danger;
-            width: 280px;
-        }
+    @media (min-width: $breakpoint-mobile) {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
     }
+  }
+
+  footer {
+    margin: 2rem -1.5rem -1.5rem;
+    border-radius: 0px 0px 10px 10px;
+    padding: 1.5rem;
+  }
+
+  &__button {
+    button {
+      background-color: $color-danger;
+      width: 280px;
+    }
+  }
 }

@@ -8,12 +8,14 @@ import "./_filter.scss";
 import { useEffect } from "react";
 import { FilterValues, initialFilterValues } from "../../utils/utils";
 import { FilterProps } from "./utils";
+import Select from "../Select";
 
 const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
   const [showDatepicker, setShowDatepicker] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [showF, setShowF] = useState<boolean>(showFilters);
-  const [filterValues, setFilterValues] = useState<object>(initialFilterValues);
+  const [filterValues, setFilterValues] =
+    useState<FilterValues>(initialFilterValues);
 
   useEffect(() => {
     setShowF(showFilters);
@@ -45,19 +47,23 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
 
     setFilterValues({
       ...filterValues,
-      dateFrom: dateFrom,
-      dateTo: dateTo,
+      dateBeginning: dateFrom,
+      dateEnd: dateTo,
     });
 
     setSelectedDate(dates.map((date) => date.toDateString()).join(" to "));
+  };
+
+  const setState = (state: string) => {
+    setFilterValues({ ...filterValues, order: state });
   };
 
   const clearDates = () => {
     setSelectedDate("");
     setFilterValues({
       ...filterValues,
-      dateFrom: "",
-      dateTo: "",
+      dateBeginning: "",
+      dateEnd: "",
     });
   };
 
@@ -124,10 +130,10 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
               <label className="filter__label" htmlFor="order">
                 Order by:
               </label>
-              <Input
-                id="order"
-                placeholder="Select a field to order by"
-                icon={Chevron}
+              <Select
+                defaultValue="InvoiceId - ASC"
+                options={["InvoiceId - ASC", "InvoiceId - DESC"]}
+                onSelect={(value: string) => setState(value)}
               />
             </div>
             <div className="flex flex--column">

@@ -3,7 +3,7 @@
 .info {
   h2 {
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 0.75rem;
 
     border-bottom: 1px solid $color-grey-60;
 
@@ -24,6 +24,10 @@
         height: 5px;
       }
     }
+  }
+
+  &__datepicker {
+    z-index: $z-modal;
   }
 
   &__footer {

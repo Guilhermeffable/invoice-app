@@ -7,11 +7,12 @@ export const getInvoices = async (
   states,
   dateFrom,
   dateTo,
-  clientName
+  clientName,
+  order
 ) => {
   const invoices = await axios
     .get(
-      `https://invoice-api-exercise.herokuapp.com/invoices?lastIndex=${lastIndex}&numItems=${numItems}&invoiceState=${states}&dateFrom=${dateFrom}&dateTo=${dateTo}&client=${clientName}`
+      `https://invoice-api-exercise.herokuapp.com/invoices?lastIndex=${lastIndex}&numItems=${numItems}&invoiceState=${states}&dateFrom=${dateFrom}&dateTo=${dateTo}&client=${clientName}&orderBy=${order}`
     )
     .then((result) => result.data);
 

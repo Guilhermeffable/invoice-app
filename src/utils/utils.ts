@@ -35,6 +35,7 @@ export interface FilterValues {
   dateBeginning: string;
   dateEnd: string;
   clientName: string;
+  order: string;
 }
 
 export const initialFilterValues: FilterValues = {
@@ -44,6 +45,7 @@ export const initialFilterValues: FilterValues = {
   dateBeginning: "",
   dateEnd: "",
   clientName: "",
+  order: "",
 };
 
 export enum FORM_TYPE {

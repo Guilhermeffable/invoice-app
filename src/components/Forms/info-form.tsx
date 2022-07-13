@@ -4,6 +4,7 @@ import { FORM_TYPE, InvoiceInterface } from "../../utils/utils";
 import Button from "../Button";
 import DatePicker from "../Datepicker";
 import Input from "../Input";
+import Select from "../Select";
 import "./_info.scss";
 
 const InfoForm = ({
@@ -13,10 +14,11 @@ const InfoForm = ({
   onFormChange: Function;
   saveInfo: Function;
 }) => {
+  const [state, setState] = useState<string>("paid");
   const [invoice, setInvoice] = useState<InvoiceInterface>({
     invoiceDescription: "",
     invoicePaymentDate: "",
-    invoiceState: "",
+    invoiceState: state,
     invoiceDate: "",
     billingAddress: { city: "", country: "", street: "", zipCode: "" },
   });
@@ -30,10 +32,6 @@ const InfoForm = ({
 
   const setDescription = (value: string) => {
     invoice.invoiceDescription = value;
-  };
-
-  const setState = (value: string) => {
-    invoice.invoiceState = value;
   };
 
   const setStreet = (value: string) => {
@@ -81,22 +79,21 @@ const InfoForm = ({
               onChange={(value: string) => setDescription(value)}
             />
           </div>
-          <div className="info__container flex  flex--column flex__gap--1">
+          <div className="info__container flex flex--column flex__gap--1">
             <label className="font__weight--400" htmlFor="invoiceState">
               Invoice state
             </label>
-            <Input
-              id="invoiceState"
-              placeholder=""
-              icon={Chevron}
-              onChange={(value: string) => setState(value)}
+            <Select
+              defaultValue="paid"
+              options={["paid", "canceled", "pending"]}
+              onSelect={(value: string) => setState(value)}
             />
           </div>
           <div className="info__container flex  flex--column flex__gap--1 ">
             <label className="font__weight--400" htmlFor="invoiceDate">
               Invoice date
             </label>
-            <div className="position--relative">
+            <div className="info__datepicker position--relative">
               <div onClick={() => setShowDatepickerDate(!showDatepickerDate)}>
                 <Input
                   id="invoiceDate"
@@ -105,7 +102,7 @@ const InfoForm = ({
                 />
               </div>
               <div
-                className={`position--absolute z-index__datepicker ${
+                className={`position--absolute ${
                   showDatepickerDate ? "display--block" : "display--none"
                 }`}
               >
@@ -123,7 +120,7 @@ const InfoForm = ({
             <label className="font__weight--400" htmlFor="invoicePaymentDate">
               Payment Due Date
             </label>
-            <div className="position--relative">
+            <div className="info__datepicker position--relative">
               <div
                 onClick={() => setShowDatepickerDueDate(!showDatepickerDueDate)}
               >

@@ -1,15 +1,21 @@
 .display {
-    &--none {
-        display: none;
-    }
+  &--none {
+    display: none;
+  }
 
-    &--block {
-        display: block;
-    }
+  &--block {
+    display: block;
+  }
 
-    &--hide-sm {
-        @media (max-width: $breakpoint-mobile) {
-            display: none;
-        }
+  &--hide-sm {
+    @media (max-width: $breakpoint-mobile) {
+      display: none;
     }
+  }
+
+  &--hide-desktop {
+    @media (min-width: $breakpoint-mobile) {
+      display: none;
+    }
+  }
 }
