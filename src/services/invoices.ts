@@ -7,11 +7,12 @@ export const getInvoices = async (
   states,
   dateFrom,
   dateTo,
-  clientName
+  clientName,
+  order
 ) => {
   const invoices = await axios
     .get(
-      `https://invoice-api-exercise.herokuapp.com/invoices?lastIndex=${lastIndex}&numItems=${numItems}&invoiceState=${states}&dateFrom=${dateFrom}&dateTo=${dateTo}&client=${clientName}`
+      `https://invoice-api-exercise.herokuapp.com/invoices?lastIndex=${lastIndex}&numItems=${numItems}&invoiceState=${states}&dateFrom=${dateFrom}&dateTo=${dateTo}&client=${clientName}&orderBy=${order}`
     )
     .then((result) => result.data);
 
@@ -27,6 +28,7 @@ export const putInvoice = async (invoice: InvoiceInterface) => {
 };
 
 export const deleteInvoice = async (invoiceId: string) => {
+  debugger;
   const status = await axios
     .delete(
       `https://invoice-api-exercise.herokuapp.com/invoices?invoiceId=${invoiceId}`
@@ -34,4 +36,12 @@ export const deleteInvoice = async (invoiceId: string) => {
     .then((result) => result.status);
 
   return status;
+};
+
+export const addInvoice = async (invoice: InvoiceInterface) => {
+  const status = await axios
+    .post("https://invoice-api-exercise.herokuapp.com/invoices", invoice)
+    .then((result) => result.status);
+
+  console.log(status);
 };

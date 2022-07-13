@@ -5,19 +5,21 @@ import Dashboard from "./pages/Dashboard/index";
 import Navbar from "./components/Navbar/index";
 import "./scss/main.scss";
 import InvoiceDetail from "./pages/Detail";
+import CreateInvoice from "./pages/Create";
 
 const App = () => {
-    return (
-        <Fragment>
-            <Navbar />
-            <Router>
-                <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/invoice" element={<InvoiceDetail />} />
-                </Routes>
-            </Router>
-        </Fragment>
-    );
+  return (
+    <Fragment>
+      <Navbar />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/invoice" element={<InvoiceDetail />} />
+          <Route path="/create" element={<CreateInvoice />} />
+        </Routes>
+      </Router>
+    </Fragment>
+  );
 };
 
 ReactDOM.render(<App />, document.querySelector("#root"));

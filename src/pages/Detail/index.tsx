@@ -19,29 +19,29 @@ const InvoiceDetail = () => {
     state as InvoiceInterface
   );
   const [invoiceDescription, setInvoiceDescription] = useState<string>(
-    invoice.invoiceDescription
+    invoice.invoiceDescription!
   );
-  const [clientName, setClientName] = useState<string>(invoice.client.name);
-  const [clientEmail, setClientEmail] = useState<string>(invoice.client.email);
+  const [clientName, setClientName] = useState<string>(invoice.client!.name);
+  const [clientEmail, setClientEmail] = useState<string>(invoice.client!.email);
   const [clientStreet, setClientStreet] = useState<string>(
-    invoice.client.clientAddress.street
+    invoice.client!.clientAddress.street
   );
   const [clientZipCode, setClientZipCode] = useState<string>(
-    invoice.client.clientAddress.zipCode
+    invoice.client!.clientAddress.zipCode
   );
   const [clientCountry, setClientCountry] = useState<string>(
-    invoice.client.clientAddress.country
+    invoice.client!.clientAddress.country
   );
 
   useEffect(() => {
     putInvoice(invoice);
   }, [
     invoice.invoiceDescription,
-    invoice.client.name,
-    invoice.client.email,
-    invoice.client.clientAddress.street,
-    invoice.client.clientAddress.zipCode,
-    invoice.client.clientAddress.country,
+    invoice.client!.name,
+    invoice.client!.email,
+    invoice.client!.clientAddress.street,
+    invoice.client!.clientAddress.zipCode,
+    invoice.client!.clientAddress.country,
   ]);
 
   const saveDescription = () => {
@@ -55,37 +55,37 @@ const InvoiceDetail = () => {
   const saveClientInfo = () => {
     setEditClientInfo(!editClientInfo);
 
-    invoice.client.name = clientName;
-    invoice.client.email = clientEmail;
-    invoice.client.clientAddress.street = clientStreet;
-    invoice.client.clientAddress.zipCode = clientZipCode;
-    invoice.client.clientAddress.country = clientCountry;
+    invoice.client!.name = clientName;
+    invoice.client!.email = clientEmail;
+    invoice.client!.clientAddress.street = clientStreet;
+    invoice.client!.clientAddress.zipCode = clientZipCode;
+    invoice.client!.clientAddress.country = clientCountry;
 
     setInvoice(invoice);
   };
 
   const saveItemsName = (index, value) => {
-    invoice.items[index].name = value;
+    invoice.items![index].name = value;
   };
 
   const saveItemsQuantity = (index, value) => {
-    invoice.items[index].quantity = value;
+    invoice.items![index].quantity = value;
   };
 
   const saveItemsPrice = (index, value) => {
-    invoice.items[index].price = value;
+    invoice.items![index].price = value;
   };
 
   return (
     <div className="container detail flex flex--column flex__gap--1">
       <header className="flex flex--column flex__gap--2">
-        <Breadcrumb />
+        <Breadcrumb title="Invoice details" />
         <h2>View Invoice Details</h2>
       </header>
       <section className="card background--neutral-03 flex flex--space-between">
         <div className="detail__state flex flex--start-X flex--column ">
           <p>State</p>
-          <Status type={invoice.invoiceState} />
+          <Status type={invoice.invoiceState!} />
         </div>
         <Button
           name="markPaid"
@@ -96,7 +96,7 @@ const InvoiceDetail = () => {
         />
       </section>
       <section className="card flex flex--column flex__gap--2">
-        <header className="detail__section flex flex--column">
+        <header className="flex flex--column">
           <div className=" flex flex--space-between">
             <p className="font__weight--600">{invoice.invoiceId}</p>
             <Button
@@ -121,37 +121,28 @@ const InvoiceDetail = () => {
             </Fragment>
           )}
         </header>
-        <article className="detail__container flex flex--column flex__gap--2">
+        <article className="detail__article flex flex--column flex__gap--2">
           <div className="detail__section flex">
             <div className="detail__info">
               <p className="font__weight--600">Invoice Date</p>
-              <p>{new Date(invoice.invoiceDate).toDateString()}</p>
+              <p>{new Date(invoice.invoiceDate!).toDateString()}</p>
             </div>
             <div className="detail__info">
               <p className="font__weight--600">Payment due</p>
-              <p>{new Date(invoice.invoicePaymentDate).toDateString()}</p>
+              <p>{new Date(invoice.invoicePaymentDate!).toDateString()}</p>
             </div>
           </div>
           <div className="detail__section flex flex--column">
             <p className="font__weight--600">Billing Address</p>
             <div className="detail__info">
-              <p>{invoice.billingAddress.street}</p>
-              <p>{invoice.billingAddress.zipCode}</p>
-              <p>{invoice.billingAddress.country}</p>
+              <p>{invoice.billingAddress!.street}</p>
+              <p>{invoice.billingAddress!.zipCode}</p>
+              <p>{invoice.billingAddress!.country}</p>
             </div>
           </div>
           <div className="detail__section flex flex--column">
-            <div className=" flex flex--space-between">
-              <p className="font__weight--600">Client's info</p>
-              <Button
-                type="button"
-                name="editClient"
-                text={!editClientInfo ? "Edit" : "Save"}
-                buttonStyle={"inline"}
-                icon={!editClientInfo ? Edit : Plus}
-                onClick={saveClientInfo}
-              />
-            </div>
+            <p className="font__weight--600">Client's info</p>
+
             {!editClientInfo ? (
               <div className="flex flex--column flex__gap--1">
                 <div className="detail__info">
@@ -205,6 +196,16 @@ const InvoiceDetail = () => {
               </form>
             )}
           </div>
+          <div className="display--hide-sm">
+            <Button
+              type="button"
+              name="editClient"
+              text={!editClientInfo ? "Edit" : "Save"}
+              buttonStyle={"inline"}
+              icon={!editClientInfo ? Edit : Plus}
+              onClick={saveClientInfo}
+            />
+          </div>
         </article>
       </section>
       <section className="card">
@@ -219,17 +220,51 @@ const InvoiceDetail = () => {
           />
         </header>
         <article className="detail__container flex flex--column flex__gap--1">
-          {invoice.items.map((item, index) => {
+          <div className="detail__item-titles display--hide-mobile flex flex--space-between">
+            <p className="font__weight--600">Item Name</p>
+
+            <div>
+              <p className="font__weight--600">Quantity</p>
+            </div>
+            <div>
+              <p className="font__weight--600">Price</p>
+            </div>
+            <div>
+              <p className="font__weight--600">Total</p>
+            </div>
+          </div>
+          {invoice.items!.map((item, index) => {
             return !editInvoiceItems ? (
-              <div key={index} className="flex flex--space-between">
+              <div key={index} className="flex flex--space-between ">
                 <div className="detail__service flex flex--column">
                   <p className="font__weight--600">{item.name}</p>
-                  <p>{`${item.quantity} x ${(
+                  <p className="display--hide-desktop">{`${item.quantity} x ${(
                     Math.round(parseInt(item.price) * 100) / 100
                   ).toFixed(2)}€`}</p>
+                  <div className="display--hide-sm">
+                    <p>{item.quantity}</p>
+                  </div>
+                  <div className="display--hide-sm">
+                    <p>
+                      {(Math.round(parseInt(item.price) * 100) / 100).toFixed(
+                        2
+                      )}
+                      €
+                    </p>
+                  </div>
+                  <div className="display--hide-sm">
+                    <p className="font__weight--600">
+                      {(
+                        Math.round(
+                          parseInt(item.price) * parseInt(item.quantity) * 100
+                        ) / 100
+                      ).toFixed(2)}
+                      €
+                    </p>
+                  </div>
                 </div>
 
-                <div className="detail__price">
+                <div className="detail__price display--hide-desktop">
                   <p className="font__weight--600">
                     {(
                       Math.round(
@@ -279,7 +314,7 @@ const InvoiceDetail = () => {
           <p className="font__weight--600">
             {(
               Math.round(
-                invoice.items.reduce((accum, item) => {
+                invoice.items!.reduce((accum, item) => {
                   return accum + parseInt(item.price) * parseInt(item.quantity);
                 }, 0) * 100
               ) / 100
@@ -294,7 +329,7 @@ const InvoiceDetail = () => {
           type="button"
           text="Delete"
           name="Delete"
-          onClick={() => deleteInvoice(invoice.invoiceId.split("#")[0])}
+          onClick={() => deleteInvoice(invoice.invoiceId!.split("#")[0])}
         />
       </div>
     </div>
