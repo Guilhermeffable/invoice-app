@@ -103,7 +103,7 @@ const InfoForm = ({
               </div>
               <div
                 className={`position--absolute ${
-                  showDatepickerDate ? "display--block" : "display--none"
+                  !showDatepickerDate ? "display--none" : ""
                 }`}
               >
                 <DatePicker
@@ -132,7 +132,7 @@ const InfoForm = ({
               </div>
               <div
                 className={`position--absolute  ${
-                  showDatepickerDueDate ? "display--block" : "display--none"
+                  !showDatepickerDueDate ? "display--none" : ""
                 }`}
               >
                 <DatePicker

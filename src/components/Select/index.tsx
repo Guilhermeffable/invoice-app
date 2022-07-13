@@ -21,7 +21,7 @@ const Select = ({
   };
 
   return (
-    <div className="select" data-active={showOptions ? "active" : "disabled"}>
+    <div className={`select ${showOptions ? "select__active" : ""}`}>
       <div onClick={() => setShowOptions(!showOptions)}>
         <Input
           id="invoiceState"

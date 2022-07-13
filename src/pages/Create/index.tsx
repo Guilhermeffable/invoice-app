@@ -5,7 +5,12 @@ import InfoForm from "../../components/Forms/info-form";
 import ClientForm from "../../components/Forms/client-form";
 import ItemForm from "../../components/Forms/item-form";
 import Button from "../../components/Button";
-import { Client, FORM_TYPE, InvoiceInterface } from "../../utils/utils";
+import {
+  BreadcrumbLink,
+  Client,
+  FORM_TYPE,
+  InvoiceInterface,
+} from "../../utils/utils";
 import { addInvoice } from "../../services/invoices";
 
 const CreateInvoice = () => {
@@ -25,6 +30,10 @@ const CreateInvoice = () => {
     },
     items: [],
   });
+
+  const [breadcrumbItems, setBreadcrumbItems] = useState<BreadcrumbLink[]>([
+    { title: "Create Invoice", url: "" },
+  ]);
 
   let invoiceDetailsClass = "active";
   let clientDetailsClass = "active";
@@ -72,7 +81,6 @@ const CreateInvoice = () => {
   };
 
   const saveClientInfo = (newClient: Client) => {
-    newClient;
     newInvoice.client = newClient;
   };
 
@@ -82,19 +90,31 @@ const CreateInvoice = () => {
     addInvoice(newInvoice);
   };
 
-  const formElement =
-    formType === FORM_TYPE.INVOICE_DETAILS ? (
-      <InfoForm onFormChange={changeForm} saveInfo={saveGeneralInfo} />
-    ) : formType === FORM_TYPE.CLIENT_DETAILS ? (
-      <ClientForm onFormChange={changeForm} saveInfo={saveClientInfo} />
-    ) : (
-      <ItemForm onFormChange={changeForm} saveInfo={saveInvoiceItems} />
-    );
+  let formElement;
+  switch (formType) {
+    case FORM_TYPE.INVOICE_DETAILS:
+      formElement = (
+        <InfoForm onFormChange={changeForm} saveInfo={saveGeneralInfo} />
+      );
+      break;
+
+    case FORM_TYPE.CLIENT_DETAILS:
+      formElement = (
+        <ClientForm onFormChange={changeForm} saveInfo={saveClientInfo} />
+      );
+      break;
+
+    case FORM_TYPE.ITEMS_DETAILS:
+      formElement = (
+        <ItemForm onFormChange={changeForm} saveInfo={saveInvoiceItems} />
+      );
+      break;
+  }
 
   return (
-    <div className="container create flex flex--column flex__gap--2">
+    <section className="container create flex flex--column flex__gap--2">
       <header className="flex flex--column flex__gap--2">
-        <Breadcrumb title="Create Invoice" />
+        <Breadcrumb urls={breadcrumbItems} />
         <h2>Create new invoice</h2>
         <nav>
           <ul className="create__nav flex flex--space-between">
@@ -105,7 +125,7 @@ const CreateInvoice = () => {
         </nav>
       </header>
       <section>{formElement}</section>
-    </div>
+    </section>
   );
 };
 

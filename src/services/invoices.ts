@@ -1,18 +1,10 @@
 import axios from "axios";
-import { InvoiceInterface } from "../utils/utils";
+import { InvoiceInterface, InvoiceSearch } from "../utils/utils";
 
-export const getInvoices = async (
-  lastIndex,
-  numItems,
-  states,
-  dateFrom,
-  dateTo,
-  clientName,
-  order
-) => {
+export const getInvoices = async (invoiceSearch: InvoiceSearch) => {
   const invoices = await axios
     .get(
-      `https://invoice-api-exercise.herokuapp.com/invoices?lastIndex=${lastIndex}&numItems=${numItems}&invoiceState=${states}&dateFrom=${dateFrom}&dateTo=${dateTo}&client=${clientName}&orderBy=${order}`
+      `https://invoice-api-exercise.herokuapp.com/invoices?lastIndex=${invoiceSearch.lastIndex}&numItems=${invoiceSearch.lastNum}&invoiceState=${invoiceSearch.states}&dateFrom=${invoiceSearch.dateBeggining}&dateTo=${invoiceSearch.dateEnd}&client=${invoiceSearch.clientName}&orderBy=${invoiceSearch.order}`
     )
     .then((result) => result.data);
 
@@ -28,7 +20,6 @@ export const putInvoice = async (invoice: InvoiceInterface) => {
 };
 
 export const deleteInvoice = async (invoiceId: string) => {
-  debugger;
   const status = await axios
     .delete(
       `https://invoice-api-exercise.herokuapp.com/invoices?invoiceId=${invoiceId}`
@@ -42,6 +33,4 @@ export const addInvoice = async (invoice: InvoiceInterface) => {
   const status = await axios
     .post("https://invoice-api-exercise.herokuapp.com/invoices", invoice)
     .then((result) => result.status);
-
-  console.log(status);
 };
