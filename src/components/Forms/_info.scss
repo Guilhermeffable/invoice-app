@@ -26,6 +26,79 @@
     }
   }
 
+  &__form-section {
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  &__client-generic {
+    .info__container:first-child {
+      @media (min-width: $breakpoint-tablet) {
+        flex-basis: 33%;
+      }
+    }
+
+    .info__container:nth-child(2) {
+      @media (min-width: $breakpoint-tablet) {
+        flex-basis: 66%;
+      }
+    }
+  }
+
+  &__client-address {
+    @media (min-width: $breakpoint-tablet) {
+      flex-wrap: wrap;
+    }
+
+    .info__container:first-child {
+      @media (min-width: $breakpoint-tablet) {
+        flex-basis: 100%;
+      }
+    }
+
+    .info__container:nth-child(2) {
+      flex-basis: 50%;
+      @media (min-width: $breakpoint-tablet) {
+        flex-basis: calc(100% / 3);
+      }
+    }
+
+    .info__container:nth-child(3) {
+      flex-basis: 50%;
+      @media (min-width: $breakpoint-tablet) {
+        flex-basis: calc(100% / 3);
+      }
+    }
+    .info__container:nth-child(4) {
+      @media (min-width: $breakpoint-tablet) {
+        flex-basis: 29%;
+      }
+    }
+  }
+
+  &__item-list {
+    .info__container:first-child {
+      @media (min-width: $breakpoint-tablet) {
+        flex-basis: 50%;
+      }
+    }
+    .info__container:nth-child(2) {
+      @media (min-width: $breakpoint-tablet) {
+        flex-basis: 50%;
+      }
+    }
+
+    .info__container:nth-child(3) {
+      @media (min-width: $breakpoint-tablet) {
+        flex-basis: 50%;
+      }
+    }
+  }
+
   &__datepicker {
     z-index: $z-modal;
   }

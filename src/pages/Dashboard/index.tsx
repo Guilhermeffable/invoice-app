@@ -11,6 +11,7 @@ import {
   FilterValues,
   initialFilterValues,
   InvoiceInterface,
+  InvoiceSearch,
 } from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
 
@@ -30,16 +31,18 @@ const Dashboard = () => {
     .filter((x) => x !== "")
     .join(",");
 
+  const invoiceSearch: InvoiceSearch = {
+    lastIndex: lastIndex,
+    lastNum: lastNum,
+    states: states,
+    dateBeggining: filterValues.dateBeginning,
+    dateEnd: filterValues.dateEnd,
+    clientName: filterValues.clientName,
+    order: filterValues.order,
+  };
+
   useEffect(() => {
-    getInvoices(
-      lastIndex,
-      lastNum,
-      states,
-      filterValues.dateBeginning,
-      filterValues.dateEnd,
-      filterValues.clientName,
-      filterValues.order
-    ).then((result: []) =>
+    getInvoices(invoiceSearch).then((result: []) =>
       setInvoices((prevState) => [...prevState, ...result])
     );
   }, [lastIndex]);
@@ -70,15 +73,10 @@ const Dashboard = () => {
       .filter((x) => x !== "")
       .join(",");
 
-    getInvoices(
-      0,
-      5,
-      states,
-      filterValues.dateBeginning,
-      filterValues.dateEnd,
-      filterValues.clientName,
-      filterValues.order
-    ).then((result: []) => setInvoices(result));
+    invoiceSearch.lastIndex = 0;
+    invoiceSearch.lastNum = 5;
+
+    getInvoices(invoiceSearch).then((result: []) => setInvoices(result));
   };
 
   return (
@@ -131,9 +129,7 @@ const Dashboard = () => {
         ""
       )}
 
-      <aside
-        className={`${!showFilters ? "display--none" : "display--block"} `}
-      >
+      <aside className={`${!showFilters ? "display--none" : ""} `}>
         <Filters
           showFilters={showFilters}
           setFilters={setFilters}

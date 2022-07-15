@@ -49,44 +49,46 @@ const ClientForm = ({
     <div className="card info flex flex--column flex__gap--1">
       <h2 className="font__weight--300">Generic Information</h2>
       <form>
-        <fieldset className="flex flex--column flex__gap--2">
-          <div className="info__container flex flex--column flex__gap--1">
-            <label className="font__weight--400" htmlFor="clientName">
-              Name
-            </label>
-            <Input
-              id="clientName"
-              placeholder=""
-              onChange={(value: string) => saveName(value)}
-            />
-          </div>
-          <div className="info__container flex  flex--column flex__gap--1">
-            <label className="font__weight--400" htmlFor="clientEmail">
-              Email
-            </label>
-            <Input
-              id="clientEmail"
-              placeholder=""
-              onChange={(value: string) => saveEmail(value)}
-            />
-          </div>
+        <fieldset>
+          <section className="info__form-section  info__client-generic flex  flex__gap--1">
+            <div className="info__container flex flex--column flex__gap--1">
+              <label className="font__weight--400" htmlFor="clientName">
+                Name
+              </label>
+              <Input
+                id="clientName"
+                placeholder=""
+                onChange={(value: string) => saveName(value)}
+              />
+            </div>
+            <div className="info__container flex  flex--column flex__gap--1">
+              <label className="font__weight--400" htmlFor="clientEmail">
+                Email
+              </label>
+              <Input
+                id="clientEmail"
+                placeholder=""
+                onChange={(value: string) => saveEmail(value)}
+              />
+            </div>
+          </section>
         </fieldset>
       </form>
       <h2 className="font__weight--300">Billing Address Information</h2>
       <form>
-        <fieldset className="flex flex--column flex__gap--2">
-          <div className="info__container flex  flex--column flex__gap--1">
-            <label className="font__weight--400" htmlFor="clientStreet">
-              Street
-            </label>
-            <Input
-              id="clientStreet"
-              placeholder=""
-              onChange={(value: string) => saveStreet(value)}
-            />
-          </div>
-          <div className="info__container flex flex__gap--1">
-            <div className="flex flex--column flex__gap--1">
+        <fieldset>
+          <section className="info__form-section info__client-address flex flex__gap--1">
+            <div className="info__container flex  flex--column flex__gap--1">
+              <label className="font__weight--400" htmlFor="clientStreet">
+                Street
+              </label>
+              <Input
+                id="clientStreet"
+                placeholder=""
+                onChange={(value: string) => saveStreet(value)}
+              />
+            </div>
+            <div className="info__container flex flex--column flex__gap--1">
               <label className="font__weight--400" htmlFor="clientCity">
                 City
               </label>
@@ -96,7 +98,7 @@ const ClientForm = ({
                 onChange={(value: string) => saveCity(value)}
               />
             </div>
-            <div className="flex flex--column flex__gap--1">
+            <div className="info__container flex flex--column flex__gap--1">
               <label className="font__weight--400" htmlFor="clientZipCode">
                 Zip code
               </label>
@@ -106,17 +108,17 @@ const ClientForm = ({
                 onChange={(value: string) => saveZipCode(value)}
               />
             </div>
-          </div>
-          <div className="info__container flex flex--column flex__gap--1">
-            <label className="font__weight--400" htmlFor="clientCountry">
-              Country
-            </label>
-            <Input
-              id="clientCountry"
-              placeholder=""
-              onChange={(value: string) => saveCountry(value)}
-            />
-          </div>
+            <div className="info__container flex flex--column flex__gap--1">
+              <label className="font__weight--400" htmlFor="clientCountry">
+                Country
+              </label>
+              <Input
+                id="clientCountry"
+                placeholder=""
+                onChange={(value: string) => saveCountry(value)}
+              />
+            </div>
+          </section>
         </fieldset>
       </form>
       <Button

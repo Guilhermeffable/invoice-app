@@ -59,41 +59,48 @@ const ItemForm = ({
         return (
           <Fragment>
             <form key={item.name}>
-              <fieldset className="flex flex--column flex__gap--2">
-                <div className="info__container flex  flex--column flex__gap--1">
-                  <label className="font__weight--400" htmlFor="itemName">
-                    Name
-                  </label>
-                  <Input
-                    id="itemName"
-                    placeholder={item.name}
-                    onChange={(value: string) => saveItemsName(index, value)}
-                  />
-                </div>
-                <div className="info__container flex flex__gap--1">
-                  <div className="flex flex--column flex__gap--1">
-                    <label className="font__weight--400" htmlFor="itemQuantity">
-                      Quantity
+              <fieldset>
+                <section className="info__form-section info__item-list flex  flex__gap--2">
+                  <div className="info__container flex  flex--column flex__gap--1">
+                    <label className="font__weight--400" htmlFor="itemName">
+                      Name
                     </label>
                     <Input
-                      id="itemQuantity"
-                      placeholder={item.quantity}
-                      onChange={(value: string) =>
-                        saveItemsQuantity(index, value)
-                      }
+                      id="itemName"
+                      placeholder={item.name}
+                      onChange={(value: string) => saveItemsName(index, value)}
                     />
                   </div>
-                  <div className="flex flex--column flex__gap--1">
-                    <label className="font__weight--400" htmlFor="itemPrice">
-                      Price
-                    </label>
-                    <Input
-                      id="itemPrice"
-                      placeholder={item.price}
-                      onChange={(value: string) => saveItemsPrice(index, value)}
-                    />
+                  <div className="info__container flex flex__gap--1">
+                    <div className="flex flex--column flex__gap--1">
+                      <label
+                        className="font__weight--400"
+                        htmlFor="itemQuantity"
+                      >
+                        Quantity
+                      </label>
+                      <Input
+                        id="itemQuantity"
+                        placeholder={item.quantity}
+                        onChange={(value: string) =>
+                          saveItemsQuantity(index, value)
+                        }
+                      />
+                    </div>
+                    <div className="flex flex--column flex__gap--1">
+                      <label className="font__weight--400" htmlFor="itemPrice">
+                        Price
+                      </label>
+                      <Input
+                        id="itemPrice"
+                        placeholder={item.price}
+                        onChange={(value: string) =>
+                          saveItemsPrice(index, value)
+                        }
+                      />
+                    </div>
                   </div>
-                </div>
+                </section>
               </fieldset>
             </form>
             <div className="info__footer flex flex--space-between">
@@ -117,6 +124,7 @@ const ItemForm = ({
                 onClick={() => deleteItem(index)}
               />
             </div>
+
             <hr />
           </Fragment>
         );
@@ -136,7 +144,7 @@ const ItemForm = ({
         text="Create"
         type="button"
         buttonStyle="primary"
-        onClick={saveInfo(itemsArr)}
+        onClick={() => saveInfo(itemsArr)}
       />
     </div>
   );

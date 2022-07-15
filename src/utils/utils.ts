@@ -38,6 +38,21 @@ export interface FilterValues {
   order: string;
 }
 
+export interface BreadcrumbLink {
+  title: string;
+  url: string;
+}
+
+export interface InvoiceSearch {
+  lastIndex: number;
+  lastNum: number;
+  states: string;
+  dateBeggining: string;
+  dateEnd: string;
+  clientName: string;
+  order: string;
+}
+
 export const initialFilterValues: FilterValues = {
   paidPill: "",
   canceledPill: "",

@@ -5,7 +5,7 @@ import Breadcrumb from "../../components/Breadcrumb/index";
 import Status from "../../components/Status";
 import Button from "../../components/Button";
 import { useLocation } from "react-router-dom";
-import { InvoiceInterface } from "../../utils/utils";
+import { BreadcrumbLink, InvoiceInterface } from "../../utils/utils";
 import Input from "../../components/Input";
 import { deleteInvoice, putInvoice } from "../../services/invoices";
 
@@ -32,6 +32,10 @@ const InvoiceDetail = () => {
   const [clientCountry, setClientCountry] = useState<string>(
     invoice.client!.clientAddress.country
   );
+
+  const [breadcrumbItems, setBreadcrumbItems] = useState<BreadcrumbLink[]>([
+    { title: "Invoice Details", url: "" },
+  ]);
 
   useEffect(() => {
     putInvoice(invoice);
@@ -79,7 +83,7 @@ const InvoiceDetail = () => {
   return (
     <div className="container detail flex flex--column flex__gap--1">
       <header className="flex flex--column flex__gap--2">
-        <Breadcrumb title="Invoice details" />
+        <Breadcrumb urls={breadcrumbItems} />
         <h2>View Invoice Details</h2>
       </header>
       <section className="card background--neutral-03 flex flex--space-between">
@@ -121,7 +125,7 @@ const InvoiceDetail = () => {
             </Fragment>
           )}
         </header>
-        <article className="detail__article flex flex--column flex__gap--2">
+        <article className="detail__main-content flex flex--column flex__gap--2">
           <div className="detail__section flex">
             <div className="detail__info">
               <p className="font__weight--600">Invoice Date</p>
@@ -196,7 +200,7 @@ const InvoiceDetail = () => {
               </form>
             )}
           </div>
-          <div className="display--hide-sm">
+          <div className="display--hide-sm flex flex--end-X">
             <Button
               type="button"
               name="editClient"
@@ -238,7 +242,7 @@ const InvoiceDetail = () => {
               <div key={index} className="flex flex--space-between ">
                 <div className="detail__service flex flex--column">
                   <p className="font__weight--600">{item.name}</p>
-                  <p className="display--hide-desktop">{`${item.quantity} x ${(
+                  <p className="display--hide-lg">{`${item.quantity} x ${(
                     Math.round(parseInt(item.price) * 100) / 100
                   ).toFixed(2)}€`}</p>
                   <div className="display--hide-sm">
@@ -264,7 +268,7 @@ const InvoiceDetail = () => {
                   </div>
                 </div>
 
-                <div className="detail__price display--hide-desktop">
+                <div className="detail__price display--hide-lg">
                   <p className="font__weight--600">
                     {(
                       Math.round(
@@ -329,7 +333,7 @@ const InvoiceDetail = () => {
           type="button"
           text="Delete"
           name="Delete"
-          onClick={() => deleteInvoice(invoice.invoiceId!.split("#")[0])}
+          onClick={() => deleteInvoice(invoice.invoiceId!)}
         />
       </div>
     </div>
