@@ -1,50 +1,54 @@
 .flex {
-    display: flex;
+  display: flex;
 
-    &--center {
-        align-items: center;
-        justify-content: center;
-    }
+  &--center {
+    align-items: center;
+    justify-content: center;
+  }
 
-    &--space-between {
-        align-items: center;
-        justify-content: space-between;
-    }
+  &--center-Y {
+    align-items: center;
+  }
 
-    &--start-Y {
-        align-items: flex-start;
-    }
+  &--space-between {
+    align-items: center;
+    justify-content: space-between;
+  }
 
-    &--start-X {
-        justify-content: flex-start;
-    }
+  &--start-Y {
+    align-items: flex-start;
+  }
 
-    &--end-Y {
-        align-items: flex-end;
-    }
+  &--start-X {
+    justify-content: flex-start;
+  }
 
-    &--end-X {
-        justify-content: flex-end;
-    }
+  &--end-Y {
+    align-items: flex-end;
+  }
 
-    &--wrap {
-        flex-wrap: wrap;
-    }
+  &--end-X {
+    justify-content: flex-end;
+  }
 
-    &--column {
-        flex-direction: column;
-    }
+  &--wrap {
+    flex-wrap: wrap;
+  }
 
-    &--row {
-        flex-direction: row;
-    }
+  &--column {
+    flex-direction: column;
+  }
 
-    &__gap {
-        @for $i from 1 to 5 {
-            $v: $i;
-            &--#{$i} {
-                gap: #{$v}rem;
-            }
-        }
+  &--row {
+    flex-direction: row;
+  }
+
+  &__gap {
+    @for $i from 1 to 5 {
+      $v: $i;
+      &--#{$i} {
+        gap: #{$v}rem;
+      }
     }
+  }
 }

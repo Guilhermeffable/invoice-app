@@ -1,11 +1,11 @@
 .font {
-    &__weight {
-        @for $i from 3 to 7 {
-            $weight: $i * 100;
+  &__weight {
+    @for $i from 3 to 9 {
+      $weight: $i * 100;
 
-            &--#{$weight} {
-                font-weight: $weight;
-            }
-        }
+      &--#{$weight} {
+        font-weight: $weight;
+      }
     }
+  }
 }

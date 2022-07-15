@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import "./_create.scss";
 import InfoForm from "../../components/Forms/info-form";
@@ -35,32 +35,16 @@ const CreateInvoice = () => {
     { title: "Create Invoice", url: "" },
   ]);
 
-  let invoiceDetailsClass = "active";
-  let clientDetailsClass = "active";
-  let itemDetailsClass = "active";
+  const [firstProgress, setFirstProgress] = useState<number>(0);
+  const [secondProgress, setSecondProgress] = useState<number>(0);
 
-  switch (formType) {
-    case FORM_TYPE.INVOICE_DETAILS:
-      invoiceDetailsClass = "active";
-      clientDetailsClass = "disabled";
-      itemDetailsClass = "disabled";
-
-      break;
-
-    case FORM_TYPE.CLIENT_DETAILS:
-      invoiceDetailsClass = "";
-      clientDetailsClass = "active";
-      itemDetailsClass = "disabled";
-
-      break;
-
-    case FORM_TYPE.ITEMS_DETAILS:
-      invoiceDetailsClass = "";
-      clientDetailsClass = "";
-      itemDetailsClass = "active";
-
-      break;
-  }
+  useEffect(() => {
+    if (formType === FORM_TYPE.CLIENT_DETAILS) {
+      setInterval(() => setFirstProgress((prevState) => prevState + 1), 20);
+    } else if (formType === FORM_TYPE.ITEMS_DETAILS) {
+      setInterval(() => setSecondProgress((prevState) => prevState + 1), 20);
+    }
+  }, [formType]);
 
   const changeForm = () => {
     if (formType === FORM_TYPE.INVOICE_DETAILS) {
@@ -91,23 +75,56 @@ const CreateInvoice = () => {
   };
 
   let formElement;
+
+  let invoiceDetailsClass = "active";
+  let invoiceDetailsSpanClass =
+    "border__color--primary background__main--primary text--white";
+  let clientDetailsClass = "active";
+  let clientDetailsSpanClass =
+    "border__color--primary background__main--primary text--white";
+  let itemDetailsClass = "active";
+  let itemDetailsSpanClass =
+    "border__color--primary background__main--primary text--white";
+
   switch (formType) {
     case FORM_TYPE.INVOICE_DETAILS:
       formElement = (
         <InfoForm onFormChange={changeForm} saveInfo={saveGeneralInfo} />
       );
+
+      invoiceDetailsClass = "active";
+      clientDetailsClass = "disabled";
+      clientDetailsSpanClass = "border__color--grey-60";
+      itemDetailsClass = "disabled";
+      itemDetailsSpanClass = "border__color--grey-60";
+
       break;
 
     case FORM_TYPE.CLIENT_DETAILS:
       formElement = (
         <ClientForm onFormChange={changeForm} saveInfo={saveClientInfo} />
       );
+
+      invoiceDetailsClass = "";
+      clientDetailsClass = "active";
+      clientDetailsSpanClass =
+        "border__color--primary background__main--primary text--white";
+      itemDetailsClass = "disabled";
+      itemDetailsSpanClass = "border__color--grey-60";
+
       break;
 
     case FORM_TYPE.ITEMS_DETAILS:
       formElement = (
         <ItemForm onFormChange={changeForm} saveInfo={saveInvoiceItems} />
       );
+
+      invoiceDetailsClass = "";
+      clientDetailsClass = "";
+      itemDetailsClass = "active";
+      itemDetailsSpanClass =
+        "border__color--primary background__main--primary text--white";
+
       break;
   }
 
@@ -116,7 +133,7 @@ const CreateInvoice = () => {
       <header className="flex flex--column flex__gap--2">
         <Breadcrumb urls={breadcrumbItems} />
         <h2>Create new invoice</h2>
-        <nav>
+        <nav className="display--hide-lg">
           <ul className="create__nav flex flex--space-between">
             <li className={invoiceDetailsClass}>Invoice details</li>
             <li className={clientDetailsClass}>Client details</li>
@@ -124,7 +141,55 @@ const CreateInvoice = () => {
           </ul>
         </nav>
       </header>
-      <section>{formElement}</section>
+      <section className="create__container flex flex__gap--1">
+        <article className="create__progress display--hide-sm card flex flex--column ">
+          <div className="flex flex--center-Y ">
+            <span
+              className={`create__step border__radius--circle flex flex--center ${invoiceDetailsClass} ${invoiceDetailsSpanClass}`}
+            >
+              <p>1</p>
+            </span>
+            <p className={`font__weight--700 ${invoiceDetailsClass}`}>
+              Invoice Detail
+            </p>
+          </div>
+          <div className="create__bar-container">
+            <progress
+              className="create__bar"
+              value={firstProgress}
+              max={100}
+            ></progress>
+          </div>
+          <div className="flex flex--center-Y ">
+            <span
+              className={`create__step border__radius--circle flex flex--center ${clientDetailsClass} ${clientDetailsSpanClass}`}
+            >
+              <p>2</p>
+            </span>
+            <p className={`font__weight--700 ${clientDetailsClass}`}>
+              Client Details
+            </p>
+          </div>
+          <div className="create__bar-container">
+            <progress
+              className="create__bar"
+              value={secondProgress}
+              max={100}
+            ></progress>
+          </div>
+          <div className="flex flex--center-Y ">
+            <span
+              className={`create__step border__radius--circle flex flex--center ${itemDetailsClass} ${itemDetailsSpanClass}`}
+            >
+              <p>3</p>
+            </span>
+            <p className={`font__weight--700 ${itemDetailsClass}`}>
+              Invoice Items
+            </p>
+          </div>
+        </article>
+        <article className="create__form">{formElement}</article>
+      </section>
     </section>
   );
 };

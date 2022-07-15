@@ -5,7 +5,7 @@
 
   &--hide-sm {
     @media (max-width: $breakpoint-mobile) {
-      display: none;
+      display: none !important;
     }
   }
 

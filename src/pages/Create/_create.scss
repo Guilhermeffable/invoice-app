@@ -1,6 +1,28 @@
 @import "../../scss/settings/index";
 
 .create {
+  .active {
+    color: $color-primary;
+    font-weight: 700;
+
+    p {
+      color: $color-white;
+    }
+
+    &::after {
+      background: $color-primary;
+    }
+  }
+
+  .disabled {
+    color: $color-grey-60;
+    font-weight: 400;
+
+    &::after {
+      background: $color-grey-60;
+    }
+  }
+
   &__nav {
     max-width: 350px;
     font-size: 0.875rem;
@@ -19,24 +41,56 @@
         bottom: 0;
         left: 0;
       }
+    }
+  }
 
-      &.active {
-        color: $color-primary;
-        font-weight: 700;
+  &__container {
+    @media (max-width: $breakpoint-mobile) {
+      display: block;
+    }
+  }
 
-        &::after {
-          background: $color-primary;
-        }
-      }
+  &__progress {
+    height: 350px;
+    width: 25%;
+    background: white;
+    gap: 0.5rem;
+    div {
+      gap: 0.625rem;
+    }
+  }
 
-      &.disabled {
-        color: $color-grey-60;
-        font-weight: 400;
+  &__bar-container {
+    height: 67px;
+  }
 
-        &::after {
-          background: $color-grey-60;
-        }
-      }
+  &__bar {
+    transform-origin: 0 100%;
+    transform: rotate(90deg);
+    display: block;
+    height: 2px;
+    width: 67px;
+    margin-left: 18px;
+    appearance: none;
+
+    &::-webkit-progress-bar {
+      border-radius: 3px;
+      background-color: $color-grey-60;
+    }
+
+    &::-webkit-progress-value {
+      background-color: $color-primary;
+    }
+  }
+
+  &__step {
+    width: 40px;
+    height: 40px;
+  }
+
+  &__form {
+    @media (min-width: $breakpoint-tablet) {
+      width: 75%;
     }
   }
 }
