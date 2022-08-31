@@ -2,7 +2,7 @@
 .select {
   position: relative;
 
-  &[data-active="active"] {
+  &__active {
     .border__radius--10 {
       border-radius: 10px 10px 0px 0px;
     }

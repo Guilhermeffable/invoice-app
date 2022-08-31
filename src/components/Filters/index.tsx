@@ -117,7 +117,7 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
       >
         <fieldset>
           <div className="filter__header flex flex--space-between">
-            <div className="filter__title">Filters</div>
+            <h3 className="filter__title">Filters</h3>
             <div
               className="filter__close background--white box-shadow__icon flex flex--center border__radius--circle"
               onClick={setShowFil}
@@ -188,7 +188,7 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
               </div>
               <div
                 className={`filter__datepicker ${
-                  showDatepicker ? "display--block" : "display--none"
+                  !showDatepicker ? "display--none" : ""
                 }`}
               >
                 <DatePicker

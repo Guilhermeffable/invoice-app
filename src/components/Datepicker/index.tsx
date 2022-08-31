@@ -149,7 +149,6 @@ const DatePicker = ({
         {weeks.map((day, index) => (
           <li
             key={index}
-            onClick={() => selectDay(index)}
             className={`${
               intervalIndexes.includes(index) ? "datepicker__day--selected" : ""
             } ${
@@ -160,15 +159,17 @@ const DatePicker = ({
                 : ""
             } datepicker__day flex flex--center`}
           >
-            <p
-              className={`${
-                activeIndexes.includes(index)
-                  ? "background__main--primary datepicker__day--active flex flex--center text--white"
-                  : ""
-              }`}
-            >
-              {day}
-            </p>
+            <button onClick={() => selectDay(index)}>
+              <p
+                className={`${
+                  activeIndexes.includes(index)
+                    ? "background__main--primary datepicker__day--active flex flex--center text--white"
+                    : ""
+                }`}
+              >
+                {day}
+              </p>
+            </button>
           </li>
         ))}
       </ul>

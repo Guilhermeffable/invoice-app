@@ -3,18 +3,14 @@
     display: none;
   }
 
-  &--block {
-    display: block;
-  }
-
   &--hide-sm {
     @media (max-width: $breakpoint-mobile) {
-      display: none;
+      display: none !important;
     }
   }
 
-  &--hide-desktop {
-    @media (min-width: $breakpoint-mobile) {
+  &--hide-lg {
+    @media (min-width: $breakpoint-tablet) {
       display: none;
     }
   }

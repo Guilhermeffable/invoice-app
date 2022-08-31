@@ -25,8 +25,8 @@ export const months = [
 ];
 
 export const getDaysInMonth = (month: number, year: number) => {
-  var date = new Date(year, month, 1);
-  var days = [];
+  const date = new Date(year, month, 1);
+  let days = [];
   while (date.getMonth() === month) {
     days.push(new Date(date));
     date.setDate(date.getDate() + 1);
