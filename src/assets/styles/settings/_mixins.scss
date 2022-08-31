@@ -1,3 +1,5 @@
+@use "./colors" as *;
+
 @mixin gradient($isGradient, $degs: 0deg) {
   @if $isGradient {
     background: linear-gradient(

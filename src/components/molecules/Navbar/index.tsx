@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DarkTheme, LightTheme } from "../../../assets/svg";
-import "./_navbar.scss";
+import "../../../assets/styles/components/molecules/_navbar.scss";
 
 const Navbar = () => {
   const [isLightTheme, setLightTheme] = useState<boolean>(true);

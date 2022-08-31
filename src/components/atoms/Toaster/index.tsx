@@ -1,5 +1,5 @@
 import React from "react";
-import "./_toaster.scss";
+import "../../../assets/styles/components/atoms/_toaster.scss";
 
 const Toaster = () => {
   return (

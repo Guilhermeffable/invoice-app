@@ -1,47 +1,49 @@
+@use "../settings/colors" as *;
+
 .background {
-    &__main {
-        &--primary {
-            background: $color-primary;
-        }
-
-        &--secondary {
-            background: $color-secondary;
-        }
-    }
-
-    &--none {
-        background: none;
-    }
-
+  &__main {
     &--primary {
-        background: $color-background-primary;
+      background: $color-primary;
     }
 
     &--secondary {
-        background: $color-background-secondary;
+      background: $color-secondary;
     }
+  }
 
-    &--tertiary {
-        background: $color-background-tertiary;
-    }
+  &--none {
+    background: none;
+  }
 
-    &--white {
-        background: $color-white;
-    }
+  &--primary {
+    background: $color-background-primary;
+  }
 
-    &--success {
-        background: $color-success;
-    }
+  &--secondary {
+    background: $color-background-secondary;
+  }
 
-    &--warning {
-        background: $color-warning;
-    }
+  &--tertiary {
+    background: $color-background-tertiary;
+  }
 
-    &--danger {
-        background: $color-danger;
-    }
+  &--white {
+    background: $color-white;
+  }
 
-    &--filters {
-        background: $background-filter;
-    }
+  &--success {
+    background: $color-success;
+  }
+
+  &--warning {
+    background: $color-warning;
+  }
+
+  &--danger {
+    background: $color-danger;
+  }
+
+  &--filters {
+    background: $background-filter;
+  }
 }

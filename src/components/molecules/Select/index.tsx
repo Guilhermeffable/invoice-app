@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Chevron } from "../../../assets/svg";
 import Input from "../Input";
-import "./_select.scss";
+import "../../../assets/styles/components/molecules/_select.scss";
 
 const Select = ({
   defaultValue,

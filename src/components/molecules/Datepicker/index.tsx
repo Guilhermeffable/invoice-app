@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Chevron } from "../../../assets/svg";
 import Button from "../../atoms/Button/index";
-import "./_datepicker.scss";
+import "../../../assets/styles/components/molecules/_datepicker.scss";
 import {
   DatepickerProps,
   decemberIndex,

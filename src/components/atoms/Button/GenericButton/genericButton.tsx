@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./_button.scss";
+import "../../../../assets/styles/components/atoms/_button.scss";
 import { GenericButtonProps } from "./types";
 
 const GenericButton = ({

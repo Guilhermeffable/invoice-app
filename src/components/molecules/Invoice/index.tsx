@@ -1,5 +1,5 @@
 import React from "react";
-import "./_invoice.scss";
+import "../../../assets/styles/components/molecules/_invoice.scss";
 import Status from "../../atoms/Status";
 import PropTypes from "prop-types";
 import { Client } from "../../../utils/utils";

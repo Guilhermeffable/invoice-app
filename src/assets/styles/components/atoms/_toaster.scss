@@ -1,4 +1,4 @@
-@import "../../../assets/styles/settings/index";
+@use "../../common" as *;
 
 .toaster {
   gap: 0.5rem;

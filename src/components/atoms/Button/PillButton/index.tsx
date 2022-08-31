@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Plus } from "../../../../assets/svg";
-import "./_button.scss";
+import "../../../../assets/styles/components/atoms/_button.scss";
 import { PillButtonProps } from "./types";
 
 const PillButton = ({ text, value, name, onChange }: PillButtonProps) => {

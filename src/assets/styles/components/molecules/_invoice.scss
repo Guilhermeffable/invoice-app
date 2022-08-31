@@ -1,4 +1,4 @@
-@import "../../../assets/styles/settings/index";
+@use "../../common" as *;
 
 .invoice {
   gap: 0.5rem 3rem;

@@ -1,5 +1,4 @@
-@import "../../../assets/styles/settings/index";
-
+@use "../../common" as *;
 .input {
   width: 100%;
   padding: 1rem;

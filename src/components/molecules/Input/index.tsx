@@ -1,6 +1,6 @@
 import React, { Fragment, useRef } from "react";
 import PropTypes from "prop-types";
-import "./_input.scss";
+import "../../../assets/styles/components/molecules/_input.scss";
 
 const Input = ({
   placeholder,

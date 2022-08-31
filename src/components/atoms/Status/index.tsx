@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./_status.scss";
+import "../../../assets/styles/components/atoms/_status.scss";
 
 const Status = ({ type }: { type: string }) => {
   let backgroundClass = "";
