@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Chevron, Edit, Plus } from "../../assets/svg";
 import "./_detail.scss";
-import Breadcrumb from "../../components/Breadcrumb/index";
-import Status from "../../components/Status";
-import Button from "../../components/Button";
+import Breadcrumb from "../../components/atoms/Breadcrumb/index";
+import Status from "../../components/atoms/Status";
+import Button from "../../components/atoms/Button";
 import { useLocation } from "react-router-dom";
 import { BreadcrumbLink, InvoiceInterface } from "../../utils/utils";
-import Input from "../../components/Input";
+import Input from "../../components/molecules/Input";
 import { deleteInvoice, putInvoice } from "../../services/invoices";
 
 const InvoiceDetail = () => {
