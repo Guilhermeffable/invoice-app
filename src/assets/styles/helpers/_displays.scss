@@ -1,0 +1,19 @@
+@use "../settings/breakpoints" as *;
+
+.display {
+  &--none {
+    display: none;
+  }
+
+  &--hide-sm {
+    @media (max-width: $breakpoint-mobile) {
+      display: none !important;
+    }
+  }
+
+  &--hide-lg {
+    @media (min-width: $breakpoint-tablet) {
+      display: none;
+    }
+  }
+}

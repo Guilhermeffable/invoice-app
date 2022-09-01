@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-import Breadcrumb from "../../components/Breadcrumb";
+import Breadcrumb from "../../components/atoms/Breadcrumb";
+import Toaster from "../../components/atoms/Toaster";
 import "./_create.scss";
-import InfoForm from "../../components/Forms/info-form";
-import ClientForm from "../../components/Forms/client-form";
-import ItemForm from "../../components/Forms/item-form";
-import Button from "../../components/Button";
+import InfoForm from "../../components/organisms/Forms/info-form";
+import ClientForm from "../../components/organisms/Forms/client-form";
+import ItemForm from "../../components/organisms/Forms/item-form";
+import Button from "../../components/atoms/Button";
 import {
   BreadcrumbLink,
   Client,
   FORM_TYPE,
   InvoiceInterface,
+  InvoiceItem,
 } from "../../utils/utils";
 import { addInvoice } from "../../services/invoices";
+import { InvoiceProps } from "../../components/molecules/Invoice/utils";
 
 const CreateInvoice = () => {
   const [formType, setFormType] = useState<FORM_TYPE>(
@@ -68,7 +71,7 @@ const CreateInvoice = () => {
     newInvoice.client = newClient;
   };
 
-  const saveInvoiceItems = (invoiceItems) => {
+  const saveInvoiceItems = (invoiceItems: InvoiceItem[]) => {
     newInvoice.items = invoiceItems;
 
     addInvoice(newInvoice);
@@ -132,6 +135,7 @@ const CreateInvoice = () => {
     <section className="container create flex flex--column flex__gap--2">
       <header className="flex flex--column flex__gap--2">
         <Breadcrumb urls={breadcrumbItems} />
+        <Toaster />
         <h2>Create new invoice</h2>
         <nav className="display--hide-lg">
           <ul className="create__nav flex flex--space-between">

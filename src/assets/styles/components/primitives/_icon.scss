@@ -1,0 +1,41 @@
+@use "../../common" as *;
+
+.icon {
+  cursor: pointer;
+
+  &__stroke {
+    &--primary {
+      stroke: $color-primary;
+    }
+
+    &--background {
+      &-primary {
+        stroke: $color-text;
+      }
+    }
+
+    &--default {
+      stroke: $color-black;
+    }
+  }
+
+  &__fill {
+    &--none {
+      fill: none;
+    }
+
+    &--background {
+      &-primary {
+        fill: $color-text;
+      }
+    }
+
+    &--primary {
+      fill: $color-primary;
+    }
+
+    &--default {
+      fill: $color-black;
+    }
+  }
+}

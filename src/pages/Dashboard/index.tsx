@@ -1,16 +1,16 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
-import "../../scss/tools/_container.scss";
 import "./_dashboard.scss";
 import { Chevron, Filter } from "../../assets/svg";
-import Invoice from "../../components/Invoice";
-import Button from "../../components/Button/index";
-import Filters from "../../components/Filters";
+import Invoice from "../../components/molecules/Invoice";
+import Button from "../../components/atoms/Button/index";
+import Filters from "../../components/organisms/Filters";
 import { Plus } from "../../assets/svg";
 import { getInvoices } from "../../services/invoices";
 import {
   FilterValues,
   initialFilterValues,
   InvoiceInterface,
+  InvoiceItem,
   InvoiceSearch,
 } from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
@@ -49,7 +49,7 @@ const Dashboard = () => {
 
   const navigate = useNavigate();
 
-  const handleOnClick = (invoice) => {
+  const handleOnClick = (invoice: InvoiceInterface) => {
     navigate("/invoice", { state: invoice, replace: true });
   };
 

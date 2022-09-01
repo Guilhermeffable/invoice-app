@@ -1,7 +1,7 @@
 import React, { ChangeEventHandler, Fragment, MouseEventHandler } from "react";
 import PropTypes from "prop-types";
-import GenericButton from "./GenericButton/genericButton";
 import PillButton from "./PillButton";
+import GenericButton from "./GenericButton/genericButton";
 import { ButtonProps } from "./types";
 
 const Button = ({
