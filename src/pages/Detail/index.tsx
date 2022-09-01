@@ -68,15 +68,15 @@ const InvoiceDetail = () => {
     setInvoice(invoice);
   };
 
-  const saveItemsName = (index, value) => {
+  const saveItemsName = (index: number, value: string) => {
     invoice.items![index].name = value;
   };
 
-  const saveItemsQuantity = (index, value) => {
+  const saveItemsQuantity = (index: number, value: string) => {
     invoice.items![index].quantity = value;
   };
 
-  const saveItemsPrice = (index, value) => {
+  const saveItemsPrice = (index: number, value: string) => {
     invoice.items![index].price = value;
   };
 
@@ -120,7 +120,7 @@ const InvoiceDetail = () => {
               <Input
                 id="invoiceDescription"
                 placeholder={invoiceDescription}
-                onChange={(value) => setInvoiceDescription(value)}
+                onChange={(value: string) => setInvoiceDescription(value)}
               />
             </Fragment>
           )}
@@ -166,35 +166,35 @@ const InvoiceDetail = () => {
                   <Input
                     id="clientName"
                     placeholder={clientName}
-                    onChange={(value) => setClientName(value)}
+                    onChange={(value: string) => setClientName(value)}
                   />
 
                   <label htmlFor="clientEmail">Client's email:</label>
                   <Input
                     id="clientEmail"
                     placeholder={clientEmail}
-                    onChange={(value) => setClientEmail(value)}
+                    onChange={(value: string) => setClientEmail(value)}
                   />
 
                   <label htmlFor="clientStreet">Client's street:</label>
                   <Input
                     id="clientStreet"
                     placeholder={clientStreet}
-                    onChange={(value) => setClientStreet(value)}
+                    onChange={(value: string) => setClientStreet(value)}
                   />
 
                   <label htmlFor="clientZipCode">Client's zip code:</label>
                   <Input
                     id="clientZipCode"
                     placeholder={clientZipCode}
-                    onChange={(value) => setClientZipCode(value)}
+                    onChange={(value: string) => setClientZipCode(value)}
                   />
 
                   <label htmlFor="clientCountry">Client's country:</label>
                   <Input
                     id="clientCountry"
                     placeholder={clientCountry}
-                    onChange={(value) => setClientCountry(value)}
+                    onChange={(value: string) => setClientCountry(value)}
                   />
                 </fieldset>
               </form>
@@ -287,7 +287,7 @@ const InvoiceDetail = () => {
                     <Input
                       id="itemName"
                       placeholder={item.name}
-                      onChange={(value) => saveItemsName(index, value)}
+                      onChange={(value: string) => saveItemsName(index, value)}
                     />
                   </div>
                   <div className="flex flex__gap--1">
@@ -296,7 +296,9 @@ const InvoiceDetail = () => {
                       <Input
                         id="itemPrice"
                         placeholder={item.price}
-                        onChange={(value) => saveItemsPrice(index, value)}
+                        onChange={(value: string) =>
+                          saveItemsPrice(index, value)
+                        }
                       />
                     </div>
                     <div>
@@ -304,7 +306,9 @@ const InvoiceDetail = () => {
                       <Input
                         id="itemQuantity"
                         placeholder={item.quantity}
-                        onChange={(value) => saveItemsQuantity(index, value)}
+                        onChange={(value: string) =>
+                          saveItemsQuantity(index, value)
+                        }
                       />
                     </div>
                   </div>

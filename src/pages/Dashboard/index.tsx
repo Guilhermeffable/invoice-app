@@ -10,6 +10,7 @@ import {
   FilterValues,
   initialFilterValues,
   InvoiceInterface,
+  InvoiceItem,
   InvoiceSearch,
 } from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
@@ -48,7 +49,7 @@ const Dashboard = () => {
 
   const navigate = useNavigate();
 
-  const handleOnClick = (invoice) => {
+  const handleOnClick = (invoice: InvoiceInterface) => {
     navigate("/invoice", { state: invoice, replace: true });
   };
 

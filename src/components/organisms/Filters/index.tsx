@@ -4,7 +4,7 @@ import { Calendar, Chevron, Close, Plus } from "../../../assets/svg";
 import Button from "../../atoms/Button/index";
 import DatePicker from "../../molecules/Datepicker";
 import Input from "../../molecules/Input";
-import "./_filter.scss";
+import "../../../assets/styles/components/organisms/_filter.scss";
 import { useEffect } from "react";
 import { FilterValues, initialFilterValues } from "../../../utils/utils";
 import { FilterProps } from "./utils";

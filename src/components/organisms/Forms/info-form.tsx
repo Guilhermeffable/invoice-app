@@ -5,7 +5,7 @@ import Button from "../../atoms/Button";
 import DatePicker from "../../molecules/Datepicker";
 import Input from "../../molecules/Input";
 import Select from "../../molecules/Select";
-import "./_info.scss";
+import "../../../assets/styles/components/organisms/_info.scss";
 
 const InfoForm = ({
   onFormChange,

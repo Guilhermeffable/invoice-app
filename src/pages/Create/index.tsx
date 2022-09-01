@@ -11,8 +11,10 @@ import {
   Client,
   FORM_TYPE,
   InvoiceInterface,
+  InvoiceItem,
 } from "../../utils/utils";
 import { addInvoice } from "../../services/invoices";
+import { InvoiceProps } from "../../components/molecules/Invoice/utils";
 
 const CreateInvoice = () => {
   const [formType, setFormType] = useState<FORM_TYPE>(
@@ -69,7 +71,7 @@ const CreateInvoice = () => {
     newInvoice.client = newClient;
   };
 
-  const saveInvoiceItems = (invoiceItems) => {
+  const saveInvoiceItems = (invoiceItems: InvoiceItem[]) => {
     newInvoice.items = invoiceItems;
 
     addInvoice(newInvoice);
