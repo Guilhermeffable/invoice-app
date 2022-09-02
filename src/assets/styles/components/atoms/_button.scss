@@ -24,7 +24,7 @@
 
     span {
       stroke: $color-primary;
-      background-color: white;
+      background-color: $color-white;
       border-radius: 50%;
       width: 2rem;
       height: 2rem;
@@ -37,7 +37,7 @@
     font-weight: $font-weight-700;
 
     span {
-      background-color: transparent;
+      background-color: $color-transparent;
 
       svg {
         fill: $color-primary;
