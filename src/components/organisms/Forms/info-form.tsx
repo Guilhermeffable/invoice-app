@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Calendar, Chevron } from "../../../assets/svg";
-import { FORM_TYPE, InvoiceInterface } from "../../../utils/utils";
+import { FORM_TYPE, InvoiceInterface } from "../../../utils";
 import Button from "../../atoms/Button";
 import DatePicker from "../../molecules/Datepicker";
 import Input from "../../molecules/Input";
@@ -202,8 +202,7 @@ const InfoForm = ({
       </form>
       <Button
         type="button"
-        name="createButton"
-        text="Continue"
+        label="Continue"
         buttonStyle="primary"
         onClick={() => changePage()}
       />

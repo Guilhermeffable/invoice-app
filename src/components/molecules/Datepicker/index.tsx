@@ -6,12 +6,12 @@ import "../../../assets/styles/components/molecules/_datepicker.scss";
 import {
   DatepickerProps,
   decemberIndex,
-  januaryIndex,
-  getWeeks,
   getDaysInMonth,
+  getWeeks,
+  intervalRecursive,
+  januaryIndex,
   months,
   weekdays,
-  intervalRecursive,
 } from "./utils";
 
 const DatePicker = ({
@@ -178,16 +178,14 @@ const DatePicker = ({
         <Button
           type="button"
           buttonStyle={"secondary"}
-          text="Clear Dates"
+          label="Clear Dates"
           onClick={clear}
-          name="clearDates"
         />
         <Button
           type="button"
           buttonStyle={"primary"}
-          text="Select Dates"
+          label="Select Dates"
           onClick={selectDates}
-          name="selectDates"
         />
       </div>
     </div>

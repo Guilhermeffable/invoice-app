@@ -1,5 +1,5 @@
 import axios from "axios";
-import { InvoiceInterface, InvoiceSearch } from "../utils/utils";
+import { InvoiceInterface, InvoiceSearch } from "../utils";
 
 export const getInvoices = async (invoiceSearch: InvoiceSearch) => {
   const invoices = await axios

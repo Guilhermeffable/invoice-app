@@ -12,7 +12,7 @@ import {
   InvoiceInterface,
   InvoiceItem,
   InvoiceSearch,
-} from "../../utils/utils";
+} from "../../utils";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
@@ -94,10 +94,9 @@ const Dashboard = () => {
             <Filter className="icon__fill--background-primary" />
           </div>
           <Button
-            name="newInvoice"
             type="button"
             buttonStyle={"primary"}
-            text="New Invoice"
+            label="New Invoice"
             icon={Plus}
             onClick={() => navigate("/create", { replace: true })}
           />
@@ -140,8 +139,7 @@ const Dashboard = () => {
         <Button
           onClick={seeMore}
           type="button"
-          name="seeMore"
-          text={"See more invoices"}
+          label={"See more invoices"}
           buttonStyle={"inline"}
           icon={Chevron}
         />

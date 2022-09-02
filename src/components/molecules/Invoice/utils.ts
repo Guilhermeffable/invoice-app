@@ -1,4 +1,4 @@
-import { Client } from "../../../utils/utils";
+import { Client } from "../../../utils";
 
 export interface InvoiceProps {
   ID: string;
