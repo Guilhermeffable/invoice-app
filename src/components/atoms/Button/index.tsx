@@ -1,80 +1,24 @@
-import React, { ChangeEventHandler, Fragment, MouseEventHandler } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import PillButton from "./PillButton";
-import GenericButton from "./GenericButton/genericButton";
 import { ButtonProps } from "./types";
 
-const Button = ({
-  buttonStyle,
-  type,
-  text,
-  name,
-  onClick,
-  onChange,
-  icon,
-  value,
-}: ButtonProps) => {
-  switch (buttonStyle) {
-    case "primary":
-      return (
-        <GenericButton
-          text={text!}
-          primary={true}
-          onClick={onClick!}
-          icon={icon}
-          type={type}
-          value={value}
-          name={name}
-        />
-      );
+const Button = ({ buttonStyle, type, onClick, icon, label }: ButtonProps) => {
+  //TODO passar icon nas props
 
-    case "secondary":
-      return (
-        <GenericButton
-          text={text!}
-          primary={false}
-          onClick={onClick!}
-          icon={icon}
-          type={type}
-          value={value}
-          name={name}
-        />
-      );
+  const Icon = icon;
 
-    case "inline":
-      return (
-        <GenericButton
-          text={text!}
-          primary={false}
-          onClick={onClick!}
-          icon={icon}
-          type={type}
-          value={value}
-          name={name}
-          inline={true}
-        />
-      );
-
-    case "pill":
-      return (
-        <PillButton
-          text={text!}
-          value={value!}
-          name={name}
-          onChange={onChange!}
-        />
-      );
-
-    default:
-      return <Fragment></Fragment>;
-  }
-};
-
-Button.propTypes = {
-  buttonStyle: PropTypes.string.isRequired,
-  text: PropTypes.string,
-  onClick: PropTypes.func,
-  icon: PropTypes.object,
+  return (
+    <button
+      className={`button button--${buttonStyle}  ${
+        Icon ? "button--icon" : ""
+      } flex flex--center`}
+      type={type}
+      onClick={onClick}
+    >
+      <span className="flex flex--center">{Icon && <Icon />}</span>
+      {label}
+    </button>
+  );
 };
 
 export default Button;

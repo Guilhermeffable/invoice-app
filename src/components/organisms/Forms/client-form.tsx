@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Client, InvoiceInterface } from "../../../utils/utils";
+import { Client, InvoiceInterface } from "../../../utils";
 import Button from "../../atoms/Button";
 import Input from "../../molecules/Input";
 
@@ -123,8 +123,7 @@ const ClientForm = ({
       </form>
       <Button
         type="button"
-        name="createButton"
-        text="Continue"
+        label="Continue"
         buttonStyle="primary"
         onClick={() => saveClientInfo()}
       />

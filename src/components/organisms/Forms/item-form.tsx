@@ -7,7 +7,7 @@ import React, {
   useCallback,
 } from "react";
 import { Close, Delete, Plus } from "../../../assets/svg";
-import { InvoiceItem } from "../../../utils/utils";
+import { InvoiceItem } from "../../../utils";
 import Button from "../../atoms/Button";
 import Input from "../../molecules/Input";
 
@@ -115,11 +115,9 @@ const ItemForm = ({
                 </p>
               </div>
               <Button
-                name="deleteItem"
-                value="deleteItem"
                 type="button"
                 buttonStyle="inline"
-                text="Delete"
+                label="Delete"
                 icon={Delete}
                 onClick={() => deleteItem(index)}
               />
@@ -131,8 +129,7 @@ const ItemForm = ({
       })}
       <div className="info__button flex flex--center">
         <Button
-          name="addItem"
-          text="Add new item"
+          label="Add new item"
           type="button"
           buttonStyle="inline"
           onClick={addItem}
@@ -140,8 +137,7 @@ const ItemForm = ({
         />
       </div>
       <Button
-        name="createInvoice"
-        text="Create"
+        label="Create"
         type="button"
         buttonStyle="primary"
         onClick={() => saveInfo(itemsArr)}

@@ -12,7 +12,7 @@ import {
   FORM_TYPE,
   InvoiceInterface,
   InvoiceItem,
-} from "../../utils/utils";
+} from "../../utils";
 import { addInvoice } from "../../services/invoices";
 import { InvoiceProps } from "../../components/molecules/Invoice/utils";
 

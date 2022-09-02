@@ -6,7 +6,7 @@ import DatePicker from "../../molecules/Datepicker";
 import Input from "../../molecules/Input";
 import "../../../assets/styles/components/organisms/_filter.scss";
 import { useEffect } from "react";
-import { FilterValues, initialFilterValues } from "../../../utils/utils";
+import { FilterValues, initialFilterValues } from "../../../utils";
 import { FilterProps } from "./utils";
 import Select from "../../molecules/Select";
 
@@ -141,34 +141,13 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
               <div className="filter__state flex">
                 <ul className="flex">
                   <li>
-                    <Button
-                      buttonStyle="pill"
-                      text="Paid"
-                      value="paid"
-                      onChange={handleChange}
-                      name="paidPill"
-                      type="button"
-                    />
+                    <Button buttonStyle="pill" label="Paid" type="button" />
                   </li>
                   <li>
-                    <Button
-                      buttonStyle="pill"
-                      text="Pending"
-                      value="pending"
-                      onChange={handleChange}
-                      name="pendingPill"
-                      type="button"
-                    />
+                    <Button buttonStyle="pill" label="Pending" type="button" />
                   </li>
                   <li>
-                    <Button
-                      buttonStyle="pill"
-                      text="Canceled"
-                      value="canceled"
-                      onChange={handleChange}
-                      name="canceledPill"
-                      type="button"
-                    />
+                    <Button buttonStyle="pill" label="Canceled" type="button" />
                   </li>
                 </ul>
               </div>
@@ -214,8 +193,7 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
                 buttonStyle="primary"
                 type="button"
                 onClick={() => filterInvoices(filterValues)}
-                text={"Search"}
-                name="search"
+                label="Search"
               />
             </div>
           </div>

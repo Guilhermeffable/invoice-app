@@ -5,7 +5,7 @@ import Breadcrumb from "../../components/atoms/Breadcrumb/index";
 import Status from "../../components/atoms/Status";
 import Button from "../../components/atoms/Button";
 import { useLocation } from "react-router-dom";
-import { BreadcrumbLink, InvoiceInterface } from "../../utils/utils";
+import { BreadcrumbLink, InvoiceInterface } from "../../utils";
 import Input from "../../components/molecules/Input";
 import { deleteInvoice, putInvoice } from "../../services/invoices";
 
@@ -92,10 +92,9 @@ const InvoiceDetail = () => {
           <Status type={invoice.invoiceState!} />
         </div>
         <Button
-          name="markPaid"
           type="button"
           buttonStyle={"primary"}
-          text="Mark as paid"
+          label="Mark as paid"
           icon={Plus}
         />
       </section>
@@ -105,8 +104,7 @@ const InvoiceDetail = () => {
             <p className="font__weight--600">{invoice.invoiceId}</p>
             <Button
               type="button"
-              name="seeMore"
-              text={!editDescription ? "Edit" : "Save"}
+              label={!editDescription ? "Edit" : "Save"}
               buttonStyle={"inline"}
               icon={!editDescription ? Edit : Plus}
               onClick={saveDescription}
@@ -203,8 +201,7 @@ const InvoiceDetail = () => {
           <div className="display--hide-sm flex flex--end-X">
             <Button
               type="button"
-              name="editClient"
-              text={!editClientInfo ? "Edit" : "Save"}
+              label={!editClientInfo ? "Edit" : "Save"}
               buttonStyle={"inline"}
               icon={!editClientInfo ? Edit : Plus}
               onClick={saveClientInfo}
@@ -216,8 +213,7 @@ const InvoiceDetail = () => {
         <header className="flex flex--end-X">
           <Button
             type="button"
-            name="seeMore"
-            text={!editInvoiceItems ? "Edit" : "Save"}
+            label={!editInvoiceItems ? "Edit" : "Save"}
             buttonStyle={"inline"}
             icon={!editInvoiceItems ? Edit : Plus}
             onClick={() => setEditInvoiceItems(!editInvoiceItems)}
@@ -335,8 +331,7 @@ const InvoiceDetail = () => {
         <Button
           buttonStyle="primary"
           type="button"
-          text="Delete"
-          name="Delete"
+          label="Delete"
           onClick={() => deleteInvoice(invoice.invoiceId!)}
         />
       </div>
