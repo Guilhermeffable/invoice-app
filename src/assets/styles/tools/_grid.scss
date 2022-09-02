@@ -1,0 +1,131 @@
+@use "sass:math";
+
+@mixin grid() {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
+  @content;
+}
+
+@mixin grid-col($col, $grid-columns: 12, $gutter: null) {
+  @if ($col > 0) {
+    $flex-basis: percentage(math.div($col, $grid-columns));
+    flex-basis: $flex-basis;
+    max-width: $flex-basis;
+    padding: 0 calc(#{$gutter / 2});
+  } @else {
+    flex: 1;
+  }
+  @content;
+}
+
+@mixin grid-offset($col, $gutter: null) {
+  @if ($col > 0 and $col < $grid-columns) {
+    $offset-width: percentage(math.div($col, $grid-columns));
+    margin-left: calc(#{$offset-width} + #{$gutter});
+  }
+}
+
+@mixin generate-grid {
+  @include grid();
+  @for $i from 0 through $grid-columns {
+    @if ($i > 0) {
+      > .grid__col--#{$i} {
+        @include grid-col($col: $i, $gutter: $default-grid-gutter);
+      }
+      > .grid__offset--#{$i} {
+        @include grid-offset($col: $i, $gutter: $default-grid-gutter);
+      }
+    } @else {
+      > .grid_col {
+        @include grid-col($col: $i, $gutter: $default-grid-gutter);
+      }
+    }
+  }
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    @for $i from 0 through $grid-columns {
+      @if ($i > 0) {
+        > .grid__col--xs-#{$i} {
+          @include grid-col($col: $i, $gutter: $default-grid-gutter);
+        }
+        > .grid__offset--xs-#{$i} {
+          @include grid-offset($col: $i, $gutter: $default-grid-gutter);
+        }
+      } @else {
+        > .grid__col--xs {
+          @include grid-col($col: $i, $gutter: $default-grid-gutter);
+        }
+      }
+    }
+  }
+
+  @include media-tablet {
+    @for $i from 0 through $grid-columns {
+      @if ($i > 0) {
+        > .grid__col--sm-#{$i} {
+          @include grid-col($col: $i, $gutter: $default-grid-gutter);
+        }
+        > .grid__offset--sm-#{$i} {
+          @include grid-offset($col: $i, $gutter: $default-grid-gutter);
+        }
+      } @else {
+        > .grid__col--sm {
+          @include grid-col($col: $i, $gutter: $default-grid-gutter);
+        }
+      }
+    }
+  }
+
+  @include media-tablet-landscape {
+    @for $i from 0 through $grid-columns {
+      @if ($i > 0) {
+        > .grid__col--md-#{$i} {
+          @include grid-col($col: $i, $gutter: $default-grid-gutter);
+        }
+        > .grid__offset--md-#{$i} {
+          @include grid-offset($col: $i, $gutter: $default-grid-gutter);
+        }
+      } @else {
+        > .grid__col--md {
+          @include grid-col($col: $i, $gutter: $default-grid-gutter);
+        }
+      }
+    }
+  }
+
+  @include media-desktop {
+    @for $i from 01 through $grid-columns {
+      @if ($i > 0) {
+        > .grid__col--lg-#{$i} {
+          @include grid-col($col: $i, $gutter: $default-grid-gutter);
+        }
+        > .grid__offset--lg-#{$i} {
+          @include grid-offset($col: $i, $gutter: $default-grid-gutter);
+        }
+      } @else {
+        > .grid__col--lg {
+          @include grid-col($col: $i, $gutter: $default-grid-gutter);
+        }
+      }
+    }
+  }
+
+  @include media-desktop-large {
+    @for $i from 01 through $grid-columns {
+      @if ($i > 0) {
+        > .grid__col--xl-#{$i} {
+          @include grid-col($col: $i, $gutter: $default-grid-gutter);
+        }
+        > .grid__offset--xl-#{$i} {
+          @include grid-offset($col: $i, $gutter: $default-grid-gutter);
+        }
+      } @else {
+        > .grid__col--xl {
+          @include grid-col($col: $i, $gutter: $default-grid-gutter);
+        }
+      }
+    }
+  }
+}
