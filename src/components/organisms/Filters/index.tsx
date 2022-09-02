@@ -191,7 +191,7 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
             <div className="filter__submit flex flex--column flex--center">
               <Button
                 buttonStyle="primary"
-                type="button"
+                type="submit"
                 onClick={() => filterInvoices(filterValues)}
                 label="Search"
               />

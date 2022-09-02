@@ -1,40 +1,40 @@
 @use "../../common" as *;
 
 .button {
-  border-radius: 16px;
+  border-radius: $border-radius-1;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: $font-size-16;
 
   &--primary {
-    padding: 12px 24px;
+    padding: $spacing-xs $spacing-l;
     background-color: $color-primary;
     color: $color-white;
   }
 
   &--secondary {
-    padding: 12px 20px;
+    padding: $spacing-xs $spacing-m;
     background-color: $color-white;
     color: $color-black;
   }
 
   &--icon {
-    border-radius: 31px;
-    padding: 4px 8px 4px 4px;
+    border-radius: $border-radius-2;
+    padding: $spacing-xxxs $spacing-xxs $spacing-xxxs $spacing-xxxs;
     gap: 0.5rem;
 
     span {
       stroke: $color-primary;
       background-color: white;
       border-radius: 50%;
-      width: 32px;
-      height: 32px;
+      width: 2rem;
+      height: 2rem;
     }
   }
 
   &--inline {
     flex-direction: row-reverse;
     color: $color-primary;
-    font-weight: 700;
+    font-weight: $font-weight-700;
 
     span {
       background-color: transparent;
