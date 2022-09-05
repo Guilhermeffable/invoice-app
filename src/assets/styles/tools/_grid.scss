@@ -22,10 +22,10 @@ $grid-columns: 12;
   }
 }
 
-@mixin grid-offset($col, $gutter: null) {
+@mixin grid-offset($col) {
   @if ($col > 0 and $col < $grid-columns) {
     $offset-width: percentage(math.div($col, $grid-columns));
-    margin-left: calc(#{$offset-width} + #{$gutter});
+    margin-left: calc(#{$offset-width} + #{$default-grid-gutter});
   }
 }
 
