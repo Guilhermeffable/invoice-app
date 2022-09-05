@@ -11,7 +11,7 @@ $grid-columns: 12;
   width: 100%;
 }
 
-@mixin grid-col($col, $grid-columns: 12) {
+@mixin grid-col($col) {
   @if ($col > 0) {
     $flex-basis: percentage(math.div($col, $grid-columns));
     flex-basis: $flex-basis;
@@ -46,19 +46,17 @@ $grid-columns: 12;
     }
   }
 
-  @media screen and (max-width: $breakpoint-tablet) {
-    @for $i from 0 through $grid-columns {
-      @if ($i > 0) {
-        > .grid__col--xs-#{$i} {
-          @include grid-col($col: $i);
-        }
-        > .grid__offset--xs-#{$i} {
-          @include grid-offset($col: $i);
-        }
-      } @else {
-        > .grid__col--xs {
-          @include grid-col($col: $i);
-        }
+  @for $i from 0 through $grid-columns {
+    @if ($i > 0) {
+      > .grid__col--xs-#{$i} {
+        @include grid-col($col: $i);
+      }
+      > .grid__offset--xs-#{$i} {
+        @include grid-offset($col: $i);
+      }
+    } @else {
+      > .grid__col--xs {
+        @include grid-col($col: $i);
       }
     }
   }
