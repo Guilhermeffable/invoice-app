@@ -1,4 +1,4 @@
 export interface IGridProps {
-  gridExtraClass?: string[];
+  gridExtraClass?: string;
   children?: any;
 }
