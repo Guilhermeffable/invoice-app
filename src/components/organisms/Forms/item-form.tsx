@@ -9,7 +9,7 @@ import React, {
 import { Close, Delete, Plus } from "../../../assets/svg";
 import { InvoiceItem } from "../../../utils";
 import Button from "../../atoms/Button";
-import Input from "../../molecules/Input";
+import Input from "../../atoms/Input";
 
 const ItemForm = ({
   onFormChange,

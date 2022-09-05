@@ -6,7 +6,7 @@ import Status from "../../components/atoms/Status";
 import Button from "../../components/atoms/Button";
 import { useLocation } from "react-router-dom";
 import { BreadcrumbLink, InvoiceInterface } from "../../utils";
-import Input from "../../components/molecules/Input";
+import Input from "../../components/atoms/Input";
 import { deleteInvoice, putInvoice } from "../../services/invoices";
 
 const InvoiceDetail = () => {

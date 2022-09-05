@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Client, InvoiceInterface } from "../../../utils";
 import Button from "../../atoms/Button";
-import Input from "../../molecules/Input";
+import Input from "../../atoms/Input";
 
 const ClientForm = ({
   onFormChange,

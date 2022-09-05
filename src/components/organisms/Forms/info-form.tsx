@@ -3,9 +3,11 @@ import { Calendar, Chevron } from "../../../assets/svg";
 import { FORM_TYPE, InvoiceInterface } from "../../../utils";
 import Button from "../../atoms/Button";
 import DatePicker from "../../molecules/Datepicker";
-import Input from "../../molecules/Input";
+import Input from "../../atoms/Input";
 import Select from "../../molecules/Select";
 import "../../../assets/styles/components/organisms/_info.scss";
+import InputField from "../../molecules/Form/InputField";
+import Card from "../../molecules/Card";
 
 const InfoForm = ({
   onFormChange,
@@ -65,20 +67,15 @@ const InfoForm = ({
   };
 
   return (
-    <div className="card info flex flex--column flex__gap--1">
-      <h2 className="font__weight--300">Generic Information</h2>
+    <Card extraClasses="info">
       <form>
         <fieldset className="flex flex--column flex__gap--2">
-          <div className="info__container flex flex--column flex__gap--1">
-            <label className="font__weight--400" htmlFor="invoiceDescription">
-              Invoice description
-            </label>
-            <Input
-              id="invoiceDescription"
-              placeholder=""
-              onChange={(value: string) => setDescription(value)}
-            />
-          </div>
+          <InputField
+            label={"Invoice description"}
+            id={"invoiceDescription"}
+            onChange={setDescription}
+            placeholder={""}
+          />
           <section className="info__form-section flex flex__gap--1">
             <div className="info__container flex flex--column flex__gap--1">
               <label className="font__weight--400" htmlFor="invoiceState">
@@ -154,49 +151,31 @@ const InfoForm = ({
       <h2 className="font__weight--300">Billing Address Information</h2>
       <form>
         <fieldset className="flex flex--column flex__gap--2">
-          <div className="info__container flex  flex--column flex__gap--1">
-            <label className="font__weight--400" htmlFor="invoiceStreet">
-              Street
-            </label>
-            <Input
-              id="invoiceStreet"
-              placeholder=""
-              onChange={(value: string) => setStreet(value)}
-            />
-          </div>
+          <InputField
+            label={"Street"}
+            id={"invoiceStreet"}
+            onChange={setStreet}
+            placeholder={""}
+          />
           <section className="info__form-section  flex flex__gap--1">
-            <div className="info__container flex flex__gap--1">
-              <div className="flex flex--column flex__gap--1">
-                <label className="font__weight--400" htmlFor="invoiceCity">
-                  City
-                </label>
-                <Input
-                  id="invoiceCity"
-                  placeholder=""
-                  onChange={(value: string) => setCity(value)}
-                />
-              </div>
-              <div className="flex flex--column flex__gap--1">
-                <label className="font__weight--400" htmlFor="invoiceZipCode">
-                  Zip code
-                </label>
-                <Input
-                  id="invoiceZipCode"
-                  placeholder=""
-                  onChange={(value: string) => setZipCode(value)}
-                />
-              </div>
-            </div>
-            <div className="info__container flex flex--column flex__gap--1">
-              <label className="font__weight--400" htmlFor="invoiceCountry">
-                Country
-              </label>
-              <Input
-                id="invoiceCountry"
-                placeholder=""
-                onChange={(value: string) => setCountry(value)}
-              />
-            </div>
+            <InputField
+              label={"City"}
+              id={"invoiceCity"}
+              onChange={setCity}
+              placeholder={""}
+            />
+            <InputField
+              label={"Zip code"}
+              id={"invoiceZipCode"}
+              onChange={setZipCode}
+              placeholder={""}
+            />
+            <InputField
+              label={"Country"}
+              id={"invoiceCountry"}
+              onChange={setCountry}
+              placeholder={""}
+            />
           </section>
         </fieldset>
       </form>
@@ -206,7 +185,7 @@ const InfoForm = ({
         buttonStyle="primary"
         onClick={() => changePage()}
       />
-    </div>
+    </Card>
   );
 };
 

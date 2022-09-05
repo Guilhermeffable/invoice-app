@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Calendar, Chevron, Close, Plus } from "../../../assets/svg";
 import Button from "../../atoms/Button/index";
 import DatePicker from "../../molecules/Datepicker";
-import Input from "../../molecules/Input";
+import Input from "../../atoms/Input";
 import "../../../assets/styles/components/organisms/_filter.scss";
 import { useEffect } from "react";
 import { FilterValues, initialFilterValues } from "../../../utils";
