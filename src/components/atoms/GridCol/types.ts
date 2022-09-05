@@ -10,6 +10,6 @@ export interface IGridColProps {
   offsettabletLandscape?: number;
   offsetDesktop?: number;
   offsetLgDesktop?: number;
-  gridColExtraClass?: string[];
+  gridColExtraClass?: string;
   children?: any;
 }

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { FC } from "react";
 import { IGridColProps } from "./types";
-// import GridColUtils from './GridCol.utils';
 
 const GridCol: FC<IGridColProps> = ({
   defaultCol,
@@ -26,7 +25,7 @@ const GridCol: FC<IGridColProps> = ({
         tabletLandscape ? `grid__col--md-${tabletLandscape}` : ""
       } ${desktop ? `grid__col--lg-${desktop}` : ""} ${
         lgDesktop ? `grid__col--xl-${lgDesktop}` : ""
-      } ${gridColExtraClass ? gridColExtraClass.join(" ") : ""} ${
+      } ${gridColExtraClass} ${
         offsetMobile ? `grid__offset--xs-${offsetMobile}` : ""
       } ${offsetTablet ? `grid__offset--sm-${offsetTablet}` : ""} ${
         offsettabletLandscape ? `grid__offset--md-${offsettabletLandscape}` : ""

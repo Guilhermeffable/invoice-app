@@ -1,0 +1,5 @@
+@use "../tools/index.scss" as *;
+
+.grid {
+  @include generate-grid();
+}
