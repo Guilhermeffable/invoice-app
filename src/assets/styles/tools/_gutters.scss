@@ -1,0 +1,63 @@
+$marginKey: "margin";
+$paddingKey: "padding";
+$separator: "-";
+$gutters: (
+  ("none", 0),
+  ("xxxs", $spacing-xxxs),
+  ("xxs", $spacing-xxs),
+  ("xs", $spacing-xs),
+  ("s", $spacing-s),
+  ("m", $spacing-m),
+  ("l", $spacing-l)
+);
+$positions: (
+  ("top", "top"),
+  ("right", "right"),
+  ("bottom", "bottom"),
+  ("left", "left")
+);
+@function sizeValue($key, $value) {
+  @return if($key == "none", 0, $value);
+}
+
+@mixin setGutters($viewportSuffix: "") {
+  @if $viewportSuffix != "" {
+    $viewportSuffix: $viewportSuffix + $separator;
+  }
+  @each $size in $gutters {
+    $sizeKey: nth($size, 1);
+    $sizeValue: nth($size, 2);
+    .#{$marginKey}#{$separator}#{x}#{$separator}#{$viewportSuffix}#{$sizeKey} {
+      margin-left: sizeValue($sizeKey, $sizeValue) !important;
+      margin-right: sizeValue($sizeKey, $sizeValue) !important;
+    }
+    .#{$paddingKey}#{$separator}#{x}#{$separator}#{$viewportSuffix}#{$sizeKey} {
+      padding-left: sizeValue($sizeKey, $sizeValue) !important;
+      padding-right: sizeValue($sizeKey, $sizeValue) !important;
+    }
+    .#{$marginKey}#{$separator}#{y}#{$separator}#{$viewportSuffix}#{$sizeKey} {
+      margin-bottom: sizeValue($sizeKey, $sizeValue) !important;
+      margin-top: sizeValue($sizeKey, $sizeValue) !important;
+    }
+    .#{$paddingKey}#{$separator}#{y}#{$separator}#{$viewportSuffix}#{$sizeKey} {
+      padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
+      padding-top: sizeValue($sizeKey, $sizeValue) !important;
+    }
+    .#{$marginKey}#{$separator}#{$viewportSuffix}#{$sizeKey} {
+      margin: sizeValue($sizeKey, $sizeValue) !important;
+    }
+    .#{$paddingKey}#{$separator}#{$viewportSuffix}#{$sizeKey} {
+      padding: sizeValue($sizeKey, $sizeValue) !important;
+    }
+    @each $position in $positions {
+      $posKey: nth($position, 1);
+      $posValue: nth($position, 2);
+      .#{$marginKey}#{$separator}#{$posKey}#{$separator}#{$viewportSuffix}#{$sizeKey} {
+        margin-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+      }
+      .#{$paddingKey}#{$separator}#{$posKey}#{$separator}#{$viewportSuffix}#{$sizeKey} {
+        padding-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+@use "sass:math";
+@use "../settings/index.scss" as *;
+@use "./mediaquery" as *;
+
+$default-grid-gutter: 1rem;
+$grid-columns: 12;
+
+@mixin grid() {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+@mixin grid-col($col) {
+  @if ($col > 0) {
+    $flex-basis: percentage(math.div($col, $grid-columns));
+    flex-basis: $flex-basis;
+    max-width: $flex-basis;
+    padding: 0 calc(#{$default-grid-gutter / 2});
+  } @else {
+    flex: 1;
+  }
+}
+
+@mixin grid-offset($col) {
+  @if ($col > 0 and $col < $grid-columns) {
+    $offset-width: percentage(math.div($col, $grid-columns));
+    margin-left: calc(#{$offset-width} + #{$default-grid-gutter});
+  }
+}
+
+@mixin generate-grid {
+  @include grid();
+  @for $i from 0 through $grid-columns {
+    @if ($i > 0) {
+      > .grid__col--#{$i} {
+        @include grid-col($col: $i);
+      }
+      > .grid__offset--#{$i} {
+        @include grid-offset($col: $i);
+      }
+    } @else {
+      > .grid_col {
+        @include grid-col($col: $i);
+      }
+    }
+  }
+
+  @for $i from 0 through $grid-columns {
+    @if ($i > 0) {
+      > .grid__col--xs-#{$i} {
+        @include grid-col($col: $i);
+      }
+      > .grid__offset--xs-#{$i} {
+        @include grid-offset($col: $i);
+      }
+    } @else {
+      > .grid__col--xs {
+        @include grid-col($col: $i);
+      }
+    }
+  }
+
+  @include media-tablet {
+    @for $i from 0 through $grid-columns {
+      @if ($i > 0) {
+        > .grid__col--sm-#{$i} {
+          @include grid-col($col: $i);
+        }
+        > .grid__offset--sm-#{$i} {
+          @include grid-offset($col: $i);
+        }
+      } @else {
+        > .grid__col--sm {
+          @include grid-col($col: $i);
+        }
+      }
+    }
+  }
+
+  @include media-desktop {
+    @for $i from 01 through $grid-columns {
+      @if ($i > 0) {
+        > .grid__col--lg-#{$i} {
+          @include grid-col($col: $i);
+        }
+        > .grid__offset--lg-#{$i} {
+          @include grid-offset($col: $i);
+        }
+      } @else {
+        > .grid__col--lg {
+          @include grid-col($col: $i);
+        }
+      }
+    }
+  }
+}
