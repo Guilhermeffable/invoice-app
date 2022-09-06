@@ -1,21 +1,31 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { ButtonProps } from "./types";
 
-const Button = ({ buttonStyle, type, onClick, icon, label }: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({
+  buttonStyle,
+  type,
+  onClick,
+  icon,
+  label,
+}) => {
   //TODO passar icon nas props
 
   const Icon = icon;
 
   return (
     <button
-      className={`button button--${buttonStyle}  ${
+      className={`button disabled button--${buttonStyle}  ${
         Icon ? "button--icon" : ""
       } flex flex--center`}
       type={type}
       onClick={onClick}
     >
-      <span className="flex flex--center">{Icon && <Icon />}</span>
+      {Icon && (
+        <span className="flex flex--center">
+          {" "}
+          <Icon />
+        </span>
+      )}
       {label}
     </button>
   );

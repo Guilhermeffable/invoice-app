@@ -8,6 +8,7 @@ import Select from "../../molecules/Select";
 import "../../../assets/styles/components/organisms/_info.scss";
 import InputField from "../../molecules/Form/InputField";
 import Card from "../../molecules/Card";
+import InputDatepicker from "../../molecules/Form/InputDatepicker";
 
 const InfoForm = ({
   onFormChange,
@@ -24,10 +25,6 @@ const InfoForm = ({
     invoiceDate: "",
     billingAddress: { city: "", country: "", street: "", zipCode: "" },
   });
-
-  const [showDatepickerDate, setShowDatepickerDate] = useState<boolean>(false);
-  const [showDatepickerDueDate, setShowDatepickerDueDate] =
-    useState<boolean>(false);
 
   const [invoiceDate, setInvoiceDate] = useState<string>("");
   const [invoiceDueDate, setInvoiceDueDate] = useState<string>("");
@@ -51,13 +48,11 @@ const InfoForm = ({
 
   const saveInvoiceDate = (value: string) => {
     setInvoiceDate(value);
-    setShowDatepickerDate(false);
     invoice.invoiceDate = value;
   };
 
   const saveInvoiceDueDate = (value: string) => {
     setInvoiceDueDate(value);
-    setShowDatepickerDueDate(false);
     invoice.invoicePaymentDate = value;
   };
 
@@ -87,64 +82,18 @@ const InfoForm = ({
                 onSelect={(value: string) => setState(value)}
               />
             </div>
-            <div className="info__container flex  flex--column flex__gap--1 ">
-              <label className="font__weight--400" htmlFor="invoiceDate">
-                Invoice date
-              </label>
-              <div className="info__datepicker position--relative">
-                <div onClick={() => setShowDatepickerDate(!showDatepickerDate)}>
-                  <Input
-                    id="invoiceDate"
-                    icon={Calendar}
-                    placeholder={invoiceDate}
-                  />
-                </div>
-                <div
-                  className={`position--absolute ${
-                    !showDatepickerDate ? "display--none" : ""
-                  }`}
-                >
-                  <DatePicker
-                    saveDates={(dateArr: Date[]) =>
-                      saveInvoiceDate(dateArr[0].toDateString())
-                    }
-                    clearDates={setInvoiceDate}
-                    multipleSelection={false}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="info__container flex  flex--column flex__gap--1">
-              <label className="font__weight--400" htmlFor="invoicePaymentDate">
-                Payment Due Date
-              </label>
-              <div className="info__datepicker position--relative">
-                <div
-                  onClick={() =>
-                    setShowDatepickerDueDate(!showDatepickerDueDate)
-                  }
-                >
-                  <Input
-                    id="invoicePaymentDate"
-                    placeholder={invoiceDueDate}
-                    icon={Calendar}
-                  />
-                </div>
-                <div
-                  className={`position--absolute  ${
-                    !showDatepickerDueDate ? "display--none" : ""
-                  }`}
-                >
-                  <DatePicker
-                    saveDates={(dateArr: Date[]) =>
-                      saveInvoiceDueDate(dateArr[0].toDateString())
-                    }
-                    clearDates={() => console.log()}
-                    multipleSelection={false}
-                  />
-                </div>
-              </div>
-            </div>
+            <InputDatepicker
+              label={"Invoice date"}
+              id={"invoiceDate"}
+              saveDates={saveInvoiceDate}
+              placeholder={invoiceDate}
+            />
+            <InputDatepicker
+              label={"Payment Due Date"}
+              id={"invoicePaymentDate"}
+              saveDates={saveInvoiceDueDate}
+              placeholder={invoiceDueDate}
+            />
           </section>
         </fieldset>
       </form>

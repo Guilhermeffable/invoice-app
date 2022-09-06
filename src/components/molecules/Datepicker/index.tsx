@@ -68,6 +68,7 @@ const DatePicker = ({
     if (multipleSelection) {
       setActiveIndexes([...activeIndexes, index]);
     } else {
+      debugger;
       setActiveIndexes((prevState) =>
         prevState.length > 0
           ? prevState.filter((prevIndex) => prevIndex !== index)
@@ -159,7 +160,7 @@ const DatePicker = ({
                 : ""
             } datepicker__day flex flex--center`}
           >
-            <button onClick={() => selectDay(index)}>
+            <button type="button" onClick={() => selectDay(index)}>
               <p
                 className={`${
                   activeIndexes.includes(index)

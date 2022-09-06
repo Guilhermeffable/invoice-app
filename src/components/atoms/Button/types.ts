@@ -5,5 +5,5 @@ export interface ButtonProps {
   type: "submit" | "reset" | "button";
   label: string;
   icon?: React.FC<React.SVGProps<SVGSVGElement>>;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClick?: () => void;
 }

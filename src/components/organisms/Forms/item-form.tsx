@@ -10,6 +10,7 @@ import { Close, Delete, Plus } from "../../../assets/svg";
 import { InvoiceItem } from "../../../utils";
 import Button from "../../atoms/Button";
 import Input from "../../atoms/Input";
+import InputField from "../../molecules/Form/InputField";
 
 const ItemForm = ({
   onFormChange,
@@ -61,45 +62,30 @@ const ItemForm = ({
             <form key={item.name}>
               <fieldset>
                 <section className="info__form-section info__item-list flex  flex__gap--2">
-                  <div className="info__container flex  flex--column flex__gap--1">
-                    <label className="font__weight--400" htmlFor="itemName">
-                      Name
-                    </label>
-                    <Input
-                      id="itemName"
-                      placeholder={item.name}
-                      onChange={(value: string) => saveItemsName(index, value)}
-                    />
-                  </div>
-                  <div className="info__container flex flex__gap--1">
-                    <div className="flex flex--column flex__gap--1">
-                      <label
-                        className="font__weight--400"
-                        htmlFor="itemQuantity"
-                      >
-                        Quantity
-                      </label>
-                      <Input
-                        id="itemQuantity"
-                        placeholder={item.quantity}
-                        onChange={(value: string) =>
-                          saveItemsQuantity(index, value)
-                        }
-                      />
-                    </div>
-                    <div className="flex flex--column flex__gap--1">
-                      <label className="font__weight--400" htmlFor="itemPrice">
-                        Price
-                      </label>
-                      <Input
-                        id="itemPrice"
-                        placeholder={item.price}
-                        onChange={(value: string) =>
-                          saveItemsPrice(index, value)
-                        }
-                      />
-                    </div>
-                  </div>
+                  <InputField
+                    label={"Name"}
+                    id={"itemName"}
+                    placeholder={""}
+                    onChange={(value: string): void => {
+                      saveItemsName(index, value);
+                    }}
+                  />
+                  <InputField
+                    label={"Quantity"}
+                    id={"itemQuantity"}
+                    placeholder={""}
+                    onChange={(value: string): void => {
+                      saveItemsQuantity(index, value);
+                    }}
+                  />
+                  <InputField
+                    label={"Price"}
+                    id={"itemPrice"}
+                    placeholder={""}
+                    onChange={(value: string): void => {
+                      saveItemsPrice(index, value);
+                    }}
+                  />
                 </section>
               </fieldset>
             </form>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Client, InvoiceInterface } from "../../../utils";
 import Button from "../../atoms/Button";
 import Input from "../../atoms/Input";
+import InputField from "../../molecules/Form/InputField";
 
 const ClientForm = ({
   onFormChange,
@@ -51,26 +52,18 @@ const ClientForm = ({
       <form>
         <fieldset>
           <section className="info__form-section  info__client-generic flex  flex__gap--1">
-            <div className="info__container flex flex--column flex__gap--1">
-              <label className="font__weight--400" htmlFor="clientName">
-                Name
-              </label>
-              <Input
-                id="clientName"
-                placeholder=""
-                onChange={(value: string) => saveName(value)}
-              />
-            </div>
-            <div className="info__container flex  flex--column flex__gap--1">
-              <label className="font__weight--400" htmlFor="clientEmail">
-                Email
-              </label>
-              <Input
-                id="clientEmail"
-                placeholder=""
-                onChange={(value: string) => saveEmail(value)}
-              />
-            </div>
+            <InputField
+              label={"Name"}
+              id={"clientName"}
+              onChange={saveName}
+              placeholder={""}
+            />
+            <InputField
+              label={"Email"}
+              id={"clientEmail"}
+              onChange={saveEmail}
+              placeholder={""}
+            />
           </section>
         </fieldset>
       </form>
@@ -78,46 +71,30 @@ const ClientForm = ({
       <form>
         <fieldset>
           <section className="info__form-section info__client-address flex flex__gap--1">
-            <div className="info__container flex  flex--column flex__gap--1">
-              <label className="font__weight--400" htmlFor="clientStreet">
-                Street
-              </label>
-              <Input
-                id="clientStreet"
-                placeholder=""
-                onChange={(value: string) => saveStreet(value)}
-              />
-            </div>
-            <div className="info__container flex flex--column flex__gap--1">
-              <label className="font__weight--400" htmlFor="clientCity">
-                City
-              </label>
-              <Input
-                id="clientCity"
-                placeholder=""
-                onChange={(value: string) => saveCity(value)}
-              />
-            </div>
-            <div className="info__container flex flex--column flex__gap--1">
-              <label className="font__weight--400" htmlFor="clientZipCode">
-                Zip code
-              </label>
-              <Input
-                id="clientZipCode"
-                placeholder=""
-                onChange={(value: string) => saveZipCode(value)}
-              />
-            </div>
-            <div className="info__container flex flex--column flex__gap--1">
-              <label className="font__weight--400" htmlFor="clientCountry">
-                Country
-              </label>
-              <Input
-                id="clientCountry"
-                placeholder=""
-                onChange={(value: string) => saveCountry(value)}
-              />
-            </div>
+            <InputField
+              label={"Street"}
+              id={"clientStreet"}
+              onChange={saveStreet}
+              placeholder={""}
+            />
+            <InputField
+              label={"City"}
+              id={"clientCity"}
+              onChange={saveCity}
+              placeholder={""}
+            />
+            <InputField
+              label={"Zip code"}
+              id={"clientZipCode"}
+              onChange={saveZipCode}
+              placeholder={""}
+            />
+            <InputField
+              label={"Country"}
+              id={"clientCountry"}
+              onChange={saveCountry}
+              placeholder={""}
+            />
           </section>
         </fieldset>
       </form>
