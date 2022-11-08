@@ -68,7 +68,6 @@ const DatePicker = ({
     if (multipleSelection) {
       setActiveIndexes([...activeIndexes, index]);
     } else {
-      debugger;
       setActiveIndexes((prevState) =>
         prevState.length > 0
           ? prevState.filter((prevIndex) => prevIndex !== index)

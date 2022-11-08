@@ -1,3 +1,5 @@
+@import "../settings/index.scss";
+
 $marginKey: "margin";
 $paddingKey: "padding";
 $separator: "-";
@@ -8,7 +10,8 @@ $gutters: (
   ("xs", $spacing-xs),
   ("s", $spacing-s),
   ("m", $spacing-m),
-  ("l", $spacing-l)
+  ("l", $spacing-l),
+  ("xl", $spacing-xl)
 );
 $positions: (
   ("top", "top"),

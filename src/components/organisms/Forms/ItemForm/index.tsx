@@ -19,7 +19,6 @@ const ItemForm = ({
   useEffect(() => {}, [itemsArr]);
 
   const saveItemsName = (index: number, value: string) => {
-    debugger;
     itemsArr[index].name = value;
   };
 

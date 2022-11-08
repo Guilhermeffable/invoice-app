@@ -4,6 +4,8 @@ import Status from "../../atoms/Status";
 import PropTypes from "prop-types";
 import { Client } from "../../../utils";
 import { InvoiceProps } from "./utils";
+import Grid from "../Grid";
+import GridCol from "../../atoms/GridCol";
 
 const Invoice = ({
   ID,
@@ -14,24 +16,30 @@ const Invoice = ({
   state,
 }: InvoiceProps) => {
   return (
-    <div className="invoice card flex flex--space-between background--neutral-03">
-      <div className="invoice__info flex flex--center flex--column flex--start-Y">
-        <h3>#{ID}</h3>
+    <Grid extraClasses="invoice card padding-y-xl padding-x-l flex flex--space-between background--neutral-03">
+      <GridCol
+        desktop={4}
+        extraClasses="flex flex--center flex--column flex--start-Y margin-right-s"
+      >
+        <h3 className="margin-bottom-s">#{ID}</h3>
         <p>Due {new Date(date).toDateString()}</p>
-      </div>
-      <div className="invoice__info invoice__customer  flex flex--center flex--column flex--start-Y">
-        <h3>{client.name}</h3>
+      </GridCol>
+      <GridCol
+        desktop={4}
+        extraClasses="flex flex--center flex--column flex--start-Y  margin-right-s"
+      >
+        <h3 className="margin-bottom-xs">{client.name}</h3>
         <p className="display--hide-sm">{description}</p>
-      </div>
-      <div className="invoice__info">
+      </GridCol>
+      <GridCol extraClasses="flex flex--start-X margin-right-s" desktop={4}>
         <p className="invoice__price">
           {(Math.round(price * 100) / 100).toFixed(2)} €
         </p>
-      </div>
-      <div className="invoice__info">
+      </GridCol>
+      <GridCol desktop={1}>
         <Status type={state} />
-      </div>
-    </div>
+      </GridCol>
+    </Grid>
   );
 };
 

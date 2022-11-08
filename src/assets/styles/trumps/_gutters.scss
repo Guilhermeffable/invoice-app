@@ -1,0 +1,26 @@
+@use "../common" as *;
+
+@include setGutters();
+
+@include media-tablet {
+  @include setGutters("sm");
+}
+
+@include media-desktop {
+  @include setGutters("lg");
+}
+
+$margin-positions: (
+  ("top-auto", "top"),
+  ("bottom-auto", "bottom"),
+  ("left-auto", "left"),
+  ("right-auto", "right")
+);
+
+.margin {
+  @each $positions in $margin-positions {
+    &-#{nth($positions, 1)} {
+      margin-#{nth($positions, 2)}: auto;
+    }
+  }
+}

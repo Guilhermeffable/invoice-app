@@ -14,7 +14,7 @@ const GridCol: FC<IGridColProps> = ({
   offsettabletLandscape,
   offsetDesktop,
   offsetLgDesktop,
-  gridColExtraClass,
+  extraClasses,
   children,
 }) => {
   return (
@@ -25,7 +25,7 @@ const GridCol: FC<IGridColProps> = ({
         tabletLandscape ? `grid__col--md-${tabletLandscape}` : ""
       } ${desktop ? `grid__col--lg-${desktop}` : ""} ${
         lgDesktop ? `grid__col--xl-${lgDesktop}` : ""
-      } ${gridColExtraClass} ${
+      } ${extraClasses} ${
         offsetMobile ? `grid__offset--xs-${offsetMobile}` : ""
       } ${offsetTablet ? `grid__offset--sm-${offsetTablet}` : ""} ${
         offsettabletLandscape ? `grid__offset--md-${offsettabletLandscape}` : ""

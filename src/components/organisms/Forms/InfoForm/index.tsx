@@ -1,9 +1,7 @@
-import React, { ChangeEvent, Fragment, useEffect, useState } from "react";
-import { Calendar, Chevron } from "../../../../assets/svg";
-import { FORM_TYPE, InvoiceInterface } from "../../../../utils";
+import React, { ChangeEvent, useState } from "react";
+import { InvoiceInterface } from "../../../../utils";
 import Button from "../../../atoms/Button";
-import DatePicker from "../../../molecules/Datepicker";
-import Input from "../../../atoms/Input";
+
 import Select from "../../../molecules/Select";
 import "../../../../assets/styles/components/organisms/_info.scss";
 import InputField from "../../../molecules/Form/InputField";

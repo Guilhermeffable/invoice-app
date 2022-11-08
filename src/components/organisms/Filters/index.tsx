@@ -112,7 +112,6 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
   return (
     <Fragment>
       <div className={`${opacityClass} filter__cover`}>{""}</div>
-
       <form
         className={`${transformClass} background--filters  filter flex flex--start-Y flex--column background--white`}
         onSubmit={(event) => event.preventDefault()}

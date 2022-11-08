@@ -33,6 +33,6 @@ export const addInvoice = async (invoice: InvoiceInterface) => {
   const status = await axios
     .post("https://invoice-api-exercise.herokuapp.com/invoices", invoice)
     .then((result) => result.status);
-  debugger;
+
   return status;
 };
