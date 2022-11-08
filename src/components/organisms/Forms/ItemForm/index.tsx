@@ -1,16 +1,8 @@
-import React, {
-  ReactElement,
-  useEffect,
-  Fragment,
-  useRef,
-  useState,
-  useCallback,
-} from "react";
-import { Close, Delete, Plus } from "../../../assets/svg";
-import { InvoiceItem } from "../../../utils";
-import Button from "../../atoms/Button";
-import Input from "../../atoms/Input";
-import InputField from "../../molecules/Form/InputField";
+import React, { useEffect, Fragment, useState, ChangeEvent } from "react";
+import { Delete, Plus } from "../../../../assets/svg";
+import { InvoiceItem } from "../../../../utils";
+import Button from "../../../atoms/Button";
+import InputField from "../../../molecules/Form/InputField";
 
 const ItemForm = ({
   onFormChange,
@@ -27,6 +19,7 @@ const ItemForm = ({
   useEffect(() => {}, [itemsArr]);
 
   const saveItemsName = (index: number, value: string) => {
+    debugger;
     itemsArr[index].name = value;
   };
 
@@ -58,32 +51,35 @@ const ItemForm = ({
       <h2 className="font__weight--300">Item List</h2>
       {itemsArr.map((item, index) => {
         return (
-          <Fragment>
-            <form key={item.name}>
+          <Fragment key={index}>
+            <form>
               <fieldset>
                 <section className="info__form-section info__item-list flex  flex__gap--2">
                   <InputField
                     label={"Name"}
+                    type={"text"}
                     id={"itemName"}
                     placeholder={""}
-                    onChange={(value: string): void => {
-                      saveItemsName(index, value);
+                    onChange={(event: ChangeEvent<HTMLInputElement>): void => {
+                      saveItemsName(index, event.currentTarget.value);
                     }}
                   />
                   <InputField
+                    type={"text"}
                     label={"Quantity"}
                     id={"itemQuantity"}
                     placeholder={""}
-                    onChange={(value: string): void => {
-                      saveItemsQuantity(index, value);
+                    onChange={(event: ChangeEvent<HTMLInputElement>): void => {
+                      saveItemsQuantity(index, event.currentTarget.value);
                     }}
                   />
                   <InputField
+                    type={"text"}
                     label={"Price"}
                     id={"itemPrice"}
                     placeholder={""}
-                    onChange={(value: string): void => {
-                      saveItemsPrice(index, value);
+                    onChange={(event: ChangeEvent<HTMLInputElement>): void => {
+                      saveItemsPrice(index, event.currentTarget.value);
                     }}
                   />
                 </section>

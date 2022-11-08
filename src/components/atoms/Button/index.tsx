@@ -8,8 +8,6 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   label,
 }) => {
-  //TODO passar icon nas props
-
   const Icon = icon;
 
   return (
@@ -22,7 +20,6 @@ const Button: React.FC<ButtonProps> = ({
     >
       {Icon && (
         <span className="flex flex--center">
-          {" "}
           <Icon />
         </span>
       )}

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { ChangeEvent, Fragment, useEffect, useState } from "react";
 import { Chevron, Edit, Plus } from "../../assets/svg";
 import "./_detail.scss";
 import Breadcrumb from "../../components/atoms/Breadcrumb/index";
@@ -86,7 +86,7 @@ const InvoiceDetail = () => {
         <Breadcrumb urls={breadcrumbItems} />
         <h2>View Invoice Details</h2>
       </header>
-      <section className="card background--neutral-03 flex flex--space-between">
+      <article className="card background--neutral-03 flex flex--space-between">
         <div className="detail__state flex flex--start-X flex--column ">
           <p>State</p>
           <Status type={invoice.invoiceState!} />
@@ -97,8 +97,8 @@ const InvoiceDetail = () => {
           label="Mark as paid"
           icon={Plus}
         />
-      </section>
-      <section className="card flex flex--column flex__gap--2">
+      </article>
+      <article className="card flex flex--column flex__gap--2">
         <header className="flex flex--column">
           <div className=" flex flex--space-between">
             <p className="font__weight--600">{invoice.invoiceId}</p>
@@ -110,20 +110,9 @@ const InvoiceDetail = () => {
               onClick={saveDescription}
             />
           </div>
-          {!editDescription ? (
-            <p>{invoiceDescription}</p>
-          ) : (
-            <Fragment>
-              <label htmlFor="invoiceDescription">Invoice Description:</label>
-              <Input
-                id="invoiceDescription"
-                placeholder={invoiceDescription}
-                onChange={(value: string) => setInvoiceDescription(value)}
-              />
-            </Fragment>
-          )}
+          <p>{invoiceDescription}</p>
         </header>
-        <article className="detail__main-content flex flex--column flex__gap--2">
+        <section className="detail__main-content flex flex--column flex__gap--2">
           <div className="detail__section flex">
             <div className="detail__info">
               <p className="font__weight--600">Invoice Date</p>
@@ -144,82 +133,40 @@ const InvoiceDetail = () => {
           </div>
           <div className="detail__section flex flex--column">
             <p className="font__weight--600">Client's info</p>
-
-            {!editClientInfo ? (
-              <div className="flex flex--column flex__gap--1">
-                <div className="detail__info">
-                  <p className="font__weight--400">{clientName}</p>
-                  <p>{clientEmail}</p>
-                </div>
-                <div className="detail__info">
-                  <p>{clientStreet}</p>
-                  <p>{clientZipCode}</p>
-                  <p>{clientCountry}</p>
-                </div>
+            <div className="flex flex--column flex__gap--1">
+              <div className="detail__info">
+                <p className="font__weight--400">{clientName}</p>
+                <p>{clientEmail}</p>
               </div>
-            ) : (
-              <form>
-                <fieldset className="flex flex--column flex__gap--1">
-                  <label htmlFor="clientName">Client's name:</label>
-                  <Input
-                    id="clientName"
-                    placeholder={clientName}
-                    onChange={(value: string) => setClientName(value)}
-                  />
-
-                  <label htmlFor="clientEmail">Client's email:</label>
-                  <Input
-                    id="clientEmail"
-                    placeholder={clientEmail}
-                    onChange={(value: string) => setClientEmail(value)}
-                  />
-
-                  <label htmlFor="clientStreet">Client's street:</label>
-                  <Input
-                    id="clientStreet"
-                    placeholder={clientStreet}
-                    onChange={(value: string) => setClientStreet(value)}
-                  />
-
-                  <label htmlFor="clientZipCode">Client's zip code:</label>
-                  <Input
-                    id="clientZipCode"
-                    placeholder={clientZipCode}
-                    onChange={(value: string) => setClientZipCode(value)}
-                  />
-
-                  <label htmlFor="clientCountry">Client's country:</label>
-                  <Input
-                    id="clientCountry"
-                    placeholder={clientCountry}
-                    onChange={(value: string) => setClientCountry(value)}
-                  />
-                </fieldset>
-              </form>
-            )}
+              <div className="detail__info">
+                <p>{clientStreet}</p>
+                <p>{clientZipCode}</p>
+                <p>{clientCountry}</p>
+              </div>
+            </div>
           </div>
           <div className="display--hide-sm flex flex--end-X">
             <Button
               type="button"
-              label={!editClientInfo ? "Edit" : "Save"}
+              label={"Edit"}
               buttonStyle={"inline"}
-              icon={!editClientInfo ? Edit : Plus}
+              icon={Edit}
               onClick={saveClientInfo}
             />
           </div>
-        </article>
-      </section>
-      <section className="card">
+        </section>
+      </article>
+      <article className="card">
         <header className="flex flex--end-X">
           <Button
             type="button"
-            label={!editInvoiceItems ? "Edit" : "Save"}
+            label={"Edit"}
             buttonStyle={"inline"}
-            icon={!editInvoiceItems ? Edit : Plus}
+            icon={Edit}
             onClick={() => setEditInvoiceItems(!editInvoiceItems)}
           />
         </header>
-        <article className="detail__container flex flex--column flex__gap--1">
+        <section className="detail__container flex flex--column flex__gap--1">
           <div className="detail__item-titles display--hide-mobile flex flex--space-between">
             <p className="font__weight--600">Item Name</p>
 
@@ -234,7 +181,7 @@ const InvoiceDetail = () => {
             </div>
           </div>
           {invoice.items!.map((item, index) => {
-            return !editInvoiceItems ? (
+            return (
               <div key={index} className="flex flex--space-between ">
                 <div className="detail__service flex flex--column">
                   <p className="font__weight--600">{item.name}</p>
@@ -275,44 +222,9 @@ const InvoiceDetail = () => {
                   </p>
                 </div>
               </div>
-            ) : (
-              <form>
-                <fieldset className="flex flex--column flex__gap--1">
-                  <div>
-                    <label htmlFor="itemName">Name:</label>
-                    <Input
-                      id="itemName"
-                      placeholder={item.name}
-                      onChange={(value: string) => saveItemsName(index, value)}
-                    />
-                  </div>
-                  <div className="flex flex__gap--1">
-                    <div>
-                      <label htmlFor="itemPrice">Price:</label>
-                      <Input
-                        id="itemPrice"
-                        placeholder={item.price}
-                        onChange={(value: string) =>
-                          saveItemsPrice(index, value)
-                        }
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="itemQuantity">Quantity:</label>
-                      <Input
-                        id="itemQuantity"
-                        placeholder={item.quantity}
-                        onChange={(value: string) =>
-                          saveItemsQuantity(index, value)
-                        }
-                      />
-                    </div>
-                  </div>
-                </fieldset>
-              </form>
             );
           })}
-        </article>
+        </section>
         <footer className="flex flex--space-between background__main--primary text--white">
           <p className="font__weight--600">Grand Total</p>
           <p className="font__weight--600">
@@ -326,7 +238,7 @@ const InvoiceDetail = () => {
             €
           </p>
         </footer>
-      </section>
+      </article>
       <div className="detail__button flex flex--center font__weight--600">
         <Button
           buttonStyle="primary"

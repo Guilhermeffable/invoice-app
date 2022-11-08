@@ -64,6 +64,9 @@
       gap: 1rem;
       li {
         flex: 1;
+        button {
+          width: 100%;
+        }
       }
     }
   }

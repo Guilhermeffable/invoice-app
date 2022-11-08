@@ -44,4 +44,18 @@
       }
     }
   }
+
+  &--pill {
+    background-color: $color-white;
+    color: $color-black;
+    border: 2px solid $color-secondary;
+    padding: $spacing-xs $spacing-s;
+    border-radius: 30px;
+
+    &:active {
+      background-color: $color-primary;
+      color: $color-white;
+      border-color: transparent;
+    }
+  }
 }

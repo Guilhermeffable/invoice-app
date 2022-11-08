@@ -2,21 +2,16 @@ import React, { useEffect, useState } from "react";
 import Breadcrumb from "../../components/atoms/Breadcrumb";
 import Toaster from "../../components/atoms/Toaster";
 import "./_create.scss";
-import InfoForm from "../../components/organisms/Forms/info-form";
-import ClientForm from "../../components/organisms/Forms/client-form";
-import ItemForm from "../../components/organisms/Forms/item-form";
-import Button from "../../components/atoms/Button";
-import {
-  BreadcrumbLink,
-  Client,
-  FORM_TYPE,
-  InvoiceInterface,
-  InvoiceItem,
-} from "../../utils";
+import InfoForm from "../../components/organisms/Forms/InfoForm";
+import ClientForm from "../../components/organisms/Forms/ClientForm";
+import ItemForm from "../../components/organisms/Forms/ItemForm";
+import { Client, FORM_TYPE, InvoiceInterface, InvoiceItem } from "../../utils";
 import { addInvoice } from "../../services/invoices";
-import { InvoiceProps } from "../../components/molecules/Invoice/utils";
+import { useNavigate } from "react-router-dom";
 
 const CreateInvoice = () => {
+  let navigate = useNavigate();
+
   const [formType, setFormType] = useState<FORM_TYPE>(
     FORM_TYPE.INVOICE_DETAILS
   );
@@ -34,9 +29,7 @@ const CreateInvoice = () => {
     items: [],
   });
 
-  const [breadcrumbItems, setBreadcrumbItems] = useState<BreadcrumbLink[]>([
-    { title: "Create Invoice", url: "" },
-  ]);
+  const [invoiceStatus, setInvoiceStatus] = useState<boolean>(false);
 
   const [firstProgress, setFirstProgress] = useState<number>(0);
   const [secondProgress, setSecondProgress] = useState<number>(0);
@@ -74,7 +67,8 @@ const CreateInvoice = () => {
   const saveInvoiceItems = (invoiceItems: InvoiceItem[]) => {
     newInvoice.items = invoiceItems;
 
-    addInvoice(newInvoice);
+    addInvoice(newInvoice).then((value) => setInvoiceStatus(value === 200));
+    setTimeout(() => navigate("/"), 2000);
   };
 
   let formElement;
@@ -134,8 +128,8 @@ const CreateInvoice = () => {
   return (
     <section className="container create flex flex--column flex__gap--2">
       <header className="flex flex--column flex__gap--2">
-        <Breadcrumb urls={breadcrumbItems} />
-        <Toaster />
+        <Breadcrumb urls={[{ title: "Create Invoice", url: "" }]} />
+        {invoiceStatus && <Toaster />}
         <h2>Create new invoice</h2>
         <nav className="display--hide-lg">
           <ul className="create__nav flex flex--space-between">

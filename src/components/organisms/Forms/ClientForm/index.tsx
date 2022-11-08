@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Client, InvoiceInterface } from "../../../utils";
-import Button from "../../atoms/Button";
-import Input from "../../atoms/Input";
-import InputField from "../../molecules/Form/InputField";
+import React, { ChangeEvent, useState } from "react";
+import { Client, InvoiceInterface } from "../../../../utils";
+import Button from "../../../atoms/Button";
+import Input from "../../../atoms/Input";
+import InputField from "../../../molecules/Form/InputField";
 
 const ClientForm = ({
   onFormChange,
@@ -17,28 +17,28 @@ const ClientForm = ({
     name: "",
   });
 
-  const saveName = (value: string) => {
-    newClient.name = value;
+  const saveName = (event: ChangeEvent<HTMLInputElement>) => {
+    newClient.name = event.currentTarget.value;
   };
 
-  const saveEmail = (value: string) => {
-    newClient.email = value;
+  const saveEmail = (event: ChangeEvent<HTMLInputElement>) => {
+    newClient.email = event.currentTarget.value;
   };
 
-  const saveStreet = (value: string) => {
-    newClient.clientAddress.street = value;
+  const saveStreet = (event: ChangeEvent<HTMLInputElement>) => {
+    newClient.clientAddress.street = event.currentTarget.value;
   };
 
-  const saveCity = (value: string) => {
-    newClient.clientAddress.city = value;
+  const saveCity = (event: ChangeEvent<HTMLInputElement>) => {
+    newClient.clientAddress.city = event.currentTarget.value;
   };
 
-  const saveZipCode = (value: string) => {
-    newClient.clientAddress.zipCode = value;
+  const saveZipCode = (event: ChangeEvent<HTMLInputElement>) => {
+    newClient.clientAddress.zipCode = event.currentTarget.value;
   };
 
-  const saveCountry = (value: string) => {
-    newClient.clientAddress.country = value;
+  const saveCountry = (event: ChangeEvent<HTMLInputElement>) => {
+    newClient.clientAddress.country = event.currentTarget.value;
   };
 
   const saveClientInfo = () => {

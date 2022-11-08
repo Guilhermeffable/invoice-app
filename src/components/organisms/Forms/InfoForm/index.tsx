@@ -1,14 +1,14 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { Calendar, Chevron } from "../../../assets/svg";
-import { FORM_TYPE, InvoiceInterface } from "../../../utils";
-import Button from "../../atoms/Button";
-import DatePicker from "../../molecules/Datepicker";
-import Input from "../../atoms/Input";
-import Select from "../../molecules/Select";
-import "../../../assets/styles/components/organisms/_info.scss";
-import InputField from "../../molecules/Form/InputField";
-import Card from "../../molecules/Card";
-import InputDatepicker from "../../molecules/Form/InputDatepicker";
+import React, { ChangeEvent, Fragment, useEffect, useState } from "react";
+import { Calendar, Chevron } from "../../../../assets/svg";
+import { FORM_TYPE, InvoiceInterface } from "../../../../utils";
+import Button from "../../../atoms/Button";
+import DatePicker from "../../../molecules/Datepicker";
+import Input from "../../../atoms/Input";
+import Select from "../../../molecules/Select";
+import "../../../../assets/styles/components/organisms/_info.scss";
+import InputField from "../../../molecules/Form/InputField";
+import Card from "../../../molecules/Card";
+import InputDatepicker from "../../../molecules/Form/InputDatepicker";
 
 const InfoForm = ({
   onFormChange,
@@ -29,21 +29,21 @@ const InfoForm = ({
   const [invoiceDate, setInvoiceDate] = useState<string>("");
   const [invoiceDueDate, setInvoiceDueDate] = useState<string>("");
 
-  const setDescription = (value: string) => {
-    invoice.invoiceDescription = value;
+  const setDescription = (event: ChangeEvent<HTMLInputElement>) => {
+    invoice.invoiceDescription = event.currentTarget.value;
   };
 
-  const setStreet = (value: string) => {
-    invoice.billingAddress!.street = value;
+  const setStreet = (event: ChangeEvent<HTMLInputElement>) => {
+    invoice.billingAddress!.street = event.currentTarget.value;
   };
-  const setCity = (value: string) => {
-    invoice.billingAddress!.city = value;
+  const setCity = (event: ChangeEvent<HTMLInputElement>) => {
+    invoice.billingAddress!.city = event.currentTarget.value;
   };
-  const setZipCode = (value: string) => {
-    invoice.billingAddress!.zipCode = value;
+  const setZipCode = (event: ChangeEvent<HTMLInputElement>) => {
+    invoice.billingAddress!.zipCode = event.currentTarget.value;
   };
-  const setCountry = (value: string) => {
-    invoice.billingAddress!.country = value;
+  const setCountry = (event: ChangeEvent<HTMLInputElement>) => {
+    invoice.billingAddress!.country = event.currentTarget.value;
   };
 
   const saveInvoiceDate = (value: string) => {

@@ -37,18 +37,30 @@ const Select = ({
           !showOptions ? "display--none" : "flex flex--column flex__gap--1"
         }`}
       >
-        {options.map((option) => {
+        {options.map((option, index) => {
           return (
-            <p className="select__item" onClick={() => selectOption(option)}>
+            <p
+              key={index}
+              className="select__item"
+              onClick={() => selectOption(option)}
+            >
               {option}
             </p>
           );
         })}
       </div>
 
-      <select className="display--none" name="state" value={selectedValue}>
-        {options.map((option) => {
-          return <option value={option}>{option}</option>;
+      <select
+        className="display--none"
+        name="state"
+        defaultValue={selectedValue}
+      >
+        {options.map((option, index) => {
+          return (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          );
         })}
       </select>
     </div>

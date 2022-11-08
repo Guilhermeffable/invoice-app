@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { ChangeEvent, Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import { Calendar, Chevron, Close, Plus } from "../../../assets/svg";
 import Button from "../../atoms/Button/index";
@@ -82,7 +82,7 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
     transformClass = "filter--hide";
   }
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = event.target;
 
     if (type === "checkbox" && checked) {
@@ -98,7 +98,9 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
     }
   };
 
-  const setClientName = (name: string) => {
+  const setClientName = (event: ChangeEvent<HTMLInputElement>) => {
+    const name = event.currentTarget.value;
+
     if (name !== "") {
       setFilterValues({
         ...filterValues,

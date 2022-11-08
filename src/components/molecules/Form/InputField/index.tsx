@@ -7,6 +7,7 @@ const InputField: React.FC<InputFieldProps> = ({
   label,
   onChange,
   placeholder,
+  type,
 }) => {
   return (
     <div className="flex  flex--column flex__gap--1">
@@ -14,9 +15,10 @@ const InputField: React.FC<InputFieldProps> = ({
         {label}
       </label>
       <Input
+        type={type}
         id={id}
         placeholder={placeholder}
-        onChange={(value: string) => onChange(value)}
+        onChange={onChange}
       />
     </div>
   );

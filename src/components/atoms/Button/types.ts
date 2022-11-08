@@ -1,7 +1,7 @@
-import React, { MouseEventHandler } from "react";
+import React from "react";
 
 export interface ButtonProps {
-  buttonStyle: string;
+  buttonStyle: "primary" | "secondary" | "icon" | "inline" | "pill";
   type: "submit" | "reset" | "button";
   label: string;
   icon?: React.FC<React.SVGProps<SVGSVGElement>>;
