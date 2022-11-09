@@ -114,19 +114,21 @@ const InvoiceDetail = () => {
           </div>
           <p>{invoiceDescription}</p>
         </header>
-        <Grid extraClasses="detail__main-content flex flex--column flex__gap--2">
+        <Grid extraClasses="detail__main-content flex flex--column ">
           <GridCol extraClasses=" flex" desktop={3}>
             <div className="detail__info">
-              <p className="font__weight--600">Invoice Date</p>
+              <p className="font__weight--600 margin-bottom-xxs">
+                Invoice Date
+              </p>
               <p>{new Date(invoice.invoiceDate!).toDateString()}</p>
             </div>
             <div className="detail__info">
-              <p className="font__weight--600">Payment due</p>
+              <p className="font__weight--600 margin-bottom-xxs">Payment due</p>
               <p>{new Date(invoice.invoicePaymentDate!).toDateString()}</p>
             </div>
           </GridCol>
           <GridCol extraClasses="flex flex--column" desktop={4}>
-            <p className="font__weight--600">Billing Address</p>
+            <p className="font__weight--600 margin-bottom-s">Billing Address</p>
             <div className="detail__info">
               <p>{invoice.billingAddress!.street}</p>
               <p>{invoice.billingAddress!.zipCode}</p>
@@ -134,7 +136,7 @@ const InvoiceDetail = () => {
             </div>
           </GridCol>
           <GridCol extraClasses=" flex flex--column" desktop={4}>
-            <p className="font__weight--600">Client's info</p>
+            <p className="font__weight--600 margin-bottom-s">Client's info</p>
             <div className="flex flex--column flex__gap--1">
               <div className="detail__info">
                 <p className="font__weight--400">{clientName}</p>
