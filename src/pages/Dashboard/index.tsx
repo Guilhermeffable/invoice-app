@@ -125,9 +125,8 @@ const Dashboard = () => {
           </ul>
         </article>
       ) : (
-        ""
+        "There are no invoices to show."
       )}
-
       <aside className={`${!showFilters ? "display--none" : ""} `}>
         <Filters
           showFilters={showFilters}
@@ -135,7 +134,7 @@ const Dashboard = () => {
           filterInvoices={filterInvoices}
         />
       </aside>
-      <footer className="dashboard__footer flex flex--center">
+      <footer className="dashboard__footer flex flex--center margin-top-xl">
         <Button
           onClick={seeMore}
           type="button"

@@ -8,6 +8,8 @@ import { useLocation } from "react-router-dom";
 import { BreadcrumbLink, InvoiceInterface } from "../../utils";
 import Input from "../../components/atoms/Input";
 import { deleteInvoice, putInvoice } from "../../services/invoices";
+import Grid from "../../components/molecules/Grid";
+import GridCol from "../../components/atoms/GridCol";
 
 const InvoiceDetail = () => {
   const { state } = useLocation();
@@ -87,8 +89,8 @@ const InvoiceDetail = () => {
         <h2>View Invoice Details</h2>
       </header>
       <article className="card background--neutral-03 flex flex--space-between">
-        <div className="detail__state flex flex--start-X flex--column ">
-          <p>State</p>
+        <div className="detail__state flex flex--start-X  ">
+          <p className="margin-right-s">State</p>
           <Status type={invoice.invoiceState!} />
         </div>
         <Button
@@ -112,8 +114,8 @@ const InvoiceDetail = () => {
           </div>
           <p>{invoiceDescription}</p>
         </header>
-        <section className="detail__main-content flex flex--column flex__gap--2">
-          <div className="detail__section flex">
+        <Grid extraClasses="detail__main-content flex flex--column flex__gap--2">
+          <GridCol extraClasses=" flex" desktop={3}>
             <div className="detail__info">
               <p className="font__weight--600">Invoice Date</p>
               <p>{new Date(invoice.invoiceDate!).toDateString()}</p>
@@ -122,16 +124,16 @@ const InvoiceDetail = () => {
               <p className="font__weight--600">Payment due</p>
               <p>{new Date(invoice.invoicePaymentDate!).toDateString()}</p>
             </div>
-          </div>
-          <div className="detail__section flex flex--column">
+          </GridCol>
+          <GridCol extraClasses="flex flex--column" desktop={4}>
             <p className="font__weight--600">Billing Address</p>
             <div className="detail__info">
               <p>{invoice.billingAddress!.street}</p>
               <p>{invoice.billingAddress!.zipCode}</p>
               <p>{invoice.billingAddress!.country}</p>
             </div>
-          </div>
-          <div className="detail__section flex flex--column">
+          </GridCol>
+          <GridCol extraClasses=" flex flex--column" desktop={4}>
             <p className="font__weight--600">Client's info</p>
             <div className="flex flex--column flex__gap--1">
               <div className="detail__info">
@@ -144,8 +146,11 @@ const InvoiceDetail = () => {
                 <p>{clientCountry}</p>
               </div>
             </div>
-          </div>
-          <div className="display--hide-sm flex flex--end-X">
+          </GridCol>
+          <GridCol
+            extraClasses="display--hide-sm flex flex--start-Y flex--end-X"
+            desktop={1}
+          >
             <Button
               type="button"
               label={"Edit"}
@@ -153,8 +158,8 @@ const InvoiceDetail = () => {
               icon={Edit}
               onClick={saveClientInfo}
             />
-          </div>
-        </section>
+          </GridCol>
+        </Grid>
       </article>
       <article className="card">
         <header className="flex flex--end-X">
@@ -163,67 +168,87 @@ const InvoiceDetail = () => {
             label={"Edit"}
             buttonStyle={"inline"}
             icon={Edit}
-            onClick={() => setEditInvoiceItems(!editInvoiceItems)}
+            onClick={saveClientInfo}
           />
         </header>
         <section className="detail__container flex flex--column flex__gap--1">
-          <div className="detail__item-titles display--hide-mobile flex flex--space-between">
-            <p className="font__weight--600">Item Name</p>
-
-            <div>
+          <Grid extraClasses="detail__item-titles display--hide-mobile">
+            <GridCol desktop={6} tablet={3}>
+              <p className="font__weight--600">Item Name</p>
+            </GridCol>
+            <GridCol desktop={2} tablet={3}>
               <p className="font__weight--600">Quantity</p>
-            </div>
-            <div>
+            </GridCol>
+            <GridCol desktop={2} tablet={3}>
               <p className="font__weight--600">Price</p>
-            </div>
-            <div>
+            </GridCol>
+            <GridCol desktop={2} tablet={3} extraClasses="flex flex--end-X">
               <p className="font__weight--600">Total</p>
-            </div>
-          </div>
-          {invoice.items!.map((item, index) => {
-            return (
-              <div key={index} className="flex flex--space-between ">
-                <div className="detail__service flex flex--column">
-                  <p className="font__weight--600">{item.name}</p>
-                  <p className="display--hide-lg">{`${item.quantity} x ${(
-                    Math.round(parseInt(item.price) * 100) / 100
-                  ).toFixed(2)}€`}</p>
-                  <div className="display--hide-sm">
-                    <p>{item.quantity}</p>
-                  </div>
-                  <div className="display--hide-sm">
-                    <p>
-                      {(Math.round(parseInt(item.price) * 100) / 100).toFixed(
-                        2
-                      )}
-                      €
-                    </p>
-                  </div>
-                  <div className="display--hide-sm">
-                    <p className="font__weight--600">
-                      {(
-                        Math.round(
-                          parseInt(item.price) * parseInt(item.quantity) * 100
-                        ) / 100
-                      ).toFixed(2)}
-                      €
-                    </p>
-                  </div>
-                </div>
-
-                <div className="detail__price display--hide-lg">
-                  <p className="font__weight--600">
-                    {(
-                      Math.round(
-                        parseInt(item.price) * parseInt(item.quantity) * 100
-                      ) / 100
-                    ).toFixed(2)}
-                    €
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+            </GridCol>
+          </Grid>
+          <ul>
+            {invoice.items!.map((item, index) => {
+              return (
+                <li key={index}>
+                  <Grid extraClasses="margin-bottom-s">
+                    <GridCol desktop={6} mobile={6} tablet={3}>
+                      <p className="font__weight--600">{item.name}</p>
+                      <p className="display--hide-lg">{`${item.quantity} x ${(
+                        Math.round(parseInt(item.price) * 100) / 100
+                      ).toFixed(2)}€`}</p>
+                    </GridCol>
+                    <GridCol
+                      desktop={2}
+                      tablet={3}
+                      extraClasses="display--hide-sm"
+                    >
+                      <p>{item.quantity}</p>
+                    </GridCol>
+                    <GridCol
+                      desktop={2}
+                      tablet={3}
+                      extraClasses="display--hide-sm"
+                    >
+                      <p>
+                        {(Math.round(parseInt(item.price) * 100) / 100).toFixed(
+                          2
+                        )}
+                        €
+                      </p>
+                    </GridCol>
+                    <GridCol
+                      desktop={2}
+                      tablet={3}
+                      extraClasses="display--hide-sm flex flex--end-X"
+                    >
+                      <p className="font__weight--600">
+                        {(
+                          Math.round(
+                            parseInt(item.price) * parseInt(item.quantity) * 100
+                          ) / 100
+                        ).toFixed(2)}
+                        €
+                      </p>
+                    </GridCol>
+                    <GridCol
+                      tablet={3}
+                      mobile={6}
+                      extraClasses="detail__price  display--hide-lg flex flex--align-center flex--end-X "
+                    >
+                      <p className="font__weight--600 ">
+                        {(
+                          Math.round(
+                            parseInt(item.price) * parseInt(item.quantity) * 100
+                          ) / 100
+                        ).toFixed(2)}
+                        €
+                      </p>
+                    </GridCol>
+                  </Grid>
+                </li>
+              );
+            })}
+          </ul>
         </section>
         <footer className="flex flex--space-between background__main--primary text--white">
           <p className="font__weight--600">Grand Total</p>

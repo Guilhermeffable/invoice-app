@@ -2,7 +2,7 @@ import React from "react";
 import "../../../assets/styles/components/molecules/_invoice.scss";
 import Status from "../../atoms/Status";
 import PropTypes from "prop-types";
-import { Client } from "../../../utils";
+
 import { InvoiceProps } from "./utils";
 import Grid from "../Grid";
 import GridCol from "../../atoms/GridCol";
@@ -26,7 +26,7 @@ const Invoice = ({
       </GridCol>
       <GridCol
         desktop={4}
-        extraClasses="flex flex--center flex--column flex--start-Y  margin-right-s"
+        extraClasses="flex flex--center flex--column flex--start-Y margin-right-s"
       >
         <h3 className="margin-bottom-xs">{client.name}</h3>
         <p className="display--hide-sm">{description}</p>

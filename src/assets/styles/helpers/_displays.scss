@@ -2,7 +2,7 @@
 
 .display {
   &--none {
-    display: none;
+    display: none !important;
   }
 
   &--hide-sm {
@@ -13,7 +13,7 @@
 
   &--hide-lg {
     @media (min-width: $breakpoint-tablet) {
-      display: none;
+      display: none !important;
     }
   }
 }

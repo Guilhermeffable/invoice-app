@@ -1,13 +1,14 @@
 .status {
-    gap: 5px;
+  gap: 5px;
 
-    &__icon {
-        height: 12px;
-        width: 12px;
-        border-radius: 50%;
-    }
+  &__icon {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    min-width: 12px;
+  }
 
-    &__text {
-        font-weight: 600;
-    }
+  &__text {
+    font-weight: 600;
+  }
 }

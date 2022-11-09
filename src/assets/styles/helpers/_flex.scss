@@ -43,6 +43,10 @@
     flex-direction: row;
   }
 
+  &--align-center {
+    align-items: center;
+  }
+
   &__gap {
     @for $i from 1 to 5 {
       $v: $i;
