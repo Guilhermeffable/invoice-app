@@ -1,13 +1,13 @@
 @import "../../assets/styles/settings/index";
 
 .detail {
+  button {
+    flex-direction: row;
+  }
+
   section {
     header {
       gap: 1rem;
-
-      button {
-        flex-direction: row;
-      }
     }
   }
 

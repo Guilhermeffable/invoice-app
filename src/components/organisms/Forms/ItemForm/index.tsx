@@ -98,10 +98,11 @@ const ItemForm = ({
               <Button
                 type="button"
                 buttonStyle="inline"
-                label="Delete"
-                icon={Delete}
                 onClick={() => deleteItem(index)}
-              />
+              >
+                <Delete />
+                Delete
+              </Button>
             </div>
 
             <hr />
@@ -109,20 +110,17 @@ const ItemForm = ({
         );
       })}
       <div className="info__button flex flex--center">
-        <Button
-          label="Add new item"
-          type="button"
-          buttonStyle="inline"
-          onClick={addItem}
-          icon={Plus}
-        />
+        <Button type="button" buttonStyle="inline" onClick={addItem}>
+          Add new Item <Plus />
+        </Button>
       </div>
       <Button
-        label="Create"
         type="button"
         buttonStyle="primary"
         onClick={() => saveInfo(itemsArr)}
-      />
+      >
+        Create
+      </Button>
     </div>
   );
 };

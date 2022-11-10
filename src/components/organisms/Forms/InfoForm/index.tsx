@@ -126,12 +126,9 @@ const InfoForm = ({
           </section>
         </fieldset>
       </form>
-      <Button
-        type="button"
-        label="Continue"
-        buttonStyle="primary"
-        onClick={() => changePage()}
-      />
+      <Button type="button" buttonStyle="primary" onClick={() => changePage()}>
+        Continue
+      </Button>
     </Card>
   );
 };

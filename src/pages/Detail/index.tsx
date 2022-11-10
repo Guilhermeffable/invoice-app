@@ -93,26 +93,35 @@ const InvoiceDetail = () => {
           <p className="margin-right-s">State</p>
           <Status type={invoice.invoiceState!} />
         </div>
-        <Button
-          type="button"
-          buttonStyle={"primary"}
-          label="Mark as paid"
-          icon={Plus}
-        />
+        <Button type="button" buttonStyle={"primary"}>
+          <Plus /> Mark as paid
+        </Button>
       </article>
       <article className="card flex flex--column flex__gap--2">
         <header className="flex flex--column">
-          <div className=" flex flex--space-between">
-            <p className="font__weight--600">{invoice.invoiceId}</p>
-            <Button
-              type="button"
-              label={!editDescription ? "Edit" : "Save"}
-              buttonStyle={"inline"}
-              icon={!editDescription ? Edit : Plus}
-              onClick={saveDescription}
-            />
-          </div>
-          <p>{invoiceDescription}</p>
+          <Grid>
+            <GridCol extraClasses="flex flex--column" desktop={11} mobile={11}>
+              <p className="font__weight--600 margin-bottom-s">
+                {invoice.invoiceId}
+              </p>
+              <p>{invoiceDescription}</p>
+            </GridCol>
+            <GridCol
+              extraClasses="flex flex--end-X flex--start-Y"
+              desktop={1}
+              mobile={1}
+            >
+              <Button
+                type="button"
+                buttonStyle={"inline"}
+                onClick={saveClientInfo}
+                extraClasses={"button--icon"}
+              >
+                <Edit className="icon__stroke--primary icon__fill--none" />
+                Edit
+              </Button>
+            </GridCol>
+          </Grid>
         </header>
         <Grid extraClasses="detail__main-content flex flex--column ">
           <GridCol extraClasses=" flex" desktop={3}>
@@ -155,23 +164,35 @@ const InvoiceDetail = () => {
           >
             <Button
               type="button"
-              label={"Edit"}
               buttonStyle={"inline"}
-              icon={Edit}
               onClick={saveClientInfo}
-            />
+              extraClasses={"button--icon"}
+            >
+              <Edit className="icon__stroke--primary icon__fill--none" />
+              Edit
+            </Button>
           </GridCol>
         </Grid>
       </article>
       <article className="card">
         <header className="flex flex--end-X">
-          <Button
-            type="button"
-            label={"Edit"}
-            buttonStyle={"inline"}
-            icon={Edit}
-            onClick={saveClientInfo}
-          />
+          <Grid>
+            <GridCol
+              extraClasses="padding-y-s"
+              offsetDesktop={11}
+              offsetMobile={11}
+            >
+              <Button
+                type="button"
+                buttonStyle={"inline"}
+                onClick={saveClientInfo}
+                extraClasses={"button--icon"}
+              >
+                <Edit className="icon__stroke--primary icon__fill--none" />
+                Edit
+              </Button>
+            </GridCol>
+          </Grid>
         </header>
         <section className="detail__container flex flex--column flex__gap--1">
           <Grid extraClasses="detail__item-titles display--hide-mobile">
@@ -270,9 +291,10 @@ const InvoiceDetail = () => {
         <Button
           buttonStyle="primary"
           type="button"
-          label="Delete"
           onClick={() => deleteInvoice(invoice.invoiceId!)}
-        />
+        >
+          Delete
+        </Button>
       </div>
     </div>
   );

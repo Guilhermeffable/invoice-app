@@ -142,13 +142,19 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
               <div className="filter__state flex">
                 <ul className="flex">
                   <li>
-                    <Button buttonStyle="pill" label="Paid" type="button" />
+                    <Button buttonStyle="pill" type="button">
+                      Paid
+                    </Button>
                   </li>
                   <li>
-                    <Button buttonStyle="pill" label="Pending" type="button" />
+                    <Button buttonStyle="pill" type="button">
+                      Pending
+                    </Button>
                   </li>
                   <li>
-                    <Button buttonStyle="pill" label="Canceled" type="button" />
+                    <Button buttonStyle="pill" type="button">
+                      Canceled
+                    </Button>
                   </li>
                 </ul>
               </div>
@@ -194,8 +200,9 @@ const Filters = ({ showFilters, setFilters, filterInvoices }: FilterProps) => {
                 buttonStyle="primary"
                 type="submit"
                 onClick={() => filterInvoices(filterValues)}
-                label="Search"
-              />
+              >
+                Search
+              </Button>
             </div>
           </div>
         </fieldset>

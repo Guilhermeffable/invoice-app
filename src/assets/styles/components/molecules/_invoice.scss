@@ -2,9 +2,12 @@
 
 .invoice {
   flex-wrap: wrap;
+  cursor: pointer;
+
   @media (min-width: $breakpoint-mobile) {
     flex-wrap: nowrap;
   }
+
   h3 {
     font-size: 1rem;
   }

@@ -96,10 +96,11 @@ const Dashboard = () => {
           <Button
             type="button"
             buttonStyle={"primary"}
-            label="New Invoice"
-            icon={Plus}
             onClick={() => navigate("/create", { replace: true })}
-          />
+          >
+            <Plus />
+            Invoice
+          </Button>
         </div>
       </header>
       {invoices.length > 0 ? (
@@ -135,13 +136,10 @@ const Dashboard = () => {
         />
       </aside>
       <footer className="dashboard__footer flex flex--center margin-top-xl">
-        <Button
-          onClick={seeMore}
-          type="button"
-          label={"See more invoices"}
-          buttonStyle={"inline"}
-          icon={Chevron}
-        />
+        <Button onClick={seeMore} type="button" buttonStyle={"inline"}>
+          <Chevron />
+          See more invoices
+        </Button>
       </footer>
     </section>
   );

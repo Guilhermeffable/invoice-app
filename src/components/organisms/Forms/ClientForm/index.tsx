@@ -100,10 +100,11 @@ const ClientForm = ({
       </form>
       <Button
         type="button"
-        label="Continue"
         buttonStyle="primary"
         onClick={() => saveClientInfo()}
-      />
+      >
+        Continue
+      </Button>
     </div>
   );
 };

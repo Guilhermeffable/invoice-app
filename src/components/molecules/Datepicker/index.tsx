@@ -175,18 +175,12 @@ const DatePicker = ({
       </ul>
 
       <div className="datepicker__footer flex flex--center">
-        <Button
-          type="button"
-          buttonStyle={"secondary"}
-          label="Clear Dates"
-          onClick={clear}
-        />
-        <Button
-          type="button"
-          buttonStyle={"primary"}
-          label="Select Dates"
-          onClick={selectDates}
-        />
+        <Button type="button" buttonStyle={"secondary"} onClick={clear}>
+          Clear Dates
+        </Button>
+        <Button type="button" buttonStyle={"primary"} onClick={selectDates}>
+          Select Dates
+        </Button>
       </div>
     </div>
   );
